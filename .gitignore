@@ -1,1 +1,16 @@
+# Virtual Environment
+venv/
+.venv/
+env/
+pyvenv.cfg
+
+# Python environment artifacts
+*.pyc
+__pycache__/
+
+# Local Environment Variables
 .env
+env.py
+
+# Databases (in case you use local sqlite temporarily)
+*.sqlite3

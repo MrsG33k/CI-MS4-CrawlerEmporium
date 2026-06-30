@@ -37,6 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Built-in app for allauth to show the "Sites" menu
+    'django.contrib.sites',
+    # Apps required for Allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # My bespoke apps for the project
     'lootboxes',
     'showrunners',
     'support'
@@ -61,13 +68,23 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.request',
+                'django.template.context_processors.request',  # required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+# Allauth settings needed for logging in using social media account
+SITE_ID = 1
 
 WSGI_APPLICATION = 'crawleremporium.wsgi.application'
 

@@ -58,42 +58,122 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ----- Custom Styles by Jennie Whittaker----- */
 
+/* Custom Palette Variables matching the Book Cover */
+:root {
+    --hazard-yellow: #FFD200;
+    --neon-pink: #FF007F;
+    --dungeon-dark: #0F1012;
+    --vault-black: #050607;
+    --panel-border: #2D3139;
+}
+
+.bg-fuchsia {
+    background-color: var(--neon-pink) !important;
+    color: #fff !important; /
+}
+
 html {
     height: 100%;
 }
 
 body {
-    background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed;
-    background-size: cover;
-    height: calc(100vh - 164px);
     color: #555;
-    font-family: 'Lato';
-}
-
-/* Core Styling Rules for The Crawler Emporium */
-
-body {
+    background-color: var(--dungeon-dark) !important;
     font-family: 'Inter', sans-serif;
     letter-spacing: 0.03em;
 }
 
+.header-top {
+    margin-top: 90px;
+}
+
+/* Custom Scrollbar for a premium UI feel */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--vault-black);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--panel-border);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--hazard-yellow);
+}
+
+
 /* Typography Overrides */
 .logo-font {
     font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
+    font-weight: 900;
+    text-shadow: 0 0 10px rgba(255, 210, 0, 0.2);
 }
 
 .font-nav {
     font-family: 'Orbitron', sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
-    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
 }
 
 .font-sub {
     font-family: 'Oswald', sans-serif;
-    text-uppercase: uppercase;
+    text-transform: uppercase;
+}
+
+.tracking-wider {
+    letter-spacing: 0.12em !important;
+}
+
+/* Text Highlight Alterations */
+.text-warning { 
+    color: var(--hazard-yellow) !important; 
+}
+
+.btn-outline-warning {
+    color: var(--hazard-yellow);
+    border-color: var(--panel-border) !important;
+}
+
+.btn-outline-warning:hover {
+    background-color: var(--hazard-yellow);
+    color: var(--vault-black);
+    box-shadow: 0 0 15px rgba(255, 210, 0, 0.4);
+}
+
+
+/* Custom UI Components for the Hero */
+.hero-jumbotron {
+    background: linear-gradient(180deg, rgba(5,6,7,0.7) 0%, rgba(15,16,18,1) 100%), 
+                url('/static/images/dungeon-bg.jpg') center/cover no-repeat;
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
+}
+
+.text-pink {
+    color: var(--neon-pink);
+    text-shadow: 0 0 12px rgba(255, 0, 127, 0.4);
+}
+
+.glow-btn {
+    background-color: var(--hazard-yellow);
+    color: var(--vault-black);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
     letter-spacing: 0.05em;
+    transition: all 0.2s ease-in-out;
+}
+.glow-btn:hover {
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0 0 20px var(--hazard-yellow);
+    transform: translateY(-1px);
+}
+
+.text-muted-hover:hover {
+    color: var(--hazard-yellow) !important;
+    transition: color 0.15s ease-in-out;
 }
 
 /* Custom Interactive UI Variables */
@@ -120,6 +200,17 @@ body {
 }
 
 
+/* white mobile hamburger menu */
+.custom-mobile-toggler {
+    border: none !important; /* Strips out the default gray border */
+    padding: 0.25rem 0.5rem !important;
+}
+
+.custom-mobile-toggler:focus {
+    box-shadow: none !important; /* Removes the focus box highlight */
+    outline: none !important;
+}
+
 
 
 /* from Bulma (another framework that centers fontawesome icons  */
@@ -129,47 +220,6 @@ body {
     justify-content: center;
     height: 1.5rem;
     width: 1.5rem;
-}
-
-.logo-font {
-    text-transform: uppercase;
-}
-
-.main-logo-link {
-    width: fit-content;
-}
-
-.shop-now-button {
-    background: black;
-    color: white;
-    min-width: 260px;
-}
-
-.btn-black {
-    background: black;
-    color: white;
-}
-
-.shop-now-button:hover,
-.shop-now-button:active,
-.shop-now-button:focus,
-.btn-black:hover,
-.btn-black:active,
-.btn-black:focus {
-    background: #222;
-    color: white;
-}
-
-.text-black {
-    color: #000 !important;
-}
-
-.border-black {
-    border: 1px solid black !important;
-}
-
-.bg-black {
-    background: #000 !important;
 }
 
 /* -------------------------------- Media Queries */
@@ -189,9 +239,5 @@ body {
         right: 0;
         left: 0;
         z-index: 1030;
-    }
-
-    .header-container {
-        padding-top: 164px;
     }
 }  

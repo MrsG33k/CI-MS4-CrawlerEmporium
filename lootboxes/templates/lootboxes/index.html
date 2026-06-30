@@ -1,24 +1,145 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
-{% endblock %}
-
 {% block content %}
-<div class="container h-100">
-    <div class="row h-100">
-        <div class="col-7 col-md-6 my-auto "></div>>
-            <h1 class="display-4 logo-font text-black">Welcome to the Lootboxes Page</h1>
-            <div class="my-5">
-                <h4>
-                    <a href="" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Show Now</a>
-                </h4>
+<div class="container-fluid px-0">
+    
+    <div class="row g-4 mb-4">
+        
+        <div class="col-12 col-xl-8">
+            <div class="hero-jumbotron p-5 h-100 d-flex flex-column justify-content-center text-start position-relative overflow-hidden">
+                <span class="badge bg-fuchsia text-uppercase tracking-wider font-sub mb-3 align-self-start py-2 px-3 border border-light border-opacity-25" style="letter-spacing: 0.1em;">
+                    <i class="fas fa-exclamation-triangle me-2 animate-pulse"></i>Crawler Exclusive
+                </span>
+                <h2 class="logo-font text-white display-5 text-uppercase mb-1">
+                    The <span class="text-warning">Borel System</span>
+                </h2>
+                <h3 class="logo-font text-pink h1 text-uppercase mb-4">
+                    Loot Bonanza!
+                </h3>
+                <p class="lead text-secondary max-w-md fs-5 mb-4 font-inter">
+                    Get ready to grind! The automated system variables have shifted. Higher tier boxes are manifesting across all quadrants. The AI is always watching your performance metrics.
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="#" class="btn glow-btn btn-lg px-4 py-3 text-uppercase">
+                        Scan Open Vaults <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
             </div>
         </div>
+
+        <div class="col-12 col-xl-4">
+            <div class="bg-black border border-secondary rounded-2 p-4 h-100 d-flex flex-column justify-content-between font-sub">
+                <div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom border-secondary pb-2 mb-3">
+                        <h5 class="text-white logo-font m-0 fs-6 text-uppercase tracking-wider text-secondary">
+                            <i class="fas fa-satellite-dish text-warning me-2"></i>System Logs
+                        </h5>
+                    </div>
+                    <div class="d-flex flex-column gap-3 tracking-wide" style="font-size: 0.85rem;">
+                        <div class="lh-sm">
+                            <span class="text-muted d-block small">10:15 PM - LEVEL UP</span>
+                            <span class="text-light">User 'Carl_Strikes' unlocked Achievement: <span class="text-warning">LEVEL 50 REACHED!</span></span>
+                        </div>
+                        <div class="lh-sm">
+                            <span class="text-muted d-block small">10:12 PM - TRANSACTION</span>
+                            <span class="text-light">'Princess_Donut_Supporter' purchased: <span class="text-pink">3x Gold Loot Boxes</span></span>
+                        </div>
+                        <div class="lh-sm">
+                            <span class="text-muted d-block small">10:08 PM - SYSTEM INVENTORY</span>
+                            <span class="text-light"><i class="fas fa-skull text-danger me-1"></i> New Item Alert: 'Explosive Goblin Minions' added to store.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-dark border border-success border-opacity-50 p-3 rounded-2 mt-3 d-flex align-items-center gap-3">
+                    <i class="fas fa-award text-success fs-3"></i>
+                    <div class="lh-sm">
+                        <span class="text-success text-uppercase fw-bold d-block small" style="font-size: 0.7rem; letter-spacing: 0.05em;">New Achievement!</span>
+                        <span class="text-white small d-block tracking-normal font-inter py-1" style="font-size: 0.75rem;">Borel Dungeon System connection established securely. Reward: 0 points. Go dynamic or go home.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mb-3 mt-5">
+        <div class="col border-bottom border-secondary pb-2 d-flex justify-content-between align-items-end">
+            <h4 class="logo-font text-white m-0 text-uppercase tracking-wider fs-5">
+                Available <span class="text-warning">Loot Caches</span>
+            </h4>
+            <a href="#" class="text-decoration-none text-warning font-sub small text-muted-hover">Browse All Packages &rarr;</a>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
+        
+        <div class="col">
+            <div class="bg-black border border-secondary rounded-2 p-3 h-100 d-flex flex-column justify-content-between text-center">
+                <div>
+                    <div class="bg-dark p-4 rounded-2 mb-3 border border-secondary border-opacity-20">
+                        <i class="fas fa-box text-secondary display-4 my-2"></i>
+                    </div>
+                    <h5 class="logo-font text-white fs-6 text-uppercase m-0">Iron Tier Box</h5>
+                    <p class="text-muted font-inter my-2" style="font-size: 0.8rem;">Low-grade tactical support items and standard tool modifications.</p>
+                </div>
+                <div>
+                    <span class="text-warning font-sub fs-5 d-block my-2 fw-bold">£50.00</span>
+                    <button class="btn btn-sm btn-outline-warning w-100 font-sub tracking-wide">Acquire Cache</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="bg-black border border-secondary rounded-2 p-3 h-100 d-flex flex-column justify-content-between text-center">
+                <div>
+                    <div class="bg-dark p-4 rounded-2 mb-3 border border-secondary border-opacity-20">
+                        <i class="fas fa-box-open text-info display-4 my-2"></i>
+                    </div>
+                    <h5 class="logo-font text-white fs-6 text-uppercase m-0">Silver Tier Box</h5>
+                    <p class="text-muted font-inter my-2" style="font-size: 0.8rem;">Rare-class character stat modifiers and dynamic boosters.</p>
+                </div>
+                <div>
+                    <span class="text-warning font-sub fs-5 d-block my-2 fw-bold">£250.00</span>
+                    <button class="btn btn-sm btn-outline-warning w-100 font-sub tracking-wide">Acquire Cache</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="bg-black border border-secondary rounded-2 p-3 h-100 d-flex flex-column justify-content-between text-center">
+                <div>
+                    <div class="bg-dark p-4 rounded-2 mb-3 border border-secondary border-opacity-20">
+                        <i class="fas fa-vault text-warning display-4 my-2"></i>
+                    </div>
+                    <h5 class="logo-font text-white fs-6 text-uppercase m-0">Gold Tier Box</h5>
+                    <p class="text-muted font-inter my-2" style="font-size: 0.8rem;">Legendary cosmetic drops and complex high-yield blueprints.</p>
+                </div>
+                <div>
+                    <span class="text-warning font-sub fs-5 d-block my-2 fw-bold">£750.00</span>
+                    <button class="btn btn-sm btn-outline-warning w-100 font-sub tracking-wide">Acquire Cache</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="bg-black border border-secondary rounded-2 p-3 h-100 d-flex flex-column justify-content-between text-center">
+                <div>
+                    <div class="bg-dark p-4 rounded-2 mb-3 border border-secondary border-opacity-20">
+                        <i class="fas fa-box-tissue text-pink display-4 my-2"></i>
+                    </div>
+                    <h5 class="logo-font text-white fs-6 text-uppercase m-0">Platinum Tier Box</h5>
+                    <p class="text-muted font-inter my-2" style="font-size: 0.8rem;">Mythical floor-boss tier gear variants and dangerous anomalies.</p>
+                </div>
+                <div>
+                    <span class="text-warning font-sub fs-5 d-block my-2 fw-bold">£2,000.00</span>
+                    <button class="btn btn-sm btn-outline-warning w-100 font-sub tracking-wide">Acquire Cache</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 {% endblock %}

@@ -86,6 +86,16 @@ AUTHENTICATION_BACKENDS = [
 # Allauth settings needed for logging in using social media account
 SITE_ID = 1
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email' # log in via email or usernmae
+ACCOUNT_EMAIL_REQUIRED = True  # must have an email
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # must verify email before logging in
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_USERNAME_MIN_LENGTH = 4  # username must be at least 4 characters long
+LOGIN_URL = '/accounts/login/'  # login page URL
+LOGIN_REDIRECT_URL = '/'  # Redirect to home page after login
+
 WSGI_APPLICATION = 'crawleremporium.wsgi.application'
 
 

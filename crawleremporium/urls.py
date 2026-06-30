@@ -21,4 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # Added to include allauth URLs
     path('accounts/', include('allauth.urls')),
+    path('', include('lootboxes.urls')),
+
 ]

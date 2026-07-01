@@ -79,45 +79,31 @@ html {
 body {
     color: #555;
     background-color: var(--dungeon-dark) !important;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Crimson Text', serif;
     letter-spacing: 0.03em;
 }
 
-.header-top {
-    margin-top: 90px;
-}
-
-/* Custom Scrollbar for a premium UI feel */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: var(--vault-black);
-}
-::-webkit-scrollbar-thumb {
-    background: var(--panel-border);
-    border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: var(--hazard-yellow);
-}
-
-
 /* Typography Overrides */
 .logo-font {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Encode Sans Condensed', sans-serif;
     font-weight: 900;
     text-shadow: 0 0 10px rgba(255, 210, 0, 0.2);
 }
 
+.header-font {
+    font-family: 'Encode Sans Condensed', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
 .font-nav {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Encode Sans Condensed', sans-serif;
     font-size: 0.85rem;
     letter-spacing: 0.12em;
 }
 
 .font-sub {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Encode Sans Condensed', sans-serif;
     text-transform: uppercase;
 }
 
@@ -159,7 +145,7 @@ body {
 .glow-btn {
     background-color: var(--hazard-yellow);
     color: var(--vault-black);
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Encode Sans Condensed', sans-serif;
     font-weight: 700;
     letter-spacing: 0.05em;
     transition: all 0.2s ease-in-out;
@@ -200,18 +186,6 @@ body {
 }
 
 
-/* white mobile hamburger menu */
-.custom-mobile-toggler {
-    border: none !important; /* Strips out the default gray border */
-    padding: 0.25rem 0.5rem !important;
-}
-
-.custom-mobile-toggler:focus {
-    box-shadow: none !important; /* Removes the focus box highlight */
-    outline: none !important;
-}
-
-
 
 /* from Bulma (another framework that centers fontawesome icons  */
 .icon {
@@ -221,23 +195,3 @@ body {
     height: 1.5rem;
     width: 1.5rem;
 }
-
-/* -------------------------------- Media Queries */
-
-/* Slightly larger container on xl screens */
-@media (min-width: 1200px) {
-  .container {
-    max-width: 80%;
-  }
-}
-
-/* fixed top navbar only on medium and up */
-@media (min-width: 992px) {
-    .fixed-top-desktop-only {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1030;
-    }
-}  

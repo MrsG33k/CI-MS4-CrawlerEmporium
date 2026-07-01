@@ -16,8 +16,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Encode+Sans+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">    
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
@@ -34,125 +33,112 @@
     <title>The Crawler Emporium {% block extra_title %}{% endblock %}</title>
 </head>
 <body class="bg-dark text-light">
+    <body class="bg-dark text-light">
 
-    <header class="fixed-top border-bottom border-secondary bg-black">
-        <div class="container-fluid px-4">
-            <div class="row align-items-center py-2">
-                
-                <div class="col-12 col-lg-3 text-center text-lg-start py-1">
-                    <a href="{% url 'lootboxes' %}" class="text-decoration-none">
-                        <h1 class="logo-font text-white m-0 tracking-wider">
-                            <span class="text-warning font-weight-bold">CRAWLER</span> <span class="fs-4 text-secondary text-uppercase fw-light">Emporium</span>
-                        </h1>
-                    </a>
-                </div>
-
-                <div class="col-12 col-lg-5 py-1">
-                    <form method="GET" action="">
-                        <div class="input-group">
-                            <input class="form-control bg-dark border-secondary text-light rounded-start-2 custom-search-input" type="text" name="q" placeholder="Scan vaults for loot boxes..." aria-label="Search">
-                            <button class="btn btn-outline-warning border-secondary px-3" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="col-12 col-lg-4 text-center text-lg-end py-1">
-                    <div class="d-flex justify-content-center justify-content-lg-end align-items-center gap-4">
-                        
-                        <div class="dropdown">
-                            <a class="nav-link text-light dropdown-toggle d-flex align-items-center gap-2 py-1" href="#" role="button" id="accountMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user-shield text-warning fs-5"></i>
-                                <span class="d-none d-sm-inline font-sub">My Vault</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end border-secondary shadow-lg" aria-labelledby="accountMenu">
-                                {% if request.user.is_authenticated %}
-                                    {% if request.user.is_superuser %}
-                                        <li><a class="dropdown-index dropdown-item py-2" href="#"><i class="fas fa-tools text-warning me-2"></i>Vault Management</a></li>
-                                        <li><hr class="dropdown-divider border-secondary"></li>
-                                    {% endif %}
-                                    <li><a class="dropdown-item py-2" href="#"><i class="fas fa-id-card me-2"></i>Adventurer Profile</a></li>
-                                    <li><a class="dropdown-item py-2 text-danger" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt me-2"></i>Abandon Session</a></li>
-                                {% else %}
-                                    <li><a class="dropdown-item py-2" href="{% url 'account_signup' %}"><i class="fas fa-user-plus me-2"></i>Register Lineage</a></li>
-                                    <li><a class="dropdown-item py-2" href="{% url 'account_login' %}"><i class="fas fa-sign-in-alt text-warning me-2"></i>Initiate Login</a></li>
-                                {% endif %}
-                            </ul>
-                        </div>
-
-                        <a href="#" class="nav-link text-light d-flex align-items-center gap-2 py-1 border border-secondary px-3 rounded-2 bg-gradient bg-dark custom-cart-btn">
-                            <i class="fas fa-treasure-chest text-warning fs-5"></i>
-                            <div class="text-start lh-sm">
-                                <span class="small d-block text-secondary text-uppercase fw-bold m-0" style="font-size: 0.65rem;">Inventory</span>
-                                <span class="fw-bold text-white p-0">
-                                    {% if grand_total %}£{{ grand_total|floatformat:2 }}{% else %}£0.00{% endif %}
-                                </span>
-                            </div>
-                        </a>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="row border-top border-secondary-subtle">
-                <nav class="navbar navbar-expand-lg navbar-dark p-0 w-100">
-                    <button class="navbar-toggler my-2 ms-auto border-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#crawlerNavbar" aria-controls="crawlerNavbar" aria-expanded="false" aria-label="Toggle Navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    
-                    <div class="collapse navbar-collapse justify-content-center" id="crawlerNavbar">
-                        <ul class="navbar-nav gap-lg-4 py-2 py-lg-1">
-                            
-                            <li class="nav-item dropdown">
-                                <a class="nav-link text-light dropdown-toggle font-nav text-uppercase" href="#" id="allBoxes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    All Loot Boxes
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark border-secondary" aria-labelledby="allBoxes">
-                                    <li><a class="dropdown-item" href="#">By Price</a></li>
-                                    <li><a class="dropdown-item" href="#">By Danger Tier</a></li>
-                                    <li><a class="dropdown-item" href="#">View Complete Vault</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-light font-nav text-uppercase" href="#">
-                                    The Showrunners
-                                </a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link text-warning dropdown-toggle font-nav text-uppercase" href="#" id="specialsMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Live Campaigns
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark border-secondary" aria-labelledby="specialsMenu">
-                                    <li><a class="dropdown-item text-warning" href="#">Active Dungeon Modifiers</a></li>
-                                    <li><a class="dropdown-item" href="#">Clearance Relics</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-light font-nav text-uppercase" href="#">
-                                    Guild Support &amp; FAQ
-                                </a>
-                            </li>
-
+    <header class="p-3 text-bg-dark bg-black border-bottom border-secondary shadow-lg header-font">
+        <div class="container"> 
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"> 
+                <a href="{% url 'lootboxes' %}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none me-4">
+                    <img src="{% static 'images/celogo.svg' %}" alt="The Crawler Emporium Logo" width="120" class="d-inline-block align-text-top">
+                </a> 
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"> 
+                    <li class="nav-item dropdown"><a class="nav-link text-light dropdown-toggle font-nav text-uppercase px-2 text-muted-hover" href="#" id="allBoxes" role="button" data-bs-toggle="dropdown" aria-expanded="false">Loot Boxes</a>
+                        <ul class="dropdown-menu dropdown-menu-dark border-secondary shadow-lg mt-2" aria-labelledby="allBoxes">
+                            <li><a class="dropdown-item py-2" href="#">By Price</a></li>
+                            <li><a class="dropdown-item py-2" href="#">By Danger Tier</a></li>
+                            <li><hr class="dropdown-divider border-secondary"></li>
+                            <li><a class="dropdown-item py-2" href="#">View Complete Vault</a></li>
                         </ul>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link text-light font-nav text-uppercase px-2 text-muted-hover" href="#">
+                            The Showrunners
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link text-light font-nav text-uppercase px-2 text-muted-hover" href="#">
+                            Crawler Support
+                        </a>
+                    </li>
+                </ul> 
+                <form method="GET" action="" role="search" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"> 
+                    <div class="input-group input-group-sm">
+                        <input type="search" class="form-control bg-dark border-secondary text-light custom-search-input" name="q" placeholder="Search for loot boxes..." aria-label="Search"> 
+                        <button class="btn btn-outline-warning border-secondary px-3" type="submit">
+                        <i class="fas fa-search"></i>
+                        </button>
                     </div>
-                </nav>
-            </div>
-
-        </div>
+                </form> 
+                <div class="text-end d-flex align-items-center gap-2 justify-content-center justify-content-lg-end">
+                    <div class="dropdown">
+                        <a class="nav-link text-light dropdown-toggle d-flex align-items-center gap-2 py-1 px-2 border border-secondary border-opacity-50 rounded-2 bg-dark bg-opacity-20 font-sub" href ="#" role="button" id=""accountMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-shield text-warning"></i>
+                        <span>My Vault</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end border-secondary shadow-lg" aria-labelledby="accountMenu">
+                            {% if request.user.is_authenticated %}
+                                {% if request.user.is_superuser %}
+                                    <li><a class="dropdown-item py-2" href="#"><i class="fas fa-tools text-warning me-2"></i>Vault Management</a></li>
+                                    <li><hr class="dropdown-divider border-secondary"></li>
+                                {% endif %}
+                                <li><a class="dropdown-item py-2" href="#"><i class="fas fa-id-card me-2"></i>Crawler Profile</a></li>
+                                <li><a class="dropdown-item py-2 text-danger" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                            {% else %}
+                                <li><a class="dropdown-item py-2" href="{% url 'account_signup' %}"><i class="fas fa-user-plus me-2"></i>Crawler Registration</a></li>
+                                <li><a class="dropdown-item py-2 font-weight-bold text-warning" href="{% url 'account_login' %}"><i class="fas fa-sign-in-alt me-2"></i>Initiate Login</a></li>
+                            {% endif %}
+                        </ul>
+                    </div> 
+                    <a href="#" class="nav-link text-light d-flex align-items-center gap-2 py-1 px-2 border border-secondary border-opacity-50 rounded-2 bg-dark bg-opacity-20 font-sub">
+                        <i class="fas fa-solid fa-coins text-warning"></i>
+                        <span class="text-light d-none d-sm-inline opacity-75">Cart:</span>
+                        <span class="fw-bold text-white">
+                            {% if grand_total %}£{{ grand_total|floatformat:2 }}{% else %}£0.00{% endif %}
+                        </span>
+                    </a>
+                </div> 
+            </div> 
+        </div> 
     </header>
 
-    <div style="margin-top: 140px;">
-        {% block page_header %}{% endblock %}
-    </div>
+    {% block page_header %}{% endblock %}
 
     <main class="container my-4">
         {% block content %}{% endblock %}
     </main>
+
+    <footer class="bg-black border-top border-secondary pt-5 pb-3 mt-auto font-sub text-secondary">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-12 col-md-4 text-center text-md-start">
+                    <h5 class="text-white logo-font tracking-wider mb-3" style="font-size: 1.1rem;">
+                        <span class="text-warning">CRAWLER</span> EMPORIUM
+                    </h5>
+                    <p class="small text-muted lh-sm">The AI is always watching. Manage your inventory carefully, crawler. Break the system, claim your glory.</p>
+                </div>
+                <div class="col-6 col-md-4 text-center">
+                    <h6 class="text-white text-uppercase tracking-wider small fw-bold mb-3">System Directory</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small">
+                        <li><a href="#" class="text-decoration-none text-muted-hover text-secondary">Active Loot Vaults</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted-hover text-secondary">The Showrunners</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted-hover text-secondary">Support Desk &amp; FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-4 text-center text-md-end">
+                    <h6 class="text-white text-uppercase tracking-wider small fw-bold mb-3">Security Level</h6>
+                    <span class="badge bg-dark border border-warning text-warning px-3 py-2 logo-font">DEEP DUNGEON LEVEL 1</span>
+                    <p class="text-muted small mt-2 mb-0" style="font-size: 0.75rem;">Session Verified: 127.0.0.1</p>
+                </div>
+            </div>
+            <hr class="border-secondary my-4 opacity-25">
+            <div class="row">
+                <div class="col text-center">
+                    <p class="small text-muted mb-0" style="font-size: 0.75rem;">&copy; 2026 The Crawler Emporium. All Rights Reserved. Prepared for the Grind.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     {% block postloadjs %}{% endblock %}
 </body>

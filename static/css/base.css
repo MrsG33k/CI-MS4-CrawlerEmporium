@@ -198,12 +198,19 @@ body {
 
 /* Custom Overlay for Lootboxes Page */
 
-.overlay {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left:0;
-    position: fixed;
-    background: rgb(162, 158, 158);
-    z-index: -1;
+.custom-dungeon-card {
+    transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Subtle mouse hover lift effect for item selection feedback */
+.custom-dungeon-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--bs-warning) !important; /* Highlights card edge to match font indicators */
+    box-shadow: 0 10px 20px rgba(255, 210, 0, 0.05) !important;
+}
+
+/* Custom transitions for internal item text fields on hover */
+.custom-dungeon-card:hover .text-secondary-hover {
+    color: #ffffff !important;
+    transition: color 0.2s ease-in-out;
 }

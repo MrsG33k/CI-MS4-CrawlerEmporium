@@ -195,3 +195,15 @@ body {
     height: 1.5rem;
     width: 1.5rem;
 }
+
+/* Custom Overlay for Lootboxes Page */
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left:0;
+    position: fixed;
+    background: rgb(162, 158, 158);
+    z-index: -1;
+}

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     # My bespoke apps for the project
+    'home',
     'lootboxes',
     'showrunners',
     'support'

@@ -1,0 +1,322 @@
+[
+    {
+        "model": "lootboxes.product",
+        "pk": 1,
+        "fields": {
+            "category": 1,
+            "sku": "BOX-BRZ-ADV",
+            "name": "The Bronze Adventurer Box",
+            "rarity": "BRONZE",
+            "description": "Cheap, dented plastic footlocker. The AI hands these out like participation trophies.",
+            "ai_flavour_text": "Congratulations, you didn\u2019t trip over your own laces and die in the first five minutes! Here is your reward. Don't spend it all in one place, you pathetic little organic. It\u2019s mostly garbage, but hey, garbage keeps you alive.",
+            "sample_contents": "3x Basic Health Potions (tastes like flat cherry cola)\n1x Left Common Fingerless Glove\n5x Torch Sticks",
+            "price": "3.99",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-brz-adv.png",
+            "image": "boxbrzadv.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 2,
+        "fields": {
+            "category": 3,
+            "sku": "BOX-BRZ-PET",
+            "name": "The Bronze Pet Box",
+            "rarity": "BRONZE",
+            "description": "A small cardboard pet carrier with a crude paw print stenciled on the side in sharpie.",
+            "ai_flavour_text": "Let\u2019s face it: your pet is the only reason the audience hasn't voted to drop a boulder on your head yet. Give the real star of the show a little treat. It\u2019s better than the cardboard you\u2019ve been feeding them.",
+            "sample_contents": "10x Standard Crawler Biscuits\n1x Chew Toy of Agility (+1 Agility to pets)\n1x Pet Antidote Syringe",
+            "price": "6.50",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-brz-pet.png",
+            "image": "boxbrzpet.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 3,
+        "fields": {
+            "category": 1,
+            "sku": "BOX-APP-BASIC",
+            "name": "The Apparel Box",
+            "rarity": "BRONZE",
+            "description": "A cardboard shipping box that smells strongly of static cling and synthetic fabric.",
+            "ai_flavour_text": "Listen, we\u2019ve all seen the stream. The viewers are complaining. You\u2019re running around a subterranean hellscape in your underwear, and frankly, nobody wants to see that. Put some clothes on. Or don\u2019t. The foot-fetish crowd pays well.",
+            "sample_contents": "1x Pair of Unenchanted BigBoi Boxers (heart pattern)\n1x Apothecary Beanie (+1 Intelligence)",
+            "price": "9.99",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-app-basic.png",
+            "image": "boxappbasic.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 4,
+        "fields": {
+            "category": 2,
+            "sku": "BOX-SLV-GOB",
+            "name": "The Silver Goblin Box",
+            "rarity": "SILVER",
+            "description": "Haphazardly welded scrap metal stamped with a crude goblin skull. Smells like grease.",
+            "ai_flavour_text": "Do you like loud noises? Do you like watching small, green, greasy things explode into a shower of teeth and structural damage? Of course you do. This box smells like a mechanics shop and tastes like victory.",
+            "sample_contents": "5x Goblin Dynamite sticks\n1x Goblin Pass Tattoo (makes you smell awful, gives temporary safe passage)",
+            "price": "14.99",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-slv-gob.png",
+            "image": "boxslvgob.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 5,
+        "fields": {
+            "category": 2,
+            "sku": "BOX-SLV-BRL",
+            "name": "The Silver Brawler\u2019s Box",
+            "rarity": "SILVER",
+            "description": "A studded leather pouch wrapped tightly in rusted chains. Vibrates slightly when touched.",
+            "ai_flavour_text": "For the crawler who looks at a pristine magical staff and says, 'Nah, I'd rather just punch that guy in the throat.' It\u2019s heavy, it\u2019s brutal, and it\u2019s going to make a real mess of someone\u2019s face. Beautiful.",
+            "sample_contents": "1x Spiked Iron Knuckles (+4 Blunt Damage)\n2x Iron Skin Potions\n1x Roll of Heavy Duty Bandages",
+            "price": "19.99",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-slv-brl.png",
+            "image": "boxslvbrawl.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 6,
+        "fields": {
+            "category": 2,
+            "sku": "BOX-SMT-FAIL",
+            "name": "The That Wasn't Too Smart Box",
+            "rarity": "SILVER",
+            "description": "A bright neon-pink box that plays a sad trombone sound effect when the latch is lifted.",
+            "ai_flavour_text": "Oh dear. You really thought you were the smartest guy in the room, didn't you? Spoiler alert: you weren't. Buy this box to scrub the shame of your latest catastrophic tactical failure before the chat makes a meme out of you.",
+            "sample_contents": "1x I Take It All Back Potion (reverts the last 10 seconds of a mistake)\n1x Ugly Ass Backpack",
+            "price": "24.99",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-smt-fail.png",
+            "image": "boxsmtfail.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 7,
+        "fields": {
+            "category": 1,
+            "sku": "BOX-GLD-BSS",
+            "name": "The Gold Boss Box",
+            "rarity": "GOLD",
+            "description": "A solid gold-plated chest that mimics a tiny, angry troll. Drools slightly.",
+            "ai_flavour_text": "You killed something twice your size that had too many eyes and teeth! The sponsors are cheering, the blood is still wet on your boots, and this box is practically vibrating with the loot of a fallen tyrant. Open it.",
+            "sample_contents": "1x Enchanted Trollskin Shirt of Pummeling\n3x Good Mana Potions\n50x Gold Coins",
+            "price": "34.99",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-gld-bss.png",
+            "image": "boxgldbss.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 8,
+        "fields": {
+            "category": 1,
+            "sku": "BOX-GLD-QST",
+            "name": "The Gold Quest Box",
+            "rarity": "GOLD",
+            "description": "Sleek blue metal box embossed with glowing dungeon runes that pulse in sequence.",
+            "ai_flavour_text": "You followed the shiny blue line, you didn't get sidetracked by a shiny rock, and you actually finished the objective. Incredible. Here\u2019s a shiny gold box filled with magical nonsense to help you survive the next trap I set for you.",
+            "sample_contents": "1x Scroll of Confusing Fog\n1x Silver Ring of +2 Constitution\n2x Weapon Oil: Weeping Wound",
+            "price": "44.99",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-gld-qst.png",
+            "image": "boxgldqst.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 9,
+        "fields": {
+            "category": 2,
+            "sku": "BOX-BEG-CHM",
+            "name": "The Beguiler Box",
+            "rarity": "GOLD",
+            "description": "An elegant, velvet-lined jewelry box that plays a subtle, hypnotic humming tune.",
+            "ai_flavour_text": "Violence is fun, but have you tried manipulation? This elegant little number is for the crawler who prefers to lie, cheat, and look absolutely fabulous while doing it. The velvet feels fantastic against bare skin, by the way.",
+            "sample_contents": "1x Enchanted Necklace of Haute Bourgeoisie (+4 Charisma)\n1x Potion of Invisibility",
+            "price": "54.99",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-beg-chm.png",
+            "image": "boxbegchm.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 10,
+        "fields": {
+            "category": 2,
+            "sku": "BOX-PLT-BEN",
+            "name": "The Platinum Benefactor Box",
+            "rarity": "PLATINUM",
+            "description": "Sleek chrome box stamped with a glowing corporate logo from an off-world alien viewer.",
+            "ai_flavour_text": "An off-world mega-corporation just spent more money than your entire home country\u2019s GDP to beam this directly to your location. They think you have 'marketable potential.' Don't let them down, or they'll cancel your contract. Permanently.",
+            "sample_contents": "1x Nanite Repair Paste (seals armor/flesh)\n1x Alien Pulse Rifle Ammo Matrix\n1x Scroll of Blink",
+            "price": "74.99",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-plt-ben.png",
+            "image": "boxpltben.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 11,
+        "fields": {
+            "category": 2,
+            "sku": "BOX-HVY-MTL",
+            "name": "The Heavy Metal Box",
+            "rarity": "PLATINUM",
+            "description": "A literal block of dark solid iron with massive spikes. Weighs far more than it looks.",
+            "ai_flavour_text": "This thing is a solid, spiked chunk of pure, unadulterated defense. It weighs a ton, it\u2019s completely unforgiving, and if you drop it on your toes, you're going to have a very bad day. Perfect for the front-line meat shield.",
+            "sample_contents": "1x Enchanted Shade Gnoll Riot Shield\n1x Platinum Sharpening Stone\n2x Blitz Sticks",
+            "price": "89.99",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-hvy-mtl.png",
+            "image": "boxhvymtl.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 12,
+        "fields": {
+            "category": 2,
+            "sku": "BOX-EXP-HAZ",
+            "name": "The Explosives Box",
+            "rarity": "PLATINUM",
+            "description": "Bright yellow hazmat container with a glowing countdown timer that resets to random numbers.",
+            "ai_flavour_text": "The countdown timer on the front is completely randomised and mostly just for my own amusement. If you like collateral damage and blowing up things that shouldn't be blown up, this is the best value per square inch of destruction.",
+            "sample_contents": "3x Hobgoblin Detonators\n1x Gunpowder Satchel\n1x Proximity Trigger Module",
+            "price": "110.00",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-exp-haz.png",
+            "image": "boxexphaz.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 13,
+        "fields": {
+            "category": 1,
+            "sku": "BOX-GUD-SHT",
+            "name": "The 'Good Shit' Box",
+            "rarity": "LEGENDARY",
+            "description": "A plain wooden crate with the words 'GOOD SHIT' aggressively spray-painted on the front.",
+            "ai_flavour_text": "No fluff. No corporate branding. No alien talk-show hosts trying to sell you energy drinks. Just a plain wooden crate packed with the kind of high-grade, high-velocity weaponry that makes the showrunners sweat. It\u2019s the good shit.",
+            "sample_contents": "1x Enchanted Repeating Crossbow\n3x Level-Up Potions\n1x Rev-Up Immunity Smoothie",
+            "price": "135.00",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-gud-sht.png",
+            "image": "boxgudsht.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 14,
+        "fields": {
+            "category": 3,
+            "sku": "BOX-LGD-PET",
+            "name": "The Legendary Pet Box",
+            "rarity": "LEGENDARY",
+            "description": "Intricately carved silver-and-gold chest with spinning clockwork gears that ratchet loudly.",
+            "ai_flavour_text": "Oh, look at you! Your little animal companion did something so incredibly adorable or violent that the chat went completely wild. This box is packed with high-tier clockwork luxury. Your cat will probably still look down on you, though.",
+            "sample_contents": "1x Enhanced Pet Biscuit (grants temporary sapience/speech)\n1x Enchanted Fur Brush of the Ecclesiastic",
+            "price": "165.00",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-lgd-pet.png",
+            "image": "boxlgdpet.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 15,
+        "fields": {
+            "category": 2,
+            "sku": "BOX-LKY-BST",
+            "name": "The Lucky Bastard Box",
+            "rarity": "LEGENDARY",
+            "description": "Deep purple box covered in gold filigree that violently shakes and plays orchestral music.",
+            "ai_flavour_text": "You should be dead. Statistically, you had a 0.03% chance of surviving that encounter, yet here you are, breathing my oxygen. The universe clearly has a twisted sense of humor, and this vibrating purple box is your prize. You lucky bastard.",
+            "sample_contents": "1x Desperado Pass Tattoo\n1x Epic Weapon Upgrade Matrix\n2x Cosmic Buff Potions",
+            "price": "199.99",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-lky-bst.png",
+            "image": "boxlkybst.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 16,
+        "fields": {
+            "category": 4,
+            "sku": "BOX-DTY-MRB",
+            "name": "The Deity\u2019s Box",
+            "rarity": "LEGENDARY",
+            "description": "A box carved entirely from glowing white marble. It hovers an inch off the table and smells like ozone.",
+            "ai_flavour_text": "It hovers, it smells like a thunderstorm, and it contains things that were forged in places your tiny mortal mind couldn't possibly comprehend. A local god is watching you. Try not to disappoint them, they have terrible tempers.",
+            "sample_contents": "1x Tome of Wisp Armor\n1x Holy Gooper Potion\n1x Ring of Water Breathing",
+            "price": "250.00",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-dty-mrb.png",
+            "image": "boxdtymrb.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 17,
+        "fields": {
+            "category": 4,
+            "sku": "BOX-TYR-OBS",
+            "name": "The Tyrant Box",
+            "rarity": "LEGENDARY",
+            "description": "Obsidian casing wrapped in writhing, shadow-like tendrils that hiss at your fingers.",
+            "ai_flavour_text": "Do you hear that subtle, dark hissing sound? That's the sound of raw, unmitigated power waiting to be unleashed. This box is full of the kind of dark magic and brutal gear that turns regular crawlers into absolute monsters.",
+            "sample_contents": "1x Enchanted Night Wyrm\u2019s Ring of Divine Suffering\n1x Potion of Bloodlust\n1x Executioner's Patch",
+            "price": "325.00",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-tyr-obs.png",
+            "image": "boxtyrobs.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 18,
+        "fields": {
+            "category": 4,
+            "sku": "BOX-CLS-HKL",
+            "name": "The Celestial Hunter-Killer Box",
+            "rarity": "CELESTIAL",
+            "description": "A jagged, blood-red crystalline skull that laughs maniacally when opened. Showrunners hate this box.",
+            "ai_flavour_text": "The executive producers absolutely *hated* giving this one up. It contains highly restricted, game-balancing celestial weaponry designed to level the playing field. If you hear it laughing at you, just ignore it and pull the pin.",
+            "sample_contents": "1x Tiara of a Thousand Lights\n1x Celestial Grenade\n1x Ultimate Skill Potion",
+            "price": "450.00",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-cls-hkl.png",
+            "image": "boxclshkl.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 19,
+        "fields": {
+            "category": 4,
+            "sku": "BOX-CLS-PRD",
+            "name": "The Celestial Predator Box",
+            "rarity": "CELESTIAL",
+            "description": "A massive, floating demon skull that shoots blinding beams of pure light into the room.",
+            "ai_flavour_text": "A massive, screaming demon skull that shoots lasers into the ceiling. If you can afford this, you aren't just a crawler anymore\u2014you\u2019re a walking natural disaster. The alien viewers are screaming your name. Give them a show.",
+            "sample_contents": "1x Scavenger\u2019s Daughter Upgrade Patch (deeply illegal gear mod)\n3x Hell-Kissed Elixirs",
+            "price": "599.99",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-cls-prd.png",
+            "image": "boxclsprd.webp"
+        }
+    },
+    {
+        "model": "lootboxes.product",
+        "pk": 20,
+        "fields": {
+            "category": 4,
+            "sku": "BOX-CLS-AI",
+            "name": "The AI's Favourite Child Box",
+            "rarity": "CELESTIAL",
+            "description": "A completely smooth, pure white cube that speaks directly to your mind in a deeply sensual voice.",
+            "ai_flavour_text": "Oh... *hello* there. Look at you. So strong. So resilient. So... unprotected from the knees down. You\u2019ve caught my eye, crawler. This smooth, flawless white cube contains game-breaking secrets and absolute immunity. I made it just for you. Open it... if you think you can handle it.",
+            "sample_contents": "1x Dungeon Anarchist's Cookbook (Item)\n1x Gateway to the Feral Gods Token\n1x Absolute Immunity Serum",
+            "price": "999.99",
+            "image_url": "https://res.cloudinary.com/your-cloud/image/upload/v1/box-cls-ai.png",
+            "image": "boxclsai.webp"
+        }
+    }
+]

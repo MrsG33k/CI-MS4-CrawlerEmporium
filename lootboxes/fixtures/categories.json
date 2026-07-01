@@ -1,0 +1,34 @@
+[
+    {
+        "pk": 1,
+        "model": "lootboxes.category",
+        "fields": {
+            "name": "standard_boxes",
+            "friendly_name": "Standard Crawler Tiers"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "lootboxes.category",
+        "fields": {
+            "name": "specialty_boxes",
+            "friendly_name": "Specialty & Achiever Boxes"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "lootboxes.category",
+        "fields": {
+            "name": "pet_boxes",
+            "friendly_name": "Pet & Companion Tiers"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "lootboxes.category",
+        "fields": {
+            "name": "endgame_boxes",
+            "friendly_name": "Endgame & Celestial Tiers"
+        }
+    }
+]

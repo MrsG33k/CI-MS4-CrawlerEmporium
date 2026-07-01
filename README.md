@@ -135,6 +135,10 @@ I used [Google Fonts](https://fonts.google.com/) for this project.
 
 * Logo / Header - 
 
+| Asset Name | Source | Use | 
+| celogo.svg | Created myself using Photopea | Used as the logo for the website| 
+| Twenty loot box imges | Created using [Magnific.com](https://www.magnific.com/) | Used for the product images on the shop| 
+
 
 
 ### Wireframes
@@ -336,6 +340,10 @@ Please refer to [TESTING.md](TESTING.md) file for all testing carried out.
 
 - [Example](https://www.youtube.com/watch?v=A4Pn2lEdoLQ&start=0): Example
 - [Allauth](https://docs.allauth.org/en/latest/installation/quickstart.html): Django Allauth documentation used to set up the settings.py / urls.py when creating the project. 
+
+| Asset Name | Source | Use | 
+| :--- | :--- | :--- | 
+
 
 
 

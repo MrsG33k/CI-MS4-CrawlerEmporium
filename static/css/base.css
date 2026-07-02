@@ -55,6 +55,11 @@ h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 
+/* Gemmedia Code snippet for custom arrow styling for the select dropdown arrow */
+.form-field-border-all .sqs-block-form .form-item select ~ div{
+  fill: #FFD200;
+}
+
 
 /* ----- Custom Styles by Jennie Whittaker----- */
 
@@ -227,3 +232,28 @@ body {
     background-color: #0d0f12 !important; 
     border: 1px solid rgba(108, 117, 125, 0.25) !important; 
     border-radius: 0.5rem !important; 
+}
+
+/* Lootbox sorting select styling */
+.custom-dungeon-select {
+    background-color: #0d0f12 !important;
+    color: #f8f9fa !important;
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: 0.85rem !important;
+    border: 1px solid rgba(108, 117, 125, 0.4) !important;
+    background-image: url('/static/images/arrow.svg') !important; /* Custom arrow image */
+    background-repeat: no-repeat;
+    background-size: 10px 12px;
+}
+
+/* Changes the select dropdown background and text colours */
+.custom-dungeon-select option {
+    background-color: #0d0f12 !important;
+    color: #f8f9fa !important;
+}
+
+.custom-dungeon-select:focus {
+    border-color: #ffc107 !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.15) !important;
+}
+    

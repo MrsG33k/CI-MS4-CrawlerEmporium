@@ -10,51 +10,89 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid">
+    <div class="container-fluid px-lg-5 py-4">
+        
         <div class="row">
-            <div class="col text-center mt-4 mb-3">
+            <div class="col-12 text-center mb-2">
                 <h2 class="logo-font text-uppercase text-light tracking-wider m-0">VAULT INVENTORY</h2>
-                <hr class="border-warning border-2 opacity-75 mx-auto" style="width: 100px;">
+                <hr class="border-warning border-2 opacity-75 mx-auto mb-3" style="width: 100px;">
+                
+                {% for c in current_categories %}
+                    <a class="category-badge text-decoration-none d-inline-block" href="{% url 'products' %}?category={{ c.name}}">
+                        <span class="badge border border-warning border-opacity-50 text-uppercase tracking-wider font-sub mb-3 py-2 px-3 bg-dark bg-opacity-30 text-warning" style="font-size: 0.75rem; letter-spacing: 0.5px;">
+                            <i class="fas fa-crosshairs me-2"></i>{{ c.friendly_name }}
+                        </span>
+                    </a>
+                {% endfor %}
             </div>
         </div>
-            <div class="row">
-                <div class="product-container col-10 offset-1">
-                    <div class="row mt-1 mb-2"></div>
-                    <div class="row">
-                        {% for product in products %}
-                            <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex align-items-stretch">
-                                
-                                <div class="card w-100 bg-black bg-opacity-50 border border-secondary border-opacity-50 rounded-0 shadow-lg custom-dungeon-card">
-                                    {% if product.image %}
-                                    <a href="{% url 'product_detail' product.id %}">
-                                        <img class="card-img-top img-fluid rounded-0 border-bottom border-secondary border-opacity-25" src="{{ product.image.url }}" alt="{{ product.name }}">
-                                    </a>
-                                    {% else %}  
-                                    <a href="{% url 'product_detail' product.id %}">
-                                        <img class="card-img-top img-fluid rounded-0 border-bottom border-secondary border-opacity-25" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                                    </a>
-                                    {% endif %}
 
-                                    <div class="card-body pb-2 bg-dark bg-opacity-20 text-light">
-                                        <p class="mb-0 font-nav text-uppercase tracking-wider fw-bold text-secondary-hover" style="font-size: 0.95rem;">
-                                            {{ product.name }}
-                                        </p>
-                                    </div>
+        <div class="row align-items-center mb-4 g-3">
+            
+            <div class="col-12 col-md-6 text-center text-md-start">
+                <p class="text-secondary font-sub m-0" style="font-size: 0.95rem;">
+                    {% if search_term or current_categories or current_sorting != 'None_None' %}
+                        <a href="{% url 'products' %}" class="text-decoration-none text-warning font-weight-bold me-1">
+                            <i class="fas fa-rotate-left me-1"></i>All Inventory
+                        </a> 
+                        <span class="text-muted opacity-50 px-1">|</span>
+                    {% endif %}
+                    <span class="text-light fw-bold">{{ products|length }}</span> Loot Boxes Recovered
+                    {% if search_term %} for <strong>"{{ search_term }}"</strong>{% endif %}
+                </p>
+            </div>
 
-                                    <div class="card-footer bg-dark bg-opacity-20 pt-0 pb-3 border-0 text-start">
-                                        <div class="row">
-                                            <div class="col">
-                                                <p class="lead mb-0 text-start font-weight-bold text-warning logo-font" style="font-size: 1.2rem; letter-spacing: 0.5px;">
-                                                    £{{ product.price|floatformat:2 }}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div> {% endfor %}
-                    </div>
+            <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-end">
+                <div class="sort-select-wrapper" style="width: 240px; max-width: 100%;">
+                    <select id="sort-selector" class="form-select form-select-sm custom-dungeon-select text-light rounded-1 border-secondary">
+                        <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort By...</option>
+                        <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price: Low to High</option>
+                        <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price: High to Low</option>
+                        <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Loot Box: A to Z</option>
+                        <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Loot Box: Z to A</option>
+                        <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category: A to Z</option>
+                        <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category: Z to A</option>
+                    </select>
                 </div>
             </div>
+
+        </div>
+
+        <div class="row">
+            {% for product in products %}
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex align-items-stretch">
+                    
+                    <div class="card w-100 bg-black bg-opacity-50 border border-secondary border-opacity-50 rounded-0 shadow-lg custom-dungeon-card">
+                        {% if product.image %}
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img class="card-img-top img-fluid rounded-0 border-bottom border-secondary border-opacity-25" src="{{ product.image.url }}" alt="{{ product.name }}">
+                        </a>
+                        {% else %}  
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img class="card-img-top img-fluid rounded-0 border-bottom border-secondary border-opacity-25" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                        </a>
+                        {% endif %}
+
+                        <div class="card-body pb-2 bg-dark bg-opacity-20 text-light">
+                            <p class="mb-0 font-nav text-uppercase tracking-wider fw-bold text-secondary-hover" style="font-size: 0.95rem;">
+                                {{ product.name }}
+                            </p>
+                        </div>
+
+                        <div class="card-footer bg-dark bg-opacity-20 pt-0 pb-3 border-0 text-start">
+                            <div class="row">
+                                <div class="col">
+                                    <p class="lead mb-0 text-start font-weight-bold text-warning logo-font" style="font-size: 1.2rem; letter-spacing: 0.5px;">
+                                        £{{ product.price|floatformat:2 }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> 
+            {% endfor %}
+        </div>
+
     </div>
 {% endblock %}

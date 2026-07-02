@@ -332,13 +332,13 @@ Please refer to [TESTING.md](TESTING.md) file for all testing carried out.
 
 | No | Feature | Issue | Fix |
 | :--- | :--- | :--- | :--- |
-| 1 |Feature | Issue <img src="assets/bug1nesting.webp" align="left" alt="Screenshot of nesting tributes" width="200"> | Fix |
+| 1 |Lootbox product detail | When displaying the sample contents on the front end, despite the json including `/n` - this was not being interpreted by Django and there were no linebreaks.  <img src="documentation/bug1linebreak.webp" align="left" alt="String of items with no linebreak" width="400"> | After looking at the [Django Framework documentation](https://docs.djangoproject.com/en/6.0/ref/templates/builtins/#linebreaksbr) I discovered I could use `linebreaksbr` on the template filter for the product details to render the linebreaks. <img src="documentation/bug1linebreakfix.webp" align="left" alt="String of items with a linebreak after using linebreaksbr" width="400">  |
 
 
 
 ## Credits
 
-- [Example](https://www.youtube.com/watch?v=A4Pn2lEdoLQ&start=0): Example
+- [Django Framework documentation](https://docs.djangoproject.com/en/6.0/ref/templates/builtins/#linebreaksbr): Used when trying to implement a line break in the sample contents of the lootboxes.
 - [Allauth](https://docs.allauth.org/en/latest/installation/quickstart.html): Django Allauth documentation used to set up the settings.py / urls.py when creating the project. 
 
 | Asset Name | Source | Use | 

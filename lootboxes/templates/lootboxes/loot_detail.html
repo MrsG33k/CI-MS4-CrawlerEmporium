@@ -39,9 +39,9 @@
                             £{{ product.price|floatformat:2 }}
                         </span>
                         
-                        {% if product.category %}
+                        {% if product.rarity %}
                             <span class="badge border border-secondary text-uppercase tracking-widest font-nav text-light bg-dark bg-opacity-40 rounded-1 px-2.5 py-1.5">
-                                <i class="fas fa-shield-halved text-light me-2"> </i>{{ product.category.friendly_name }}
+                                <i class="fas fa-shield-halved text-light me-2"> </i>{{ product.rarity }}
                             </span>
                         {% endif %}
                     </div>

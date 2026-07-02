@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid py-4">
+        <div class="row g-4 justify-content-center justify-content-md-start">
+            
+            <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-0 col-lg-5 offset-lg-1">
+                <div class="image-container mb-4 my-md-5 p-2 bg-black bg-opacity-40 border border-secondary border-opacity-25 rounded-0 shadow-lg">
+                    {% if product.image %}
+                        <a href="{{ product.image.url }}" target="_blank">
+                            <img class="img-fluid rounded-0 w-100" src="{{ product.image.url }}" alt="{{ product.name }}">
+                        </a>
+                    {% else %}  
+                        <a href="">
+                            <img class="img-fluid rounded-0 w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="col-12 col-md-6 col-lg-6">
+                <div class="product-details-container mb-5 mt-md-5 px-2">
+                    
+                    <h2 class="logo-font text-uppercase text-light tracking-wider mb-1">
+                        {{ product.name }}
+                    </h2>
+                    
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <span class="lead font-weight-bold text-warning logo-font m-0">
+                            £{{ product.price|floatformat:2 }}
+                        </span>
+                        
+                        {% if product.category %}
+                            <span class="badge border border-secondary text-uppercase tracking-widest font-nav text-light bg-dark bg-opacity-40 rounded-1 px-2.5 py-1.5">
+                                <i class="fas fa-shield-halved text-light me-2"> </i>{{ product.category.friendly_name }}
+                            </span>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="p-3 mb-3 custom-system-log-card shadow-lg">
+                        
+                        <div class="mb-3 pb-3 border-bottom border-secondary border-opacity-25">
+                            <small class="text-uppercase text-light tracking-widest fw-bold d-block mb-1.5 font-nav">
+                                <i class="fas fa-terminal me-2"></i>System Analysis: Description
+                            </small>
+                            <p class="text-light opacity-75 m-0">
+                                {{ product.description }}
+                            </p>
+                        </div>
+
+                        {% if product.sample_contents %}
+                        <div class="mb-1">
+                            <small class="text-uppercase text-pink tracking-widest fw-bold d-block mb-1.5 font-nav">
+                                <i class="fas fa-boxes text-pink me-2"></i>Sample Contents:
+                            </small>
+                            <p class="text-light opacity-75 m-0">
+                                {{ product.sample_contents |linebreaksbr }}
+                            </p>
+                        </div>
+                        {% endif %}
+
+                    </div>
+
+                    {% if product.ai_flavour_text %}
+                    <div class="p-3 bg-dark bg-opacity-10 border-start border-3 border-warning position-relative overflow-hidden shadow-sm">
+                        <small class="text-uppercase text-warning tracking-widest fs-5 fw-bold d-block mb-1.5 font-nav">
+                            <i class="fas fa-brain me-2"></i>THE AI SAYS:
+                        </small>
+                        <p class="text-warning text-opacity-90 m-0 font-sub fst-italic">
+                            "{{ product.ai_flavour_text }}"
+                        </p>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

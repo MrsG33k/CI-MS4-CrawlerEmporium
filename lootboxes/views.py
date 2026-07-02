@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Product
 
 # Create your views here.
@@ -11,3 +11,14 @@ def all_products(request):
         'products': products,
     }
     return render(request, 'lootboxes/loot.html', context)
+
+
+
+def product_detail(request, product_id):
+    """ A view to return the detail page for a specific product"""
+
+    product = get_object_or_404(Product, pk=product_id)
+    context = {
+        'product': product,
+    }
+    return render(request, 'lootboxes/loot_detail.html', context)

@@ -79,8 +79,14 @@ html {
 body {
     color: #555;
     background-color: var(--dungeon-dark) !important;
-    font-family: 'Crimson Text', serif;
+    font-family: 'Encode Sans Condensed', sans-serif;
     letter-spacing: 0.03em;
+}
+
+.p {
+    font-family: 'Encode Sans Condensed', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 /* Typography Overrides */
@@ -196,21 +202,28 @@ body {
     width: 1.5rem;
 }
 
-/* Custom Overlay for Lootboxes Page */
+/* Overlay for the Items in lootboxes */
 
 .custom-dungeon-card {
     transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-/* Subtle mouse hover lift effect for item selection feedback */
+/* Hover lift effect for the items in lootboxes */
 .custom-dungeon-card:hover {
     transform: translateY(-4px);
-    border-color: var(--bs-warning) !important; /* Highlights card edge to match font indicators */
+    border-color: var(--bs-warning) !important;
     box-shadow: 0 10px 20px rgba(255, 210, 0, 0.05) !important;
 }
 
-/* Custom transitions for internal item text fields on hover */
+/*Product Item hover */
 .custom-dungeon-card:hover .text-secondary-hover {
     color: #ffffff !important;
     transition: color 0.2s ease-in-out;
 }
+
+
+/* Display for product details */
+.custom-system-log-card {
+    background-color: #0d0f12 !important; 
+    border: 1px solid rgba(108, 117, 125, 0.25) !important; 
+    border-radius: 0.5rem !important; 

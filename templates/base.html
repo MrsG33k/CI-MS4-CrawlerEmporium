@@ -44,10 +44,18 @@
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"> 
                     <li class="nav-item dropdown"><a class="nav-link text-light dropdown-toggle font-nav text-uppercase px-2 text-muted-hover" href="#" id="allBoxes" role="button" data-bs-toggle="dropdown" aria-expanded="false">Loot Boxes</a>
                         <ul class="dropdown-menu dropdown-menu-dark border-secondary shadow-lg mt-2" aria-labelledby="allBoxes">
-                            <li><a class="dropdown-item py-2" href="#">By Price</a></li>
-                            <li><a class="dropdown-item py-2" href="#">By Danger Tier</a></li>
+                            <li><a class="dropdown-item py-2 font-sub" href="{% url 'products' %}">All Loot Boxes</a></li>
                             <li><hr class="dropdown-divider border-secondary"></li>
-                            <li><a class="dropdown-item py-2" href="{% url 'products' %}">View Complete Vault</a></li>
+
+                            <li><span class="dropdown-item-text">Categories:</span></li>
+                            <li><a class="dropdown-item py-2" href="{% url 'products' %}?category=standard_boxes"><i class="fas fa-box-archive text-secondary me-2"></i>Standard Tiers</a></li>
+                            <li><a class="dropdown-item py-2" href="{% url 'products' %}?category=speciality_boxes"><i class="fas fa-trophy text-danger me-2"></i>Speciality & Achievers Tiers</a></li>
+                            <li><a class="dropdown-item py-2" href="{% url 'products' %}?category=pet_boxes"><i class="fas fa-paw text-info me-2"></i>Pet & Companion Tiers</a></li>
+                            <li><a class="dropdown-item py-2" href="{% url 'products' %}?category=endgame_boxes"><i class="fas fa-hand-sparkles text-info me-2"></i>Endgame & Celestial</a></li>
+
+                            <li><hr class="dropdown-divider border-secondary"></li>
+                            <li><a class="dropdown-item py-2" href="{% url 'products' %}?sort=price&direction="><i class="fas fa-sort-amount-down text-warning me-2"></i>Sort by Price: Low to High</a></li>
+                            <li><a class="dropdown-item py-2" href="{% url 'products' %}?sort=rarity&direction=asc"><i class="fas fa-sort-alpha-down text-warning me-2"></i>Sort by Rarity</a></li>
                         </ul>
                     </li> 
                     <li class="nav-item">

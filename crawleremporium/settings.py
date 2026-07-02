@@ -46,8 +46,9 @@ INSTALLED_APPS = [
     # My bespoke apps for the project
     'home',
     'lootboxes',
+    'backpack',
     'showrunners',
-    'support'
+    'support',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',  # required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'backpack.contexts.backpack_contents',  # custom context processor for backpack
             ],
         },
     },

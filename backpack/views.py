@@ -46,6 +46,8 @@ def update_backpack(request, item_id):
 
 def remove_from_backpack(request, item_id):
     """Remove the item from the shopping backpack session storage"""
+
+    product = get_object_or_404(Product, pk=item_id)
     try:
         backpack = request.session.get('backpack', {})
         
@@ -53,6 +55,7 @@ def remove_from_backpack(request, item_id):
             backpack.pop(item_id)
             
         request.session['backpack'] = backpack
+        messages.success(request, f"INVENTORY PURGE: '{product.name}' was successfully jettisoned into the sub-dungeon incinerator chute.")
 
         return HttpResponse(status=200)
         

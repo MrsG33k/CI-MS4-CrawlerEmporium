@@ -305,63 +305,86 @@ body {
 }
 
 /* Force main layout structure to push footer to the bottom */
-    .backpack-page-wrapper {
-        min-height: 75vh;
-        background-color: #0d0f12;
-        color: #f8f9fa;
-    }
+.backpack-page-wrapper {
+    min-height: 75vh;
+    background-color: #0d0f12;
+    color: #f8f9fa;
+}
 
-    /* Table Theme Custom Overrides (Desktop Only) */
-    .table-crawler {
-        color: #f8f9fa !important;
-        background-color: transparent !important;
-    }
-    
-    .table-crawler td, 
-    .table-crawler th {
-        color: #f8f9fa !important;
-        background-color: transparent !important;
-        border-bottom: 1px solid rgba(108, 117, 125, 0.15) !important;
-    }
+/* Table Theme Custom Overrides (Desktop Only) */
+.table-crawler {
+    color: #f8f9fa !important;
+    background-color: transparent !important;
+}
 
-    .backpack-title {
-        color: #f8f9fa;
-        letter-spacing: 0.12em;
-    }
+.table-crawler td, 
+.table-crawler th {
+    color: #f8f9fa !important;
+    background-color: transparent !important;
+    border-bottom: 1px solid rgba(108, 117, 125, 0.15) !important;
+}
 
-    /* Drone Compliance Text block styling matching AI text */
-    .compliance-container {
-        background-color: rgba(5, 6, 7, 0.4);
-        border: 1px solid rgba(108, 117, 125, 0.2);
-    }
+.backpack-title {
+    color: #f8f9fa;
+    letter-spacing: 0.12em;
+}
 
-    .text-pink-system {
-        color: #FF007F;
-        text-shadow: 0 0 12px rgba(255, 0, 127, 0.4);
-    }
+/* Drone Compliance Text block styling matching AI text */
+.compliance-container {
+    background-color: rgba(5, 6, 7, 0.4);
+    border: 1px solid rgba(108, 117, 125, 0.2);
+}
 
-    /* Custom tracking adjustments */
-    .letter-spacing-1 {
-        letter-spacing: 1px;
-    }
+.text-pink-system {
+    color: #FF007F;
+    text-shadow: 0 0 12px rgba(255, 0, 127, 0.4);
+}
 
-    /* Sassy Trash/Remove Button Styling */
-    .remove-item-btn {
-        background: none;
-        border: none;
-        color: rgba(108, 117, 125, 0.6);
-        font-size: 0.85rem;
-        transition: all 0.2s ease-in-out;
-        cursor: pointer;
-    }
+/* Custom tracking adjustments */
+.letter-spacing-1 {
+    letter-spacing: 1px;
+}
 
-    .remove-item-btn:hover {
-        color: #FF007F;
-        text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
-    }
+/* Sassy Trash/Remove Button Styling */
+.remove-item-btn {
+    background: none;
+    border: none;
+    color: rgba(108, 117, 125, 0.6);
+    font-size: 0.85rem;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
 
-    /* Mobile Inventory Card Styling */
-    .mobile-loot-card {
-        background-color: rgba(11, 12, 16, 0.6);
-        border: 1px solid rgba(108, 117, 125, 0.25);
-    }
+.remove-item-btn:hover {
+    color: #FF007F;
+    text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
+}
+
+/* Mobile Inventory Card Styling */
+.mobile-loot-card {
+    background-color: rgba(11, 12, 16, 0.6);
+    border: 1px solid rgba(108, 117, 125, 0.25);
+}
+
+
+/* Toast Styling */
+.ai-toast-container {
+    background-color: #050607 !important; /* var(--vault-black) */
+    border: 2px solid #FF007F !important;  /* var(--neon-pink) */
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.4) !important;
+    min-width: 320px;
+}
+.ai-toast-header {
+    background-color: #0d0f12 !important; /* var(--bg-dark-prime) */
+    border-bottom: 1px solid rgba(108, 117, 125, 0.25) !important;
+}
+.toast-achievement-title {
+    font-family: 'Encode Sans Condensed', sans-serif;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #FFD200 !important; /* var(--hazard-yellow) */
+    text-shadow: 0 0 8px rgba(255, 210, 0, 0.3);
+}
+.toast-close-btn {
+    filter: invert(1) grayscale(1) brightness(2); /* white close button */
+}

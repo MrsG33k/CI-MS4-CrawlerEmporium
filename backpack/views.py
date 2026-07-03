@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.contrib import messages
+from lootboxes.models import Product
 
 # Create your views here.
 
@@ -9,6 +11,7 @@ def view_backpack(request):
 def add_to_backpack(request, item_id):
     """Add an item to the backpack (cart)"""
 
+    product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     backpack = request.session.get('backpack',{})
@@ -19,6 +22,7 @@ def add_to_backpack(request, item_id):
         backpack[item_id] = quantity
     
     request.session['backpack'] = backpack
+    messages.success(request, f"INVENTORY EXPANSION: You added '{product.name}' to your secure backpack!")
     return redirect(redirect_url)
 
 # Update backpack and remove from backpack created in collaboration with Michael Whittaker
@@ -54,3 +58,5 @@ def remove_from_backpack(request, item_id):
         
     except Exception as e:
         return HttpResponse(status=500)
+    
+

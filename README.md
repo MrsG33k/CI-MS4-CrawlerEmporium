@@ -339,7 +339,10 @@ Please refer to [TESTING.md](TESTING.md) file for all testing carried out.
 ## Credits
 
 - [Django Framework documentation](https://docs.djangoproject.com/en/6.0/ref/templates/builtins/#linebreaksbr): Used when trying to implement a line break in the sample contents of the lootboxes.
-- [Allauth](https://docs.allauth.org/en/latest/installation/quickstart.html): Django Allauth documentation used to set up the settings.py / urls.py when creating the project. 
+- [Allauth](https://docs.allauth.org/en/latest/installation/quickstart.html): Django Allauth documentation used to set up the settings.py / urls.py when creating the project.
+- Remove  from Backpack / Update backpack functionality - The logic in `backpack/views.py` and the JS in `backpack.html` were built in collaboration with an Michael Whittaker within VS Code. This been noted in the code comments itself too.
+- **The Tagsoc Bookclub** - This Bookclub got me into the Dungeon Crawler Carl books initially, and they all helped with producing the loot box names, the silly AI toasts, and the content for the blog and FAQs. 
+
 
 | Asset Name | Source | Use | 
 | :--- | :--- | :--- | 
@@ -372,4 +375,4 @@ Please refer to [TESTING.md](TESTING.md) file for all testing carried out.
 
 ### Complications
 
-**EKC College - Ashford:** Early on in this project, April, the college decided to end their partnership with Code Institute. I was working to a timeline to finish this milestone Project in July, and submit the final milestone project in October. These timeframes were suddenly severely restricted with the college insisting all work be submitted by 30th June. This has limited my creativity and time to really work on developing my coding skills in order to hit the higher criteria in the assessment grid.  
+**EKC College - Ashford:** Early on in this project, April, the college decided to end their partnership with Code Institute. I was working to a timeline to finish this milestone Project in October. These timeframes were suddenly severely restricted with the college insisting all work be submitted by 30th June. This has limited my creativity and time to really work on developing my coding skills in order to hit the higher criteria in the assessment grid.  

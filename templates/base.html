@@ -36,6 +36,17 @@
 <body class="bg-dark text-light">
     <body class="bg-dark text-light">
 
+        <!-- Django Messages -->
+        {% if messages %}
+            <div class="message-container position-fixed top-0 end-0 p-3" role="alert" aria-live="polite" aria-atomic="true" data-bs-delay="10000" style="z-index: 9999;">
+                {% for message in messages %}
+                    {% if message.tags == 'success' %}
+                        {% include 'toast_success.html' %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
     <header class="p-3 text-bg-dark bg-black border-bottom border-secondary shadow-lg header-font">
         <div class="container"> 
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"> 
@@ -149,6 +160,13 @@
     </footer>
 
     {% block postloadjs %}
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        // Automatically targets and initialises all incoming system alerts
+        $('.toast').toast('show');
+    });
+    </script>
     {% endblock %}
 </body>
 </html>

@@ -303,3 +303,65 @@ body {
     font-size: 0.75rem;
     letter-spacing: 1px;
 }
+
+/* Force main layout structure to push footer to the bottom */
+    .backpack-page-wrapper {
+        min-height: 75vh;
+        background-color: #0d0f12;
+        color: #f8f9fa;
+    }
+
+    /* Table Theme Custom Overrides (Desktop Only) */
+    .table-crawler {
+        color: #f8f9fa !important;
+        background-color: transparent !important;
+    }
+    
+    .table-crawler td, 
+    .table-crawler th {
+        color: #f8f9fa !important;
+        background-color: transparent !important;
+        border-bottom: 1px solid rgba(108, 117, 125, 0.15) !important;
+    }
+
+    .backpack-title {
+        color: #f8f9fa;
+        letter-spacing: 0.12em;
+    }
+
+    /* Drone Compliance Text block styling matching AI text */
+    .compliance-container {
+        background-color: rgba(5, 6, 7, 0.4);
+        border: 1px solid rgba(108, 117, 125, 0.2);
+    }
+
+    .text-pink-system {
+        color: #FF007F;
+        text-shadow: 0 0 12px rgba(255, 0, 127, 0.4);
+    }
+
+    /* Custom tracking adjustments */
+    .letter-spacing-1 {
+        letter-spacing: 1px;
+    }
+
+    /* Sassy Trash/Remove Button Styling */
+    .remove-item-btn {
+        background: none;
+        border: none;
+        color: rgba(108, 117, 125, 0.6);
+        font-size: 0.85rem;
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+    }
+
+    .remove-item-btn:hover {
+        color: #FF007F;
+        text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
+    }
+
+    /* Mobile Inventory Card Styling */
+    .mobile-loot-card {
+        background-color: rgba(11, 12, 16, 0.6);
+        border: 1px solid rgba(108, 117, 125, 0.25);
+    }

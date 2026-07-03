@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse, HttpResponse
 
 # Create your views here.
 
@@ -20,3 +20,37 @@ def add_to_backpack(request, item_id):
     
     request.session['backpack'] = backpack
     return redirect(redirect_url)
+
+# Update backpack and remove from backpack created in collaboration with Michael Whittaker
+
+def update_backpack(request, item_id):
+    """Adjust the quantity of the specified product to the specified amount"""
+    quantity = int(request.POST.get('quantity'))
+    backpack = request.session.get('backpack', {})
+
+    if quantity > 0:
+        backpack[item_id] = quantity
+    else:
+        backpack.pop(item_id, None)
+
+    request.session['backpack'] = backpack
+    
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return HttpResponse(status=200)
+        
+    return redirect(reverse('view_backpack'))
+
+def remove_from_backpack(request, item_id):
+    """Remove the item from the shopping backpack session storage"""
+    try:
+        backpack = request.session.get('backpack', {})
+        
+        if item_id in backpack:
+            backpack.pop(item_id)
+            
+        request.session['backpack'] = backpack
+
+        return HttpResponse(status=200)
+        
+    except Exception as e:
+        return HttpResponse(status=500)

@@ -11,12 +11,15 @@ def backpack_contents(request):
 
     for item_id, quantity in backpack.items():
         product = get_object_or_404(Product, pk=item_id)
-        total += quantity * product.price
+
+        row_subtotal = quantity * product.price
+        total += row_subtotal
         product_count += quantity
         backpack_items.append({
             'item_id': item_id,
             'quantity':quantity,
             'product':product,
+            'row_subtotal':row_subtotal,
         })
 
 

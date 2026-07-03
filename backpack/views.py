@@ -19,5 +19,4 @@ def add_to_backpack(request, item_id):
         backpack[item_id] = quantity
     
     request.session['backpack'] = backpack
-    print(request.session['backpack'])
     return redirect(redirect_url)

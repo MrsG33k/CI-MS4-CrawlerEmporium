@@ -102,7 +102,7 @@
                         <i class="fas fa-solid fa-coins text-warning"></i>
                         <span class="text-light d-none d-sm-inline opacity-75">Cart:</span>
                         <span class="fw-bold text-white">
-                            {% if grand_total %}£{{ grand_total|floatformat:2 }}{% else %}£0.00{% endif %}
+                            {% if total %}£{{ total|floatformat:2 }}{% else %}£0.00{% endif %}
                         </span>
                     </a>
                 </div> 

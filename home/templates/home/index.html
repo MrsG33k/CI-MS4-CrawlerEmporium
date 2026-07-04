@@ -86,7 +86,7 @@
                         </div>
                         <h5 class="logo-font text-pink fs-6 text-uppercase m-0">{{ product.name }}</h5>
                         <p class="text-white font-inter my-2 loot-carousel-desc">
-                            {{ product.ai_flavour_text|truncatewords:40 }}
+                            {{ product.ai_flavour_text|truncatewords:30 }}
                         </p>
                     </div>
                     <div>
@@ -128,7 +128,7 @@
             { type: 'TRANSACTION', template: "'{name}' purchased: <span class='text-pink'>3x Gold Loot Boxes</span>" },
             { type: 'SYSTEM INVENTORY', template: "<i class='fas fa-skull text-danger me-1'></i> New Item Alert: 'Explosive Goblin Minions' added to store." },
             { type: 'CRAWLER ALERT', template: "<span class='text-danger fw-bold'>Warning:</span> Boss monster roaming Quadrant 4." },
-            { type: 'BOREL METRIC', template: "AI status check: Performance multiplier adjusted to <span class='text-info'>x1.45</span>." },
+            { type: 'BOREL METRIC', template: "AI status check: Performance multiplier adjusted to <span class='text-pink'>x1.45</span>." },
             { type: 'DEATH NOTIFICATION', template: "Crawler '{name}' met an untimely demise on Floor 3 via spiked ceiling." },
             { type: 'SYSTEM INVENTORY', template: "Restocked: <span class='text-info'>Platinum Tier Caches</span> are now rendering on all levels." },
             { type: 'TRANSACTION', template: "'{name}' spent their entire life savings on a single <span class='text-purple'>Legendary Pet Box</span>. Prioritizing the cat. Smart move." },

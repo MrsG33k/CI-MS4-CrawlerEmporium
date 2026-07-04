@@ -141,30 +141,59 @@
     <footer class="bg-black border-top border-secondary pt-5 pb-3 mt-auto font-sub text-secondary">
         <div class="container">
             <div class="row gy-4">
-                <div class="col-12 col-md-4 text-center text-md-start">
-                    <h5 class="text-white logo-font tracking-wider mb-3" style="font-size: 1.1rem;">
+                
+                <!-- Left Section: AI Welcome -->
+                <div class="col-12 col-md-4 text-center text-md-start d-flex flex-column align-items-center align-items-md-start">
+                    <h5 class="text-white logo-font tracking-wider mb-3 footer-brand-title">
                         <span class="text-warning">CRAWLER</span> EMPORIUM
                     </h5>
-                    <p class="small text-muted lh-sm">The AI is always watching. Manage your inventory carefully, crawler. Break the system, claim your glory.</p>
+                    <p class="small footer-description font-inter text-center text-md-start">
+                        The Galaxy's premier unsanctioned black-market lootbox distributor. Managed entirely by the system AI, funded by corporate showrunners, and optimised to drain your gold before the floor boss turns you into a paste.<strong> No refunds. No guarantees of survival.</strong>
+                    </p>
                 </div>
+                
+                <!-- Middle Section: Site Map -->
                 <div class="col-6 col-md-4 text-center">
                     <h6 class="text-white text-uppercase tracking-wider small fw-bold mb-3">System Directory</h6>
                     <ul class="list-unstyled d-flex flex-column gap-2 small">
-                        <li><a href="#" class="text-decoration-none text-muted-hover text-secondary">Active Loot Vaults</a></li>
+                        <li><a href="{% url 'products' %}" class="text-decoration-none text-muted-hover text-secondary">Active Loot Vaults</a></li>
                         <li><a href="#" class="text-decoration-none text-muted-hover text-secondary">The Showrunners</a></li>
                         <li><a href="#" class="text-decoration-none text-muted-hover text-secondary">Support Desk &amp; FAQs</a></li>
                     </ul>
                 </div>
+                
+                <!-- Right Side: User login status -->
                 <div class="col-6 col-md-4 text-center text-md-end">
-                    <h6 class="text-white text-uppercase tracking-wider small fw-bold mb-3">Security Level</h6>
-                    <span class="badge bg-dark border border-warning text-warning px-3 py-2 logo-font">DEEP DUNGEON LEVEL 1</span>
-                    <p class="text-muted small mt-2 mb-0" style="font-size: 0.75rem;">Session Verified: 127.0.0.1</p>
+                    <h6 class="text-white text-uppercase tracking-wider small fw-bold mb-3">Clearance Status</h6>
+                    
+                    {% if request.user.is_authenticated %}
+                        <!-- User is logged in -->
+                        <span class="badge bg-dark border border-warning text-warning px-3 py-2 logo-font badge-crawler-auth">
+                            CRAWLER: {{ request.user.username|upper }}
+                        </span>
+                        <p class="text-success small mt-2 mb-0 footer-subtext font-inter">
+                            <i class="fas fa-check-circle me-1"></i>Biometrics Verified
+                        </p>
+                    {% else %}
+                        <!-- User is browsing anonymously -->
+                        <span class="badge bg-dark border border-danger text-danger px-3 py-2 logo-font badge-crawler-auth">
+                            UNREGISTERED CRAWLER
+                        </span>
+                        <p class="text-danger small mt-2 mb-0 footer-subtext font-inter">
+                            <i class="fas fa-exclamation-triangle me-1"></i>Session Unauthorized
+                        </p>
+                    {% endif %}
+                    
+                    <p class="text-white small mt-1 mb-0 footer-subtext">Terminal Connection: 127.0.0.1</p>
                 </div>
+                
             </div>
+            
+            <!-- Bottom Bar -->
             <hr class="border-secondary my-4 opacity-25">
             <div class="row">
                 <div class="col text-center">
-                    <p class="small text-muted mb-0" style="font-size: 0.75rem;">&copy; 2026 The Crawler Emporium. All Rights Reserved. Prepared for the Grind.</p>
+                    <p class="small text-white mb-0 footer-subtext">&copy; 2026 The Crawler Emporium. All Rights Reserved. Prepare for the Grind.</p>
                 </div>
             </div>
         </div>

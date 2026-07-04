@@ -265,6 +265,9 @@ This project fully implements standard relational database CRUD (Create, Read, U
 * [WhiteNoise](https://whitenoise.readthedocs.io/en/stable/django.html) - Allows the Django web application to serve its own static files (CSS/Javasript/Images) directly in production
 * [Psycopg2-binary](https://pypi.org/project/psycopg2-binary/) - Allows the Django application to connect and communicate with PostgreSQL databases
 
+**Frontend Packages & Libraries**
+* [Flickity](https://flickity.metafizzy.co/) - A responsive, touch-enabled JavaScript library used to build the responsive lootbox carousel slider on the homepage.
+
 **Design, Assets & Wireframing**
 * [Canva](https://www.canva.com/online-whiteboard/wireframes/) - Used to create wireframes.
 * [Photopea](https://www.photopea.com/) - Used to edit and create graphics for the project

@@ -39,7 +39,7 @@
                     <div class="form-group">
                         <div class="d-flex justify-content-between align-items-center mb-1">
                             <label for="id_password" class="font-sub small text-white tracking-wide d-block m-0">Security Key</label>
-                            <a class="text-decoration-none text-warning small font-sub tracking-normal text-muted-hover" href="{% url 'account_reset_password' %}" style="font-size: 0.75rem;">Forgot Password?</a>
+                            <a class="text-decoration-none text-warning small font-sub tracking-normal text-muted-hover auth-forgot-password-link" href="{% url 'account_reset_password' %}">Forgot Password?</a>
                         </div>
                         <input type="password" name="password" placeholder="Enter hidden passcode" autocomplete="current-password" class="form-control bg-dark border-secondary text-light custom-search-input py-2" required id="id_password">
                     </div>

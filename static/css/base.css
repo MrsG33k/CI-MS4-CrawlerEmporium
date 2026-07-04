@@ -186,6 +186,11 @@ body {
     transition: color 0.15s ease-in-out;
 }
 
+.text-warning-hover:hover {
+    color: var(--neon-pink) !important;
+    transition: color 0.15s ease-in-out;
+}
+
 /* Custom Interactive UI Variables */
 .custom-search-input:focus {
     background-color: #212529 !important;
@@ -503,4 +508,8 @@ body {
 .backpack-page-wrapper .alert-danger {
     color: var(--neon-pink) !important; 
     border-color: rgba(255, 0, 127, 0.25) !important;
+}
+
+.auth-forgot-password-link {
+    font-size: 0.75rem;
 }

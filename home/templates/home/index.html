@@ -9,21 +9,25 @@
         <!-- Jumbotron Row Element Block -->
         <div class="col-12 col-xl-8">
             <div class="hero-jumbotron p-5 h-100 d-flex flex-column justify-content-center text-start position-relative overflow-hidden">
+                
                 <span class="badge bg-fuchsia text-uppercase tracking-wider font-sub mb-3 align-self-start py-2 px-3 border border-light border-opacity-25">
-                    <i class="fas fa-exclamation-triangle me-2"></i>Crawler Exclusive
+                    <i class="fas fa-biohazard me-2"></i>Crawler Health Warning
                 </span>
-                <h2 class="logo-font text-white display-5 text-uppercase mb-1">
-                    The <span class="text-warning">Borel System</span>
+                
+                <h2 class="logo-font text-white display-4 text-uppercase mb-1 fw-black">
+                    Don't <span class="text-warning">Die Naked.</span>
                 </h2>
-                <h3 class="logo-font text-pink h1 text-uppercase mb-4">
-                    Loot Bonanza!
+                <h3 class="logo-font text-pink h4 text-uppercase mb-4 tracking-wide">
+                    Upgrade Your Pathetic Inventory
                 </h3>
-                <p class="lead text-secondary max-w-md fs-5 mb-4 font-inter">
-                    Get ready to grind! The automated system variables have shifted. Higher tier boxes are manifesting across all quadrants. The AI is always watching your performance metrics.
+                
+                <p class="lead text-secondary hero-description-text fs-5 mb-4 font-inter">
+                    Let's be honest, you look completely ridiculous out there. The floor bosses are actively laughing at your current armour. Acquire a high-yield lootbox, replace that trash-tier gear, and maybe..just maybe..you won't end up as a smear on a spiked wall.
                 </p>
+                
                 <div class="d-flex flex-wrap gap-3">
-                    <a href="{% url 'products' %}" class="btn glow-btn btn-lg px-4 py-3 text-uppercase">
-                        Scan Open Vaults <i class="fas fa-arrow-right ms-2"></i>
+                    <a href="{% url 'products' %}" class="btn glow-btn btn-lg px-4 py-3 text-uppercase font-sub tracking-wider">
+                        Spend Your Gold <i class="fas fa-coins ms-2"></i>
                     </a>
                 </div>
             </div>
@@ -66,7 +70,7 @@
         </div>
     </div>
 
-    <!-- Dynamic Flickity Loot Box Loop Carousel -->
+    <!-- Flickity Loot Box Loop Carousel -->
     <div class="loot-carousel w-100" data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": true, "pageDots": false, "autoPlay": 4000, "wrapAround": true }'>
         
         {% for product in products %}
@@ -80,9 +84,9 @@
                                 <i class="fas fa-box text-secondary display-4 my-2"></i>
                             {% endif %}
                         </div>
-                        <h5 class="logo-font text-white fs-6 text-uppercase m-0">{{ product.name }}</h5>
-                        <p class="text-muted font-inter my-2 loot-carousel-desc">
-                            {{ product.description|truncatewords:12 }}
+                        <h5 class="logo-font text-pink fs-6 text-uppercase m-0">{{ product.name }}</h5>
+                        <p class="text-white font-inter my-2 loot-carousel-desc">
+                            {{ product.ai_flavour_text|truncatewords:40 }}
                         </p>
                     </div>
                     <div>

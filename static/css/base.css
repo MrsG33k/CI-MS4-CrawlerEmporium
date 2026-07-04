@@ -388,3 +388,15 @@ body {
 .toast-close-btn {
     filter: invert(1) grayscale(1) brightness(2); /* white close button */
 }
+
+.ai-toast-message {
+    font-family: 'Courier New', Courier, monospace !important;
+    text-transform: none !important;
+    font-size: 0.9rem !important;
+}
+
+.ai-toast-subtext {
+    letter-spacing: 0.5px !important;
+}
+
+

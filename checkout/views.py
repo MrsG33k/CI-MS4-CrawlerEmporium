@@ -103,10 +103,8 @@ def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, f"TRANSACTION COMPLETED. \
-        Look at you spending your hard-earned cash! \
-        Order {order_number} is processed and officially queued for transmission. \
-        I've sent the confirmation manifest to {order.email}. \
-        Now get back out there, you're falling behind the leaderboard.")
+        Order {order_number} is processed \
+        I've sent the confirmation to {order.email}. ")
     
     if 'bag' in request.session:
         del request.session['bag']

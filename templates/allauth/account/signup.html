@@ -1,21 +1,89 @@
-{% extends "account/base.html" %}
-
+{% extends "base.html" %}
 {% load i18n %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
+<div class="container my-5 py-4 d-flex justify-content-center align-items-center backpack-page-wrapper">
+    <div class="col-12 col-md-6 col-lg-5">
+        <div class="bg-black border border-secondary rounded-2 p-4 p-sm-5 font-sub">
+            
+            <div class="text-center mb-4">
+                <i class="fas fa-user-plus text-pink fs-1 mb-3"></i>
+                <h2 class="logo-font text-white text-uppercase tracking-wider mb-2">
+                    Crawler <span class="text-warning">Registration</span>
+                </h2>
+                <p class="text-white small text-transform-none font-inter mb-0">
+                    Register your bio-signature with the central system in order to purchase loot.
+                </p>
+                <div class="border-bottom border-secondary opacity-25 w-75 mx-auto my-3"></div>
+            </div>
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+            <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                {% csrf_token %}
+                
+                {% if form.errors and not form.non_field_errors %}
+                    <div class="alert alert-danger font-inter small text-transform-none py-2 mb-3 bg-dark border-danger text-danger" role="alert">
+                        <i class="fas fa-exclamation-circle me-2"></i>Validation error: Please review requirements below.
+                    </div>
+                {% endif %}
+                
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger font-inter small text-transform-none py-2 mb-3 bg-dark border-danger text-danger" role="alert">
+                        {% for error in form.non_field_errors %}
+                            <i class="fas fa-exclamation-circle me-2"></i>{{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
-</form>
+                <div class="d-flex flex-column gap-3 text-transform-none text-white font-inter">
+                    {% for field in form %}
+                        <div class="form-group">
+                            <label for="{{ field.id_for_label }}" class="font-sub small text-white tracking-wide d-block mb-1">
+                                {{ field.label }}
+                            </label>
+                            
+                            <input type="{{ field.field.widget.input_type }}" 
+                                   name="{{ field.html_name }}" 
+                                   id="{{ field.id_for_label }}"
+                                   placeholder="Enter {{ field.label|lower }}"
+                                   class="form-control bg-dark border-secondary text-light custom-search-input py-2 {% if field.errors %}border-danger{% endif %}"
+                                   {% if field.value %}value="{{ field.value }}"{% endif %}
+                                   {% if field.field.required %}required{% endif %}>
+                            
+                            {% if field.errors %}
+                                {% for error in field.errors %}
+                                    <small class="text-danger d-block mt-1 text-transform-none" style="font-size: 0.75rem;">
+                                        <i class="fas fa-times-circle me-1"></i>{{ error }}
+                                    </small>
+                                {% endfor %}
+                            {% endif %}
 
+                            {% if field.help_text %}
+                                <div class="mt-1 text-transform-none font-inter lh-sm p-2 bg-dark border border-secondary border-opacity-25 rounded" style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.65);">
+                                    <i class="fas fa-info-circle text-info me-1"></i>{{ field.help_text|safe }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+
+                <div class="d-flex flex-column gap-2 mt-4">
+                    <button class="btn glow-btn w-100 py-2.5 text-uppercase tracking-wide" type="submit">
+                        Authorise Registration <i class="fas fa-check-double ms-2"></i>
+                    </button>
+                    
+                    <p class="text-center text-white small text-transform-none font-inter mt-3 mb-0">
+                        Already verified? <a href="{% url 'account_login' %}" class="text-decoration-none text-warning text-muted-hover font-sub fw-bold ms-1">Initiate Login</a>
+                    </p>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
 {% endblock %}

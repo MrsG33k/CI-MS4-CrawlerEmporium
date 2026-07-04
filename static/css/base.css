@@ -497,3 +497,10 @@ body {
     letter-spacing: 0.05em;
     box-shadow: 0 0 10px rgba(255, 210, 0, 0.1);
 }
+
+/* Change the form validation to Pink */
+.backpack-page-wrapper .text-danger,
+.backpack-page-wrapper .alert-danger {
+    color: var(--neon-pink) !important; 
+    border-color: rgba(255, 0, 127, 0.25) !important;
+}

@@ -26,5 +26,6 @@ urlpatterns = [
     path('', include('home.urls')),
     path('lootboxes/', include('lootboxes.urls')),
     path('backpack/', include('backpack.urls')),
+    path('checkout/', include('checkout.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

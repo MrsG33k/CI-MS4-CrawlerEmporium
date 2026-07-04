@@ -50,6 +50,10 @@ INSTALLED_APPS = [
     'showrunners',
     'support',
     'checkout',
+
+    #Other
+    'crispy_forms',
+    'crispy_bootstrap5'
 ]
 
 MIDDLEWARE = [
@@ -64,6 +68,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'crawleremporium.urls'
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -77,8 +84,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',  # required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
                 'backpack.contexts.backpack_contents',  # custom context processor for backpack
             ],
+
         },
     },
 ]

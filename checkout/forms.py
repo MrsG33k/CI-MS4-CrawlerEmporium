@@ -1,7 +1,7 @@
 from django import forms
 from .models import Order
 
-class Orderform(forms.modelForm):
+class Orderform(forms.ModelForm):
     class Meta:
         model = Order
         fields = ('full_name','email','phone_number',
@@ -18,12 +18,12 @@ class Orderform(forms.modelForm):
         placeholders = {
             'full_name': 'Crawler Full Name',
             'email': 'Email Address',
-            'phone_number': 'Contact Number'
+            'phone_number': 'Contact Number',
             'country': 'Country',
             'postcode': 'Post Code',
             'town_or_city': 'Town / City',
-            'street_address_1': 'First Line of Address',
-            'street_address_2': 'Second Line of Address',
+            'street_address1': 'First Line of Address',
+            'street_address2': 'Second Line of Address',
             'county': 'County',
         }
 

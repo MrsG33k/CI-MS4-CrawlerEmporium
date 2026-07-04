@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container mb-5 backpack-page-wrapper py-4">
+        <div class="row">
+            <div class="col">
+                <h2 class="logo-font mb-4 text-uppercase text-light backpack-title">
+                    <i class="fas fa-shopping-bag me-2 text-warning"></i>Checkout
+                </h2>
+                <hr class="border-secondary border-opacity-25">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-6 order-lg-last mb-5">
+                <div class="row">
+                    <div class="col-7 offset-2">
+                        <p class="mb-1 mt-0 small text-secondary font-nav text-uppercase tracking-wider">Item</p>
+                    </div>
+                    <div class="col-3 text-right">
+                        <p class="mb-1 mt-0 small text-secondary font-nav text-uppercase tracking-wider">Subtotal</p>
+                    </div>
+                </div>
+                {% for item in backpack_items %}
+                    <div class="row align-items-center mb-3">
+                        <div class="col-2">
+                            <a href="{% url 'product_detail' item.product.id %}">
+                                {% if item.product.image %}
+                                    <img class="w-100 border border-secondary border-opacity-25 p-0.5 bg-black" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                {% else %}
+                                    <img class="w-100 border border-secondary border-opacity-25 p-0.5 bg-black" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="col-7">
+                            <p class="my-0 text-light font-sub small"><strong>{{ item.product.name }}</strong></p>
+                            <p class="my-0 small text-secondary">Qty: {{ item.quantity }}</p>
+                        </div>
+                        <div class="col-3 text-right">
+                            <p class="my-0 font-sub small text-light">£{{ item.row_subtotal|floatformat:2 }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+                <hr class="border-secondary border-opacity-25 my-3">
+                <div class="row text-light text-right font-nav text-uppercase tracking-wider">
+                    <div class="col-7 offset-2">
+                        <p class="my-0 small">Order Total:</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="my-0 text-warning"><strong>£{{ grand_total|floatformat:2 }}</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <p class="text-secondary font-sub small text-uppercase tracking-wider">
+                    <i class="fas fa-terminal me-2 text-pink-system"></i><strong>NEW SELECTION ACQUIRED</strong>. Please feed your biographical data points into the console layout matrix below to confirm your transactional allocation.<br>Don't worry, the system rarely misplaces shipments... Rarely.
+                </p>
+                <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                    {% csrf_token %}
+                    <fieldset class="rounded px-3 mb-4 border border-secondary border-opacity-25 bg-black bg-opacity-20 py-3">
+                        <legend class="fieldset-label small text-light font-nav text-uppercase tracking-wider px-2 w-auto">Details</legend>
+                        {{ order_form.full_name|as_crispy_field }}
+                        {{ order_form.email|as_crispy_field }}
+                        {{ order_form.phone_number|as_crispy_field }}
+                    </fieldset>
+                    <fieldset class="rounded px-3 mb-4 border border-secondary border-opacity-25 bg-black bg-opacity-20 py-3">
+                        <legend class="fieldset-label small text-light font-nav text-uppercase tracking-wider px-2 w-auto">Delivery</legend>
+                        {{ order_form.street_address1|as_crispy_field }}
+                        {{ order_form.street_address2|as_crispy_field }}
+                        {{ order_form.town_or_city|as_crispy_field }}
+                        {{ order_form.county|as_crispy_field }}
+                        {{ order_form.postcode|as_crispy_field }}
+                        {{ order_form.country|as_crispy_field }}
+                        <div class="form-check form-check-inline float-right mr-0 mt-2">
+                            {% if user.is_authenticated %}
+                                <label class="form-check-label text-secondary small font-sub" for="id-save-info">Save this delivery information to my profile</label>
+                                <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+                            {% else %}
+                                <label class="form-check-label text-secondary small font-sub" for="id-save-info">
+                                    <a class="text-warning fw-bold text-decoration-none" href="{% url 'account_signup' %}">Create an Account</a> or 
+                                    <a class="text-warning fw-bold text-decoration-none" href="{% url 'account_login'  %}">Login</a> to save credentials
+                                </label>
+                            {% endif %}
+                        </div>     
+                    </fieldset>
+                    <fieldset class="rounded px-3 mb-4 border border-secondary border-opacity-25 bg-black bg-opacity-20 py-3">
+                        <legend class="fieldset-label small text-light font-nav text-uppercase tracking-wider px-2 w-auto">Payment</legend>
+                        <div class="mb-3 p-2 bg-black border border-secondary border-opacity-50" id="card-element"></div>
+                        <div class="mb-3 text-danger small font-sub" id="card-errors" role="alert"></div>
+                    </fieldset>
+
+                    <div class="submit-button text-right mt-4 mb-2">
+                        <a href="{% url 'view_backpack' %}" class="btn btn-outline-secondary font-nav text-uppercase tracking-wider rounded-0 px-3 py-2 btn-sm">
+                            <span class="icon"><i class="fas fa-chevron-left"></i></span> Adjust Bag
+                        </a>
+                        <button id="submit-button" class="btn btn-warning font-nav text-uppercase text-dark fw-bold tracking-widest rounded-0 px-4 py-2 btn-sm">
+                            Complete Order <span class="icon ms-1"><i class="fas fa-lock"></i></span>
+                        </button>
+                        <p class="small text-danger my-2 font-sub">
+                            <span class="icon"><i class="fas fa-exclamation-circle"></i></span>
+                            <span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

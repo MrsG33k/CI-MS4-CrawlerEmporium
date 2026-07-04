@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'backpack',
     'showrunners',
     'support',
+    'checkout',
 ]
 
 MIDDLEWARE = [

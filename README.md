@@ -251,7 +251,7 @@ This project fully implements standard relational database CRUD (Create, Read, U
 * **Languages:** HTML5, CSS3, Python
 * **Frameworks:** Django, Bootstrap 5
 * **Database:** PostgreSQL
-* **Hosting:** [Railway](https://www.railyway.com)
+* **Hosting:** [Railway](https://www.railway.com)
 
 ### Technologies & Tools Used
 **Development Environments & Version Control**
@@ -348,7 +348,9 @@ Please refer to [TESTING.md](TESTING.md) file for all testing carried out.
 - [Django Framework documentation](https://docs.djangoproject.com/en/6.0/ref/templates/builtins/#linebreaksbr): Used when trying to implement a line break in the sample contents of the lootboxes.
 - [Allauth](https://docs.allauth.org/en/latest/installation/quickstart.html): Django Allauth documentation used to set up the settings.py / urls.py when creating the project.
 - Remove  from Backpack / Update backpack functionality - The logic in `backpack/views.py` and the JS in `backpack.html` were built in collaboration with an Michael Whittaker within VS Code. This been noted in the code comments itself too.
-- **The Tagsoc Bookclub** - This Bookclub got me into the Dungeon Crawler Carl books initially, and they all helped with producing the loot box names, the silly AI toasts, and the content for the blog and FAQs. 
+- [Code With Bubb](https://www.youtube.com/watch?v=A8yfwdET-2E): Used to help with the Javascript timings updating ticker on the index.html page
+- [W3 Schools JS](https://www.w3schools.com/js/js_timing.asp): Used in conjunction with the above to help when creating the Javascript ticker to simulate a system log. 
+- **The Tagsoc Bookclub** - They group, including Chris, Hekla, Kim and Tim helped with producing the loot box names and descriptions, the AI toasts, the System Log achievements, and the content for the blog and FAQs. 
 
 
 | Asset Name | Source | Use | 

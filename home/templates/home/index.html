@@ -6,9 +6,10 @@
     
     <div class="row g-4 mb-4">
         
+        <!-- Jumbotron Row Element Block -->
         <div class="col-12 col-xl-8">
             <div class="hero-jumbotron p-5 h-100 d-flex flex-column justify-content-center text-start position-relative overflow-hidden">
-                <span class="badge bg-fuchsia text-uppercase tracking-wider font-sub mb-3 align-self-start py-2 px-3 border border-light border-opacity-25" style="letter-spacing: 0.1em;">
+                <span class="badge bg-fuchsia text-uppercase tracking-wider font-sub mb-3 align-self-start py-2 px-3 border border-light border-opacity-25">
                     <i class="fas fa-exclamation-triangle me-2"></i>Crawler Exclusive
                 </span>
                 <h2 class="logo-font text-white display-5 text-uppercase mb-1">
@@ -28,35 +29,26 @@
             </div>
         </div>
 
+        <!-- System Logs Block Component -->
         <div class="col-12 col-xl-4">
-            <div class="bg-black border border-secondary rounded-2 p-4 h-100 d-flex flex-column justify-content-between font-sub">
+            <div class="system-log-wrapper rounded-2 p-4 h-100 d-flex flex-column justify-content-between font-sub">
                 <div>
                     <div class="d-flex justify-content-between align-items-center border-bottom border-secondary pb-2 mb-3">
                         <h5 class="text-white logo-font m-0 fs-6 text-uppercase tracking-wider text-secondary">
                             <i class="fas fa-satellite-dish text-warning me-2"></i>System Logs
                         </h5>
                     </div>
-                    <div class="d-flex flex-column gap-3 tracking-wide" style="font-size: 0.85rem;">
-                        <div class="lh-sm">
-                            <span class="text-muted d-block small">10:15 PM - LEVEL UP</span>
-                            <span class="text-light">User 'Carl_Strikes' unlocked Achievement: <span class="text-warning">LEVEL 50 REACHED!</span></span>
-                        </div>
-                        <div class="lh-sm">
-                            <span class="text-muted d-block small">10:12 PM - TRANSACTION</span>
-                            <span class="text-light">'Princess_Donut_Supporter' purchased: <span class="text-pink">3x Gold Loot Boxes</span></span>
-                        </div>
-                        <div class="lh-sm">
-                            <span class="text-muted d-block small">10:08 PM - SYSTEM INVENTORY</span>
-                            <span class="text-light"><i class="fas fa-skull text-danger me-1"></i> New Item Alert: 'Explosive Goblin Minions' added to store.</span>
-                        </div>
+                    <!-- JavaScript inserts random ticker items here -->
+                    <div id="live-system-logs" class="system-log-container d-flex flex-column gap-3 tracking-wide">
                     </div>
                 </div>
 
-                <div class="bg-dark border border-success border-opacity-50 p-3 rounded-2 mt-3 d-flex align-items-center gap-3">
+                <!-- Dynamic Achievement Module updated here. -->
+                <div id="achievement-banner" class="achievement-banner-card p-3 rounded-2 mt-3 d-flex align-items-center gap-3">
                     <i class="fas fa-award text-success fs-3"></i>
                     <div class="lh-sm">
-                        <span class="text-success text-uppercase fw-bold d-block small" style="font-size: 0.7rem; letter-spacing: 0.05em;">New Achievement!</span>
-                        <span class="text-white small d-block tracking-normal font-inter py-1" style="font-size: 0.75rem;">Borel Dungeon System connection established securely. Reward: 0 points. Go dynamic or go home.</span>
+                        <span class="text-success text-uppercase fw-bold d-block small tracking-wider">New Achievement!</span>
+                        <span id="achievement-text" class="text-white achievement-text-node d-block tracking-normal font-inter py-1">Connecting...</span>
                     </div>
                 </div>
             </div>
@@ -64,6 +56,7 @@
 
     </div>
 
+    <!-- Carousel Header Control Section -->
     <div class="row mb-3 mt-5">
         <div class="col border-bottom border-secondary pb-2 d-flex justify-content-between align-items-end">
             <h4 class="logo-font text-white m-0 text-uppercase tracking-wider fs-5">
@@ -72,46 +65,136 @@
             <a href="{% url 'products' %}" class="text-decoration-none text-warning font-sub small text-muted-hover">Browse All Packages &rarr;</a>
         </div>
     </div>
+
+    <!-- Dynamic Flickity Loot Box Loop Carousel -->
     <div class="loot-carousel w-100" data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": true, "pageDots": false, "autoPlay": 4000, "wrapAround": true }'>
+        
         {% for product in products %}
             <div class="carousel-cell px-2 col-12 col-sm-6 col-md-4 col-xl-3">
                 <div class="bg-black border border-secondary rounded-2 p-3 h-100 d-flex flex-column justify-content-between text-center me-3">
                     <div>
-                        <div class="bg-dark p-0 rounded-2 mb-3 border border-secondary border-opacity-20 overflow-hidden d-flex align-items-center justify-content-center" style="height: 160px;">
+                        <div class="bg-dark p-0 rounded-2 mb-3 border border-secondary border-opacity-20 overflow-hidden d-flex align-items-center justify-content-center loot-carousel-img-container">
                             {% if product.image %}
-                                <img class="img-fluid h-100 w-100" src="{{ product.image.url }}" alt="{{ product.name }}" style="object-fit: cover;">
+                                <img class="img-fluid h-100 w-100 object-fit-cover" src="{{ product.image.url }}" alt="{{ product.name }}">
                             {% else %}
                                 <i class="fas fa-box text-secondary display-4 my-2"></i>
                             {% endif %}
                         </div>
-                        
-                        <h5 class="logo-font text-pink fs-6 text-uppercase m-0">{{ product.name }}</h5>
-                        
-                        <p class="text-white font-inter my-2" style="font-size: 0.8rem;">
-                            {{ product.ai_flavour_text|truncatewords:20 }}
+                        <h5 class="logo-font text-white fs-6 text-uppercase m-0">{{ product.name }}</h5>
+                        <p class="text-muted font-inter my-2 loot-carousel-desc">
+                            {{ product.description|truncatewords:12 }}
                         </p>
                     </div>
-                    
                     <div>
                         <span class="text-warning font-sub fs-5 d-block my-2 fw-bold">£{{ product.price }}</span>
-                        
                         <form class="form" action="{% url 'add_to_backpack' product.id %}" method="POST">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-sm btn-outline-warning w-100 font-sub tracking-wide">
-                                Acquire Cache
-                            </button>
+                            <button type="submit" class="btn btn-sm btn-outline-warning w-100 font-sub tracking-wide">Acquire Cache</button>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </form>
                     </div>
                 </div>
             </div>
         {% empty %}
-            <div class="col-12 text-center my-5">
+            <div class="w-100 text-center my-5 py-5">
                 <p class="text-muted font-inter">No loot boxes detected in the current sector.</p>
             </div>
         {% endfor %}
+
     </div>
 
 </div>
 
+<!-- Real-time AI Ticker Automation Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const logContainer = document.getElementById('live-system-logs');
+        const achievementBanner = document.getElementById('achievement-banner');
+        const achievementText = document.getElementById('achievement-text');
+
+        const crawlerNames = [
+            'Carl_Strikes', 'Donut_Devotee', 'Prepotent_Punch', 'Katya_Kills', 
+            'Quasar_Run', 'Bloop_Squad', 'Mongo_Appreciator', 'Feral_Gopher', 
+            'Im_Not_Wearing_Pants', 'Ellie_The_Goat', 'Signet_Stan', 'Scolopendra_99',
+            'Juice_Box_Enthusiast', 'Hekla_Flame', 'Miriam_Domino'
+        ];
+        
+        const logPool = [
+            { type: 'LEVEL UP', template: "User '{name}' unlocked Achievement: <span class='text-warning'>LEVEL 50 REACHED!</span>" },
+            { type: 'TRANSACTION', template: "'{name}' purchased: <span class='text-pink'>3x Gold Loot Boxes</span>" },
+            { type: 'SYSTEM INVENTORY', template: "<i class='fas fa-skull text-danger me-1'></i> New Item Alert: 'Explosive Goblin Minions' added to store." },
+            { type: 'CRAWLER ALERT', template: "<span class='text-danger fw-bold'>Warning:</span> Boss monster roaming Quadrant 4." },
+            { type: 'BOREL METRIC', template: "AI status check: Performance multiplier adjusted to <span class='text-info'>x1.45</span>." },
+            { type: 'DEATH NOTIFICATION', template: "Crawler '{name}' met an untimely demise on Floor 3 via spiked ceiling." },
+            { type: 'SYSTEM INVENTORY', template: "Restocked: <span class='text-info'>Platinum Tier Caches</span> are now rendering on all levels." },
+            { type: 'TRANSACTION', template: "'{name}' spent their entire life savings on a single <span class='text-purple'>Legendary Pet Box</span>. Prioritizing the cat. Smart move." },
+            { type: 'DEATH NOTIFICATION', template: "Crawler '{name}' disintegrated. Note: Do not pull pins on Celestial grenades inside enclosed port-a-potties." },
+            { type: 'BOREL METRIC', template: "<i class='fas fa-heart text-danger me-1'></i> AI Passion Meter spikes to 98% due to a high volume of bare feet detected in the checkout area." },
+            { type: 'SPONSOR ALERT', template: "The Mudskipper Corporation has deposited a prize package to crawler '{name}' for maximum visual chaos." },
+            { type: 'LEVEL UP', template: "User '{name}' achieved level 5 in <span class='text-success'>'Improvised Explosives Mastery'</span>. Everyone back away slowly." },
+            { type: 'CRAWLER ALERT', template: "<span class='text-warning fw-bold'>Notice:</span> Floor 6 structural integrity is failing due to an unapproved thermonuclear explosion. Walk softly." },
+            { type: 'SYSTEM INVENTORY', template: "Emergency patch applied: Added safety rails to Floor 4. Just kidding. We added more spikes." },
+            { type: 'TRANSACTION', template: "'{name}' successfully bartered a slightly chewed piece of leather armor for <span class='text-muted'>1x Bronze Adventurer Box</span>." }
+        ];
+
+        const achievements = [
+            // Global/System Connection Setup
+            "Borant Dungeon System connection established securely. Reward: 0 points. Go dynamic or go home.",
+            "NEW ACHIEVEMENT: Unregistered Custom Override. Reward: A swift slap to the face from the AI.",
+            "NEW ACHIEVEMENT: Window Shopper. Look at all that loot you can't afford!",
+            "NEW ACHIEVEMENT: Glutton for Punishment. Running web servers under direct AI supervision.",
+            
+            // Crawler-Specific Narrative Achievements
+            "NEW ACHIEVEMENT: 'Carl_Strikes' unlocked [God-Dammit Carl!]. Reward: Triggered a localized seismic event by blowing up a structural support beam. Again.",
+            "NEW ACHIEVEMENT: 'Donut_Devotee' unlocked [The Royal Treatment]. Reward: Spent 50,000 gold on a single tiara. The high court of Yokohama approves.",
+            "NEW ACHIEVEMENT: 'Katya_Kills' unlocked [Collateral Damage]. Reward: Successfully leveled an entire goblin outpost while attempting to open a stuck door.",
+            "NEW ACHIEVEMENT: 'Mongo_Appreciator' unlocked [Good Boy!]. Reward: Feeds a prehistoric apex predator a legendary biscuit. He is very pleased.",
+            "NEW ACHIEVEMENT: 'Im_Not_Wearing_Pants' unlocked [Barefoot and Dangerous]. Reward: The AI has granted a +3 Agility buff because... well, those dirty, unprotected soles look marvelous.",
+            "NEW ACHIEVEMENT: 'Quasar_Run' unlocked [Intergalactic Fine Print]. Reward: Successfully swindled a high-ranking Mudskipper lawyer out of a technicality.",
+            "NEW ACHIEVEMENT: 'Bloop_Squad' unlocked [Strength In Numbers]. Reward: Entered a boss arena with zero coordination and somehow stumbled your way to a messy victory.",
+            "NEW ACHIEVEMENT: 'Juice_Box_Enthusiast' unlocked [High Sugar Output]. Reward: Drank 12 high-grade mana potions in under a minute. Your heart rate is now a solid 400 BPM.",
+            "NEW ACHIEVEMENT: 'Scolopendra_99' unlocked [Deity Disrespect]. Reward: Spit directly into the eye of a minor floor deity. Good luck surviving the next floor.",
+            "NEW ACHIEVEMENT: 'Hekla_Flame' unlocked [Pyromaniac’s Delight]. Reward: Set fire to a safe zone. The local merchants are furious, but the viewers are ecstatic.",
+            "NEW ACHIEVEMENT: 'Ellie_The_Goat' unlocked [Stubborn Bastard]. Reward: Refused to open a Bronze Box for three consecutive floors out of pure, unadulterated spite."
+        ];
+
+        function generateLog() {
+            const randomLog = logPool[Math.floor(Math.random() * logPool.length)];
+            const randomName = crawlerNames[Math.floor(Math.random() * crawlerNames.length)];
+            const textContent = randomLog.template.replace('{name}', randomName);
+            const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            
+            const logItem = document.createElement('div');
+            logItem.className = 'lh-sm fade-in-tick';
+            logItem.innerHTML = `
+                <span class='text-warning d-block small'>${timeStr} - ${randomLog.type}</span>
+                <span class='text-light'>${textContent}</span>
+            `;
+            
+            logContainer.insertBefore(logItem, logContainer.firstChild);
+
+            while (logContainer.children.length > 3) {
+                logContainer.removeChild(logContainer.lastChild);
+            }
+
+            if (Math.random() < 0.30) {
+                triggerAchievement();
+            }
+        }
+
+        function triggerAchievement() {
+            achievementBanner.style.opacity = '0';
+            setTimeout(() => {
+                achievementText.innerText = achievements[Math.floor(Math.random() * achievements.length)];
+                achievementBanner.style.opacity = '1';
+            }, 500);
+        }
+
+        // Initialise entries
+        for(let i = 0; i < 3; i++) { generateLog(); }
+        triggerAchievement();
+
+        setInterval(generateLog, 7000);
+    });
+</script>
 {% endblock %}

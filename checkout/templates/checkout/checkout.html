@@ -61,14 +61,14 @@
                         <p class="my-0 small">Order Total:</p>
                     </div>
                     <div class="col-3">
-                        <p class="my-0 text-warning"><strong>£{{ grand_total|floatformat:2 }}</strong></p>
+                        <p class="my-0 text-warning"><strong>£{{ total|floatformat:2 }}</strong></p>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-lg-6">
-                <p class="text-secondary font-sub small text-uppercase tracking-wider">
-                    <i class="fas fa-terminal me-2 text-pink-system"></i><strong>NEW SELECTION ACQUIRED</strong>. Please feed your biographical data points into the console layout matrix below to confirm your transactional allocation.<br>Don't worry, the system rarely misplaces shipments... Rarely.
+                <p class="text-light font-sub small text-uppercase tracking-wider">
+                    <i class="fas fa-terminal me-2 text-pink-system"></i><strong class="text-pink-system">INFORMATION</strong><br> Please feed your biographical data points into the console below to confirm your transaction.<br>Don't worry, the system rarely misplaces shipments... Rarely.
                 </p>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
@@ -113,7 +113,7 @@
                         </button>
                         <p class="small text-danger my-2 font-sub">
                             <span class="icon"><i class="fas fa-exclamation-circle"></i></span>
-                            <span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
+                            <span>Your card will be charged <strong>£{{ total|floatformat:2 }}</strong></span>
                         </p>
                     </div>
                 </form>

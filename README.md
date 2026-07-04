@@ -333,6 +333,10 @@ Please refer to [TESTING.md](TESTING.md) file for all testing carried out.
 | No | Feature | Issue | Fix |
 | :--- | :--- | :--- | :--- |
 | 1 |Lootbox product detail | When displaying the sample contents on the front end, despite the json including `/n` - this was not being interpreted by Django and there were no linebreaks.  <img src="documentation/bug1linebreak.webp" align="left" alt="String of items with no linebreak" width="400"> | After looking at the [Django Framework documentation](https://docs.djangoproject.com/en/6.0/ref/templates/builtins/#linebreaksbr) I discovered I could use `linebreaksbr` on the template filter for the product details to render the linebreaks. <img src="documentation/bug1linebreakfix.webp" align="left" alt="String of items with a linebreak after using linebreaksbr" width="400">  |
+| 2 | Checkout Form | I have tried for a while to change the styling of checkout form, but seemed to have no end of issues with overriding the crispy forms defaults. If I had more time in this project I would have investigated more, but I have not had time and so it continues to show as white boxes on the checkout, which is slightly jarring against the rest of the sites more muted colours. | **Not resolved**|
+
+
+
 
 
 

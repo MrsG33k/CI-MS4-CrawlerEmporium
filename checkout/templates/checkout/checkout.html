@@ -70,15 +70,16 @@
                 <p class="text-light font-sub small text-uppercase tracking-wider">
                     <i class="fas fa-terminal me-2 text-pink-system"></i><strong class="text-pink-system">INFORMATION</strong><br> Please feed your biographical data points into the console below to confirm your transaction.<br>Don't worry, the system rarely misplaces shipments... Rarely.
                 </p>
-                <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                <form action="{% url 'checkout' %}" method="POST" id="payment-form" class="terminal-form">
                     {% csrf_token %}
-                    <fieldset class="rounded px-3 mb-4 border border-secondary border-opacity-25 bg-black bg-opacity-20 py-3">
+                    <fieldset class="px-3 mb-4 border border-secondary border-opacity-25 bg-black bg-opacity-20 py-3">
                         <legend class="fieldset-label small text-light font-nav text-uppercase tracking-wider px-2 w-auto">Details</legend>
                         {{ order_form.full_name|as_crispy_field }}
                         {{ order_form.email|as_crispy_field }}
                         {{ order_form.phone_number|as_crispy_field }}
                     </fieldset>
-                    <fieldset class="rounded px-3 mb-4 border border-secondary border-opacity-25 bg-black bg-opacity-20 py-3">
+
+                    <fieldset class="px-3 mb-4 border border-secondary border-opacity-25 bg-black bg-opacity-20 py-3">
                         <legend class="fieldset-label small text-light font-nav text-uppercase tracking-wider px-2 w-auto">Delivery</legend>
                         {{ order_form.street_address1|as_crispy_field }}
                         {{ order_form.street_address2|as_crispy_field }}
@@ -98,7 +99,8 @@
                             {% endif %}
                         </div>     
                     </fieldset>
-                    <fieldset class="rounded px-3 mb-4 border border-secondary border-opacity-25 bg-black bg-opacity-20 py-3">
+
+                    <fieldset class="px-3 mb-4 border border-secondary border-opacity-25 bg-black bg-opacity-20 py-3">
                         <legend class="fieldset-label small text-light font-nav text-uppercase tracking-wider px-2 w-auto">Payment</legend>
                         <div class="mb-3 p-2 bg-black border border-secondary border-opacity-50" id="card-element"></div>
                         <div class="mb-3 text-danger small font-sub" id="card-errors" role="alert"></div>
@@ -120,4 +122,11 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key"}}
+    {{ client_secret|json_script:"id_client_secret"}}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}

@@ -399,4 +399,24 @@ body {
     letter-spacing: 0.5px !important;
 }
 
+/* Flickity CSS Styling */
+.carousel-cell { height: 100%; }
+
+/* Force the cells and slider canvas to have a visible, standard uniform layout structure */
+.loot-carousel .carousel-cell {
+    width: 100%;
+    min-height: 420px;
+}
+
+/* Ensure cards are visible on tablet up */
+@media (min-width: 576px) {
+    .loot-carousel .carousel-cell { width: 50%; }
+}
+@media (min-width: 768px) {
+    .loot-carousel .carousel-cell { width: 33.33%; }
+}
+@media (min-width: 1200px) {
+    .loot-carousel .carousel-cell { width: 25%; }
+}
+
 

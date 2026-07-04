@@ -69,77 +69,49 @@
             <h4 class="logo-font text-white m-0 text-uppercase tracking-wider fs-5">
                 Available <span class="text-warning">Loot Caches</span>
             </h4>
-            <a href="#" class="text-decoration-none text-warning font-sub small text-muted-hover">Browse All Packages &rarr;</a>
+            <a href="{% url 'products' %}" class="text-decoration-none text-warning font-sub small text-muted-hover">Browse All Packages &rarr;</a>
         </div>
     </div>
-
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
-        
-        <div class="col">
-            <div class="bg-black border border-secondary rounded-2 p-3 h-100 d-flex flex-column justify-content-between text-center">
-                <div>
-                    <div class="bg-dark p-4 rounded-2 mb-3 border border-secondary border-opacity-20">
-                        <i class="fas fa-box text-secondary display-4 my-2"></i>
+    <div class="loot-carousel w-100" data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": true, "pageDots": false, "autoPlay": 4000, "wrapAround": true }'>
+        {% for product in products %}
+            <div class="carousel-cell px-2 col-12 col-sm-6 col-md-4 col-xl-3">
+                <div class="bg-black border border-secondary rounded-2 p-3 h-100 d-flex flex-column justify-content-between text-center me-3">
+                    <div>
+                        <div class="bg-dark p-0 rounded-2 mb-3 border border-secondary border-opacity-20 overflow-hidden d-flex align-items-center justify-content-center" style="height: 160px;">
+                            {% if product.image %}
+                                <img class="img-fluid h-100 w-100" src="{{ product.image.url }}" alt="{{ product.name }}" style="object-fit: cover;">
+                            {% else %}
+                                <i class="fas fa-box text-secondary display-4 my-2"></i>
+                            {% endif %}
+                        </div>
+                        
+                        <h5 class="logo-font text-pink fs-6 text-uppercase m-0">{{ product.name }}</h5>
+                        
+                        <p class="text-white font-inter my-2" style="font-size: 0.8rem;">
+                            {{ product.ai_flavour_text|truncatewords:20 }}
+                        </p>
                     </div>
-                    <h5 class="logo-font text-white fs-6 text-uppercase m-0">Iron Tier Box</h5>
-                    <p class="text-muted font-inter my-2" style="font-size: 0.8rem;">Low-grade tactical support items and standard tool modifications.</p>
-                </div>
-                <div>
-                    <span class="text-warning font-sub fs-5 d-block my-2 fw-bold">£50.00</span>
-                    <button class="btn btn-sm btn-outline-warning w-100 font-sub tracking-wide">Acquire Cache</button>
+                    
+                    <div>
+                        <span class="text-warning font-sub fs-5 d-block my-2 fw-bold">£{{ product.price }}</span>
+                        
+                        <form class="form" action="{% url 'add_to_backpack' product.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm btn-outline-warning w-100 font-sub tracking-wide">
+                                Acquire Cache
+                            </button>
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col">
-            <div class="bg-black border border-secondary rounded-2 p-3 h-100 d-flex flex-column justify-content-between text-center">
-                <div>
-                    <div class="bg-dark p-4 rounded-2 mb-3 border border-secondary border-opacity-20">
-                        <i class="fas fa-box-open text-info display-4 my-2"></i>
-                    </div>
-                    <h5 class="logo-font text-white fs-6 text-uppercase m-0">Silver Tier Box</h5>
-                    <p class="text-muted font-inter my-2" style="font-size: 0.8rem;">Rare-class character stat modifiers and dynamic boosters.</p>
-                </div>
-                <div>
-                    <span class="text-warning font-sub fs-5 d-block my-2 fw-bold">£250.00</span>
-                    <button class="btn btn-sm btn-outline-warning w-100 font-sub tracking-wide">Acquire Cache</button>
-                </div>
+        {% empty %}
+            <div class="col-12 text-center my-5">
+                <p class="text-muted font-inter">No loot boxes detected in the current sector.</p>
             </div>
-        </div>
-
-        <div class="col">
-            <div class="bg-black border border-secondary rounded-2 p-3 h-100 d-flex flex-column justify-content-between text-center">
-                <div>
-                    <div class="bg-dark p-4 rounded-2 mb-3 border border-secondary border-opacity-20">
-                        <i class="fas fa-vault text-warning display-4 my-2"></i>
-                    </div>
-                    <h5 class="logo-font text-white fs-6 text-uppercase m-0">Gold Tier Box</h5>
-                    <p class="text-muted font-inter my-2" style="font-size: 0.8rem;">Legendary cosmetic drops and complex high-yield blueprints.</p>
-                </div>
-                <div>
-                    <span class="text-warning font-sub fs-5 d-block my-2 fw-bold">£750.00</span>
-                    <button class="btn btn-sm btn-outline-warning w-100 font-sub tracking-wide">Acquire Cache</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="bg-black border border-secondary rounded-2 p-3 h-100 d-flex flex-column justify-content-between text-center">
-                <div>
-                    <div class="bg-dark p-4 rounded-2 mb-3 border border-secondary border-opacity-20">
-                        <i class="fas fa-box-tissue text-pink display-4 my-2"></i>
-                    </div>
-                    <h5 class="logo-font text-white fs-6 text-uppercase m-0">Platinum Tier Box</h5>
-                    <p class="text-muted font-inter my-2" style="font-size: 0.8rem;">Mythical floor-boss tier gear variants and dangerous anomalies.</p>
-                </div>
-                <div>
-                    <span class="text-warning font-sub fs-5 d-block my-2 fw-bold">£2,000.00</span>
-                    <button class="btn btn-sm btn-outline-warning w-100 font-sub tracking-wide">Acquire Cache</button>
-                </div>
-            </div>
-        </div>
-
+        {% endfor %}
     </div>
 
 </div>
+
 {% endblock %}

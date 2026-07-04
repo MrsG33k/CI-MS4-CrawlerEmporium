@@ -1,0 +1,1 @@
+default_app_confit = 'checkout.apps.CheckoutConig'

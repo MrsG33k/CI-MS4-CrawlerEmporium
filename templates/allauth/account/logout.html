@@ -1,21 +1,44 @@
-{% extends "account/base.html" %}
-
+{% extends "base.html" %}
 {% load i18n %}
 
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Out" %}</h1>
+<div class="container my-5 py-5 d-flex justify-content-center align-items-center backpack-page-wrapper">
+    <div class="col-12 col-md-6 col-lg-5">
+        <div class="bg-black border border-secondary rounded-2 p-4 p-sm-5 text-center font-sub">
+            
+            <div class="mb-4">
+                <i class="fas fa-exclamation-triangle text-pink fs-1 mb-3"></i>
+                <h2 class="logo-font text-white text-uppercase tracking-wider mb-2">
+                    Terminal <span class="text-warning">Disconnect</span>
+                </h2>
+                <div class="border-bottom border-secondary opacity-25 w-50 mx-auto my-3"></div>
+            </div>
 
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
+            <p class="text-light font-inter mb-4 text-transform-none lh-base" style="font-size: 0.95rem;">
+                Are you absolutely certain you want to sever your network connection to the Crawler Emporium?<br>
+                <br>Terminating this session will suspend background biometrics and force a status reset.
+            </p>
 
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button type="submit">{% trans 'Sign Out' %}</button>
-</form>
+            <form method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                {% endif %}
+                
+                <div class="d-flex flex-column gap-2 mt-4">
+                    <button type="submit" class="btn glow-btn w-100 py-2.5 text-uppercase tracking-wide">
+                        Confirm Logout <i class="fas fa-power-off ms-2"></i>
+                    </button>
+                    
+                    <a href="{% url 'home' %}" class="btn btn-outline-warning w-100 py-2.5 mt-2 text-uppercase tracking-wide">
+                        Return to Vault <i class="fas fa-box-archive ms-2"></i>"
+                    </a>
+                </div>
+            </form>
 
-
+        </div>
+    </div>
+</div>
 {% endblock %}

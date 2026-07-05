@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'showrunners',
     'support',
     'checkout',
+    'profiles',
 
     #Other
     'crispy_forms',

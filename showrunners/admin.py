@@ -1,8 +1,6 @@
 from django.contrib import admin
 from .models import BlogPost, BlogComment
 
-# Register your models here.
-
 
 class BlogCommentInline(admin.TabularInline):
     """ Allows admins to view and moderate comments directly inside the blog """

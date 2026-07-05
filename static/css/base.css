@@ -580,3 +580,31 @@ body {
 .text-glow {
     text-shadow: 0 0 4px rgba(221, 240, 13, 0.6);
 }
+
+.hr-theme-line {
+    width: 120px;
+    height: 3px;
+    background-color: #ffc107;
+    margin: 0 auto;
+    box-shadow: 0 0 8px rgba(255, 193, 7, 0.5);
+}
+.card-image-container {
+    height: 200px;
+}
+.card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.extra-small {
+    font-size: 0.75rem;
+}
+
+.hover-card-transition {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-card-transition:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(255, 193, 7, 0.1) !important;
+    border-color: #ffc107 !important;
+}

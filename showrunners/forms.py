@@ -14,6 +14,6 @@ class BlogCommentForm(forms.ModelForm):
 
         self.fields['message'].widget.attrs.update({
             'class': 'form-control bg-dark text-white border-secondary',
-            'placeholder': 'Enter commentary response packet...',
+            'placeholder': 'Enter commentary...',
             'rows': 3
         })

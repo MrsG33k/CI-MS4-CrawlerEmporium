@@ -2,15 +2,22 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from .models import BlogPost
 from .forms import BlogCommentForm
+from django.db.models import Q
 
 # Create your views here.
 
 
 def blog(request):
-    """ To show all of the blogposts in a grid """
+    """ To show all of the blogposts in a grid & search bar"""
     posts = BlogPost.objects.all()
+    
+    query = request.GET.get('q')
+    if query:
+        posts = posts.filter(Q(title__icontains=query) | Q(content__icontains=query))
+        
     context = {
         'posts': posts,
+        'search_query': query,
     }
     return render(request, 'showrunners/blog.html', context)
 
@@ -23,7 +30,7 @@ def blog_detail(request, slug):
     if request.method == 'POST':
 
         if not request.user.is_authenticated:
-            messages.error(request, "Access Denied. You must be logged in to leave commentary.")
+            messages.error(request, "Access Denied. You must be logged in to comment.")
             return redirect('account_login')
             
         form = BlogCommentForm(request.POST)

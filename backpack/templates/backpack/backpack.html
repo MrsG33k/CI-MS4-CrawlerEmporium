@@ -45,7 +45,15 @@
                                 <tr class="align-middle border-bottom border-secondary border-opacity-10">
                                         <td class="p-3 w-25">
                                             <div class="p-1 bg-black bg-opacity-40 border border-secondary border-opacity-25">
-                                                <img class="img-fluid rounded-0" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                                {% if item.product.image %}
+                                                    <img class="img-fluid rounded-0" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                                    
+                                                {% elif item.product.image_url %}
+                                                    <img class="img-fluid rounded-0" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
+                                                    
+                                                {% else %}
+                                                    <img class="img-fluid rounded-0" src="{% static 'images/noimage.png' %}" alt="{{ item.product.name }}">
+                                                {% endif %}
                                             </div>
                                         </td>
                                         <td class="py-3 px-2">

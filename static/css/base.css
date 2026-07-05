@@ -494,7 +494,7 @@ body {
     text-transform: none !important;
 }
 
-.footer-subtext {
+.subtext {
     font-size: 0.75rem;
 }
 
@@ -512,4 +512,9 @@ body {
 
 .auth-forgot-password-link {
     font-size: 0.75rem;
+}
+
+.vault-ledger-scroll-container {
+    max-height: 480px;
+    overflow-y: auto;
 }

@@ -6,11 +6,12 @@ from .models import Order, OrderLineItem
 from backpack.contexts import backpack_contents
 from lootboxes.models import Product
 
+from profiles.models import UserProfile
+from profiles.forms import UserProfileForm
+
 import stripe
 
-# Create your views here.
-
-def  checkout(request):
+def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -30,7 +31,15 @@ def  checkout(request):
         }
         order_form = Orderform(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            
+            # Check if the user is authenticated and attach their profile
+            if request.user.is_authenticated:
+                profile = UserProfile.objects.get(user=request.user)
+                order.user_profile = profile
+                
+            order.save()
+            
             for item_id, item_data in backpack.items():
                 try:
                     product = Product.objects.get(id=item_id)
@@ -80,9 +89,25 @@ def  checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
-        print(intent)
-
-        order_form = Orderform()
+        # Pre-populate checkout form fields if the user has profile details saved
+        if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                order_form = Orderform(initial={
+                    'full_name': profile.user.get_full_name(),
+                    'email': profile.user.email,
+                    'phone_number': profile.default_phone_number,
+                    'country': profile.default_country if hasattr(profile, 'default_country') else '',
+                    'postcode': profile.default_postcode,
+                    'town_or_city': profile.default_town_or_city,
+                    'street_address1': profile.default_street_address1,
+                    'street_address2': profile.default_street_address2,
+                    'county': profile.default_county,
+                })
+            except UserProfile.DoesNotExist:
+                order_form = Orderform()
+        else:
+            order_form = Orderform()
 
         if not stripe_public_key:
             messages.warning(request,'Stripe public key is missing!')
@@ -96,12 +121,36 @@ def  checkout(request):
 
         return render(request, template, context)
 
+
 def checkout_success(request, order_number):
     """
-    Handle successful checkouts
+    Handle successful checkouts and sync profile contact info if specified
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
+    
+    if request.user.is_authenticated:
+        profile = UserProfile.objects.get(user=request.user)
+        #link this order to the logged-in user profile permanently
+        order.user_profile = profile
+        order.save()
+
+        # If "Save Info" checkbox was flagged, update their default values in profile data
+        if save_info:
+            profile_data = {
+                'default_phone_number': order.phone_number,
+                'default_country': order.country if hasattr(order, 'country') else '',
+                'default_postcode': order.postcode,
+                'default_town_or_city': order.town_or_city,
+                'street_address1': order.street_address1,
+                'street_address2': order.street_address2,
+                'default_county': order.county,
+            }
+            # Remove keys that aren't fields in UserProfileForm if necessary
+            user_profile_form = UserProfileForm(profile_data, instance=profile)
+            if user_profile_form.is_valid():
+                user_profile_form.save()
+
     messages.success(request, f"TRANSACTION COMPLETED. \
         Order {order_number} is processed \
         I've sent the confirmation to {order.email}. ")

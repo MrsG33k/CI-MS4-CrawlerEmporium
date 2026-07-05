@@ -109,10 +109,10 @@
                         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end border-secondary shadow-lg" aria-labelledby="accountMenu">
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
-                                    <li><a class="dropdown-item py-2" href="#"><i class="fas fa-tools text-warning me-2"></i>Vault Management</a></li>
+                                    <li><a class="dropdown-item py-2" href="{% url 'profile_vault' %}"><i class="fas fa-tools text-warning me-2"></i>Vault Management</a></li>
                                     <li><hr class="dropdown-divider border-secondary"></li>
                                 {% endif %}
-                                <li><a class="dropdown-item py-2" href="#"><i class="fas fa-id-card me-2"></i>Crawler Profile</a></li>
+                                <li><a class="dropdown-item py-2" href="{% url 'account_settings' %}"><i class="fas fa-id-card me-2"></i>Crawler Profile</a></li>
                                 <li><a class="dropdown-item py-2 text-danger" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
                             {% else %}
                                 <li><a class="dropdown-item py-2" href="{% url 'account_signup' %}"><i class="fas fa-user-plus me-2"></i>Crawler Registration</a></li>
@@ -171,7 +171,7 @@
                         <span class="badge bg-dark border border-warning text-warning px-3 py-2 logo-font badge-crawler-auth">
                             CRAWLER: {{ request.user.username|upper }}
                         </span>
-                        <p class="text-success small mt-2 mb-0 footer-subtext font-inter">
+                        <p class="text-success small mt-2 mb-0 subtext font-inter">
                             <i class="fas fa-check-circle me-1"></i>Biometrics Verified
                         </p>
                     {% else %}
@@ -179,12 +179,12 @@
                         <span class="badge bg-dark border border-danger text-danger px-3 py-2 logo-font badge-crawler-auth">
                             UNREGISTERED CRAWLER
                         </span>
-                        <p class="text-danger small mt-2 mb-0 footer-subtext font-inter">
+                        <p class="text-danger small mt-2 mb-0 subtext font-inter">
                             <i class="fas fa-exclamation-triangle me-1"></i>Session Unauthorized
                         </p>
                     {% endif %}
                     
-                    <p class="text-white small mt-1 mb-0 footer-subtext">Terminal Connection: 127.0.0.1</p>
+                    <p class="text-white small mt-1 mb-0 subtext">Terminal Connection: 127.0.0.1</p>
                 </div>
                 
             </div>
@@ -193,7 +193,7 @@
             <hr class="border-secondary my-4 opacity-25">
             <div class="row">
                 <div class="col text-center">
-                    <p class="small text-white mb-0 footer-subtext">&copy; 2026 The Crawler Emporium. All Rights Reserved. Prepare for the Grind.</p>
+                    <p class="small text-white mb-0 subtext">&copy; 2026 The Crawler Emporium. All Rights Reserved. Prepare for the Grind.</p>
                 </div>
             </div>
         </div>

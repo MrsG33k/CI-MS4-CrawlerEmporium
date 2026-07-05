@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5 py-4 backpack-page-wrapper">
+    <div class="row mb-4">
+        <div class="col font-sub text-center text-md-start">
+            <h2 class="logo-font text-white text-uppercase tracking-wider mb-1">
+                Crawler <span class="text-warning">Account Settings</span>
+            </h2>
+            <p class="text-white small font-inter text-transform-none mb-0">
+                Modify profile details and delivery coordinates for orders.
+            </p>
+            <div class="border-bottom border-secondary opacity-25 mt-3"></div>
+        </div>
+    </div>
+
+    <div class="row g-4 font-sub">
+        <!-- Column 1: Core Identity -->
+        <div class="col-12 col-md-5">
+            <div class="bg-black border border-secondary rounded-2 p-4 mb-4 position-relative overflow-hidden">
+                <!-- ID Card Header -->
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h4 class="logo-font text-white text-uppercase tracking-wide fs-5 m-0">
+                        <i class="fas fa-id-card text-warning me-2"></i>Identity Card
+                    </h4>
+                    <!-- Immersive Badge/Tag -->
+                    <span class="badge border border-warning text-warning font-sub px-2 py-1" style="font-size: 0.6rem; letter-spacing: 1px;">LEVEL 1 CRAWLER</span>
+                </div>
+
+                <!-- ID Card Grid Layout -->
+                <div class="font-inter text-light text-transform-none small d-flex flex-column gap-3 mb-4">
+                    <!-- Top Row: Name and ID Split -->
+                    <div class="row g-2">
+                        <div class="col-8">
+                            <span class="text-pink font-sub small text-uppercase d-block" style="font-size: 0.65rem;">Full Name:</span> 
+                            <strong class="text-white fs-6 tracking-wide">
+                                {% if request.user.get_full_name %}
+                                    {{ request.user.get_full_name|upper }}
+                                {% else %}
+                                    UNREGISTERED CRAWLER
+                                {% endif %}
+                            </strong>
+                        </div>
+                        <div class="col-4 text-end">
+                            <span class="text-white font-sub small text-uppercase d-block" style="font-size: 0.65rem;">Crawler ID:</span> 
+                            <span class="text-warning font-monospace fw-bold fs-6">#{{ request.user.id|stringformat:"04d" }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Middle Row: Username & Node Core -->
+                    <div class="row g-2 border-top border-secondary border-opacity-10 pt-2">
+                        <div class="col-12">
+                            <span class="text-pink font-sub small text-uppercase d-block" style="font-size: 0.65rem;">Username:</span> 
+                            <strong class="text-white font-monospace">{{ request.user.username }}</strong>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Row: Email Node System Path -->
+                    <div class="row g-2 border-top border-secondary border-opacity-10 pt-2">
+                        <div class="col-12">
+                            <span class="text-pink font-sub small text-uppercase d-block" style="font-size: 0.65rem;">Email Node:</span> 
+                            <span class="text-light-50 font-monospace" style="font-size: 0.8rem;">{{ request.user.email }}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Intercept Button -->
+                <div class="border-top border-secondary border-opacity-25 pt-3">
+                    <a href="{% url 'account_change_password' %}" class="btn btn-sm btn-outline-warning font-sub w-100 text-uppercase tracking-wide py-2">
+                        Change Password <i class="fas fa-key ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Column 2: Default Address -->
+        <div class="col-12 col-md-7">
+            <div class="bg-black border border-secondary rounded-2 p-4">
+                <h4 class="logo-font text-white text-uppercase tracking-wide mb-3 fs-5">
+                    <i class="fas fa-shipping-fast me-2 text-warning"></i>Current delivery coordinates
+                </h4>
+                
+                <form action="{% url 'account_settings' %}" method="POST" id="settings-update-form">
+                    {% csrf_token %}
+                    <div class="d-flex flex-column gap-3 font-inter text-transform-none text-light">
+                        {% for field in form %}
+                            <div>
+                                <label class="font-sub small text-pink tracking-wide mb-1 d-block">{{ field.label }}</label>
+                                {{ field }}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <button type="submit" class="btn btn-sm btn-outline-warning font-sub w-100 py-2.5 mt-4 text-uppercase tracking-wide">
+                        Save Address <i class="fas fa-save ms-2"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

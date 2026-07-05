@@ -91,7 +91,7 @@
                         <span class="text-warning font-sub fs-5 d-block my-2 fw-bold">£{{ product.price }}</span>
                         <form class="form" action="{% url 'add_to_backpack' product.id %}" method="POST">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-sm btn-outline-warning w-100 font-sub tracking-wide">Acquire Cache</button>
+                            <button type="submit" class="btn btn-sm btn-outline-warning w-100 font-sub tracking-wide">Add to Backpack</button>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </form>
                     </div>

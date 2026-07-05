@@ -272,7 +272,7 @@ This project fully implements standard relational database CRUD (Create, Read, U
 * [Canva](https://www.canva.com/online-whiteboard/wireframes/) - Used to create wireframes.
 * [Photopea](https://www.photopea.com/) - Used to edit and create graphics for the project
 * [To WebP](https://towebp.io/) - Used to convert images to WebP format.
-* [Favicon.io](https://favicon.io/) - Used to create the favicon based on the logo
+* [Real Favicon Generator](https://realfavicongenerator.net/) - Used to create the favicon based on the logo
 * [Google Fonts](https://fonts.google.com/) - Google fonts were used to import
 
 **Database Planning**

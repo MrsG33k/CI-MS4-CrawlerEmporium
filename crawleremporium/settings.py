@@ -61,7 +61,8 @@ INSTALLED_APPS = [
 
     #Other
     'crispy_forms',
-    'crispy_bootstrap5'
+    'crispy_bootstrap5',
+    'anymail'
 ]
 
 MIDDLEWARE = [
@@ -113,16 +114,15 @@ SITE_ID = 1
 
 # Updated the Email environment settings 
 if 'DEVELOPMENT' not in os.environ:
-    # Live Production SMTP Switchboard
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_USE_TLS = True
-    EMAIL_PORT = 587
-    EMAIL_HOST = 'smtp-relay.brevo.com'
-    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+    # Live Production on Railway with Brevo 
+    EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+    ANYMAIL = {
+    "MAILGUN_API_KEY": os.environ.get('MAILGUN_API_KEY'),
+    }
     DEFAULT_FROM_EMAIL = 'vaultmaster@crawleremporium.com'
+    SERVER_EMAIL = 'vaultmaster@crawleremporium.com'
 else:
-    # Local Development Fallback
+    # Local Development
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'vaultmaster@crawleremporium.com'
 

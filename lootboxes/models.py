@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from django.db import models
+
 
 class Category(models.Model):
     class Meta:
@@ -38,7 +38,7 @@ class Product(models.Model):
     # Visual Description
     description = models.TextField(help_text="What the physical box looks like.")
     
-    # The AI's sales pitch copy
+    # The AI's sales pitch
     ai_flavour_text = models.TextField(blank=True, null=True, help_text="The System AI's verbal abuse/sales pitch.")
     
     # The randomised goodies inside

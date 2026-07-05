@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_title %}System Error: 404{% endblock %}
+
+{% block breadcrumb_wrapper %}{% endblock %}
+
+{% block content %}
+<div class="container my-5 py-4 backpack-page-wrapper d-flex flex-column justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="row justify-content-center align-items-center w-100 g-4">
+        
+        <div class="col-12 col-md-5 text-center">
+            <div class="position-relative d-inline-block">
+                <img src="{% static 'images/404.png' %}" 
+                     alt="Exploded Loot Box Structural Failure" 
+                     class="img-fluid rounded-3 border border-secondary border-opacity-25 shadow-lg"
+                     style="max-height: 350px; object-fit: cover; filter: drop-shadow(0 0 15px rgba(220, 53, 69, 0.15));">
+                
+                <span class="badge bg-danger border border-light font-monospace position-absolute top-0 start-0 m-2 px-2 py-1 small" style="font-size: 0.7rem; letter-spacing: 1px;">
+                    CRITICAL FAULT
+                </span>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div class="bg-black border border-secondary rounded-2 p-4 font-sub shadow-lg text-center text-md-start">
+                
+                <h1 class="logo-font text-pink text-uppercase tracking-wider mb-1 display-5 fw-bold">
+                    Error <span class="text-warning">404</span>
+                </h1>
+                <h3 class="logo-font text-white text-uppercase tracking-wide mb-3 fs-5">
+                    Loot Disintegration
+                </h3>
+                
+                <div class="border-bottom border-secondary opacity-25 my-3"></div>
+
+                <p class="small text-light font-inter text-transform-none mb-4 lh-lg">
+                    <strong>Well, this is unfortunate....</strong>
+                    <br>The sector coordinates you transmitted do not point to an active database node. It appears the loot box at this address has completely combusted, leaving nothing behind but scattered debris and broken gears 
+                </p>
+
+                <div class="d-flex flex-column flex-sm-row gap-2 mt-2">
+                    <a href="{% url 'home' %}" class="btn glow-btn px-4 py-2.5 text-uppercase tracking-wide font-sub flex-grow-1 text-center">
+                        Return to Safe Zone <i class="fas fa-home ms-2"></i>
+                    </a>
+                    <a href="{% url 'products' %}" class="btn btn-outline-secondary text-light text-light-hover px-4 py-2.5 text-uppercase tracking-wide font-sub flex-grow-1 text-center">
+                        Browse Available Loot <i class="fas fa-box-open ms-2"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -28,6 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-fallback-development-key-never-use-in-production')
 
 # DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = True
 
 # Prevents crashing if a file is missing
 WHITENOISE_MANIFEST_STRICT = False

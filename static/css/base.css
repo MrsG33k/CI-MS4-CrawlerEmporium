@@ -531,3 +531,52 @@ body {
     text-shadow: 0 0 8px rgba(255, 193, 7, 0.6);
     transition: all 0.2s ease-in-out;
 }
+
+/* Styles for the Support FAQ Accordion */
+.accordion-button::after {
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(10deg);
+}
+.accordion-button:not(.collapsed) {
+    background-color: #212529 !important;
+    color: #ffc107 !important;
+    box-shadow: none;
+}
+.disabled {
+    cursor: not-allowed !important;
+    pointer-events: all !important;
+}
+
+.accordion-body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.95rem; 
+    letter-spacing: 0.02rem;
+    line-height: 1.7 !important;
+    color: #f8f9fa !important;
+}
+
+/* The closed header state */
+.accordion-button.collapsed {
+    background-color: #1a1d20 !important; 
+    color: #eff0e5 !important; 
+    font-family: var(--bs-font-monospace), monospace;
+    transition: all 0.2s ease;
+}
+
+.accordion-button.collapsed:hover {
+    background-color: #25292e !important;
+    color: #ffc107 !important; /* Turns gold on hover */
+}
+
+/* FAQ Selected state */
+.accordion-button:not(.collapsed) {
+    background-color: #2d3238 !important; 
+    color: #ffc107 !important; 
+    border-bottom: 2px solid #ffc107; 
+    box-shadow: none;
+}
+
+/* Styles r the Support Desk Page */
+
+.text-glow {
+    text-shadow: 0 0 4px rgba(221, 240, 13, 0.6);
+}

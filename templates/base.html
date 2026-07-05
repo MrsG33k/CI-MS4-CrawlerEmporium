@@ -87,7 +87,7 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link text-light font-nav text-uppercase px-2 text-muted-hover" href="#">
+                        <a class="nav-link text-light font-nav text-uppercase px-2 text-muted-hover" href="{% url 'crawler_support' %}">
                             Crawler Support
                         </a>
                     </li>
@@ -140,7 +140,7 @@
                 <ol class="breadcrumb m-0 text-transform-none">
                     <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-warning text-decoration-none">Home</a></li>
                     {% block breadcrumbs %}
-                        <!-- Individual child steps inject here -->
+                        <!-- Individual child breadcrumbs here -->
                     {% endblock %}
                 </ol>
             </nav>

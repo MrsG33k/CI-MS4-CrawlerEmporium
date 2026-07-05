@@ -4,7 +4,7 @@ from .forms import SupportTicketForm
 
 # Create your views here.
 
-def crawler_support_desk(request):
+def crawler_support(request):
     """ Support Terminal with details of logged in users populated """
     
     if request.method == 'POST':
@@ -23,7 +23,7 @@ def crawler_support_desk(request):
                 request, 
                 f"Ticket logged under token: {ticket.ticket_id_string}. Don't hold your breath waiting for a reply crawler."
             )
-            return redirect('crawler_support_desk')
+            return redirect('crawler_support')
     else:
         # GET Request
         initial_data = {}

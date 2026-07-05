@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="{% url 'blog' %}" class="text-warning text-decoration-none">Showrunner Blog</a></li>
+    <li class="breadcrumb-item text-white active" aria-current="page">{{ post.title|truncatechars:25 }}</li>
+{% endblock %}
+
+{% block content %}
+<div class="container my-5 text-white">
+    <div class="row justify-content-center">
+        <div class="col-lg-9 col-xl-8">
+            
+            <header class="mb-4">
+                <span class="text-warning font-monospace small d-block mb-2">
+                    <i class="fas fa-calendar-alt me-1"></i> {{ post.created_at|date:"d M Y @ H:i" }}
+                </span>
+                <p class="fs-3 logo-font text-uppercase text-light tracking-wider mb-3">
+                    {{ post.title }}
+                </p>
+                
+                <div class="d-flex align-items-center font-monospace text-white small pb-3 border-bottom border-secondary">
+                    <span>
+                        <i class="fas fa-user-shield text-info me-1"></i> Transmitted By: 
+                        <strong class="text-info">
+                            {% if post.author.get_full_name %}
+                                {{ post.author.get_full_name }}
+                            {% else %}
+                                {{ post.author.username }}
+                            {% endif %}
+                        </strong>
+                    </span>
+                </div>
+            </header>
+
+            {% if post.image or post.image_url %}
+                <div class="rounded border border-secondary overflow-hidden shadow-lg mb-5 main-feature-img-box">
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}" class="img-fluid w-100 h-100" alt="{{ post.title }}">
+                    {% else %}
+                        <img src="{{ post.image_url }}" class="img-fluid w-100 h-100" alt="{{ post.title }}">
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            <article class="lead-body-text font-monospace lh-lg mb-5 text-light">
+                {{ post.content|linebreaks }}
+            </article>
+
+            <hr class="border-secondary my-5">
+
+            <section class="mb-5">
+                <h3 class="logo-font text-uppercase text-light tracking-wider mb-4"><span class="text-warning"> CRAWLER</span> COMMENTARY:</h3>
+                
+                <div class="comment-feed-stream mb-4">
+                    {% for comment in comments %}
+                        <div class="p-3 bg-dark bg-opacity-50 border border-secondary rounded mb-3 font-monospace">
+                            <div class="d-flex justify-content-between align-items-center extra-small text-muted border-bottom border-secondary border-opacity-25 pb-2 mb-2">
+                                <span>
+                                    <i class="fas fa-user text-warning me-1"></i> 
+                                    <span class="text-warning fw-bold">
+                                        {% if comment.user.get_full_name %}
+                                            {{ comment.user.get_full_name }}
+                                        {% else %}
+                                            {{ comment.user.username }}
+                                        {% endif %}
+                                    </span> 
+                                    [CRAWLER ID: #{{ comment.user.id }}]
+                                </span>
+                                <span>
+                                    {{ comment.created_at|date:"d M Y @ H:i" }}
+                                </span>
+                            </div>
+                            <p class="mb-0 text-light small comment-body-text">{{ comment.message }}</p>
+                        </div>
+                    {% empty %}
+                        <div class="p-4 border border-secondary border-dashed rounded text-center text-white font-monospace small">
+                            [ FEED EMPTY: NO CRAWLERS HAVE VENTURED TO THE COMMENTS  ]
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="card bg-dark border-secondary p-4 shadow-sm mt-4">
+                    <h5 class="text-white font-monospace mb-3"><span class="text-warning"> Crawler </span>Response:</h5>
+                    
+                    {% if user.is_authenticated %}
+                        <form method="POST" action="{% url 'blog_detail' slug=post.slug %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                {{ form.message }}
+                                {% if form.message.errors %}
+                                    <div class="text-danger small font-monospace mt-1">
+                                        {{ form.message.errors|striptags }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <button type="submit" class="btn btn-outline-warning btn-sm font-monospace px-4">
+                                [ SEND COMMENT ]
+                            </button>
+                        </form>
+                    {% else %}
+                        <div class="text-center py-2 font-monospace">
+                            <p class="text-muted small mb-3">Transmission closed. Anonymous entities are blocklisted from writing commentary data.</p>
+                            <a href="{% url 'account_login' %}" class="btn btn-sm btn-outline-danger">
+                                [  SIGN-IN TO COMMENT ]
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

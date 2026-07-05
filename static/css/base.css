@@ -608,3 +608,17 @@ body {
     box-shadow: 0 10px 20px rgba(255, 193, 7, 0.1) !important;
     border-color: #ffc107 !important;
 }
+
+.main-feature-img-box {
+    max-height: 450px;
+}
+.main-feature-img-box img {
+    object-fit: cover;
+}
+.extra-small {
+    font-size: 0.75rem;
+}
+.comment-body-text, .lead-body-text {
+    letter-spacing: 0.03rem;
+    word-spacing: 0.05rem;
+}

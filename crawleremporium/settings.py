@@ -120,7 +120,7 @@ if 'DEVELOPMENT' not in os.environ:
     ANYMAIL = {
     "BREVO_API_KEY": os.environ.get('BREVO_API_KEY'),
     }
-    DEFAULT_FROM_EMAIL = 'crawleremporium@gmail.com
+    DEFAULT_FROM_EMAIL = 'crawleremporium@gmail.com'
     SERVER_EMAIL = 'crawleremporium@gmail.com'
 else:
     # Local Development

@@ -120,8 +120,8 @@ if 'DEVELOPMENT' not in os.environ:
     ANYMAIL = {
     "BREVO_API_KEY": os.environ.get('BREVO_API_KEY'),
     }
-    DEFAULT_FROM_EMAIL = 'b10019001@smtp-brevo.com'
-    SERVER_EMAIL = 'b10019001@smtp-brevo.com'
+    DEFAULT_FROM_EMAIL = 'crawleremporium@gmail.com
+    SERVER_EMAIL = 'crawleremporium@gmail.com'
 else:
     # Local Development
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

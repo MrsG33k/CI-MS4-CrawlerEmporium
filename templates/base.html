@@ -132,6 +132,22 @@
         </div> 
     </header>
 
+    <!-- Navigation Breadcrumb -->
+    {% block breadcrumb_wrapper %}
+    <div class="bg-dark border-bottom border-secondary border-opacity-10 py-2">
+        <div class="container">
+            <nav aria-label="breadcrumb" class="font-sub small m-0">
+                <ol class="breadcrumb m-0 text-transform-none">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-warning text-decoration-none">Home</a></li>
+                    {% block breadcrumbs %}
+                        <!-- Individual child steps inject here -->
+                    {% endblock %}
+                </ol>
+            </nav>
+        </div>
+    </div>
+    {% endblock %}
+
     {% block page_header %}{% endblock %}
 
     <main class="container my-4">

@@ -518,3 +518,16 @@ body {
     max-height: 480px;
     overflow-y: auto;
 }
+
+/* Custom System Breadcrumbs */
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">" !important;
+    color: var(--bs-secondary) !important;
+    font-family: 'Encode Sans Condensed', sans-serif;
+    opacity: 0.5;
+}
+
+.breadcrumb-item a:hover {
+    text-shadow: 0 0 8px rgba(255, 193, 7, 0.6);
+    transition: all 0.2s ease-in-out;
+}

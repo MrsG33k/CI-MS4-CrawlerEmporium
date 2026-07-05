@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="{% url 'lootboxes' %}" class="text-muted text-decoration-none">Loot Boxes</a></li>
+    <li class="breadcrumb-item text-white active" aria-current="page">My Backpack</li>
+{% endblock %}
+
 {% block page_header %}
     <div class="container header-container">
         <div class="row">

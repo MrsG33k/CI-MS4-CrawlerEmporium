@@ -118,7 +118,7 @@ if 'DEVELOPMENT' not in os.environ:
     # Live Production on Railway with Brevo 
     EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
     ANYMAIL = {
-    "MAILGUN_API_KEY": os.environ.get('MAILGUN_API_KEY'),
+    "BREVO_API_KEY": os.environ.get('BREVO_API_KEY'),
     }
     DEFAULT_FROM_EMAIL = 'b10019001@smtp-brevo.com'
     SERVER_EMAIL = 'b10019001@smtp-brevo.com'

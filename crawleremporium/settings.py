@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-fallback-development-key-never-use-in-production')
 
-DEBUG = os.environ.get('DEBUG_VALUE', 'True') == 'True'
+DEBUG = 'DEVELOPMENT' in os.environ
 
 # Prevents crashing if a file is missing
 WHITENOISE_MANIFEST_STRICT = False
@@ -122,6 +122,9 @@ LOGIN_URL = '/accounts/login/'  # login page URL
 LOGIN_REDIRECT_URL = '/'  # Redirect to home page after login
 
 WSGI_APPLICATION = 'crawleremporium.wsgi.application'
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-06923.up.railway.app',
+]
 
 
 # Database

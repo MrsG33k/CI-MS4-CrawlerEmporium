@@ -68,13 +68,19 @@
                     
                     <div class="card w-100 bg-black bg-opacity-50 border border-secondary border-opacity-50 rounded-0 shadow-lg custom-dungeon-card">
                         {% if product.image %}
-                        <a href="{% url 'product_detail' product.id %}">
-                            <img class="card-img-top img-fluid rounded-0 border-bottom border-secondary border-opacity-25" src="{{ product.image.url }}" alt="{{ product.name }}">
-                        </a>
+                            <a href="{% url 'product_detail' product.id %}">
+                                <img class="card-img-top img-fluid rounded-0 border-bottom border-secondary border-opacity-25" src="{{ product.image.url }}" alt="{{ product.name }}">
+                            </a>
+                        
+                        {% elif product.image_url %}
+                            <a href="{% url 'product_detail' product.id %}">
+                                <img class="card-img-top img-fluid rounded-0 border-bottom border-secondary border-opacity-25" src="{{ product.image_url }}" alt="{{ product.name }}">
+                            </a>
+                            
                         {% else %}  
-                        <a href="{% url 'product_detail' product.id %}">
-                            <img class="card-img-top img-fluid rounded-0 border-bottom border-secondary border-opacity-25" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                        </a>
+                            <a href="{% url 'product_detail' product.id %}">
+                                <img class="card-img-top img-fluid rounded-0 border-bottom border-secondary border-opacity-25" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                            </a>
                         {% endif %}
 
                         <div class="card-body pb-2 bg-dark bg-opacity-20 text-light">

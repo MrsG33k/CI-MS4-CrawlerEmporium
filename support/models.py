@@ -42,7 +42,7 @@ class SupportTicket(models.Model):
         super().save(*args, **kwargs)
 
         if not self.ticket_id_string:
-            self.ticket_id_string = f"TICK{self.id}"
+            self.ticket_id_string = f"TICK#00{self.id}"
             SupportTicket.objects.filter(id=self.id).update(ticket_id_string = self.ticket_id_string)
 
 

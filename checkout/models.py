@@ -7,11 +7,10 @@ from profiles.models import UserProfile
 from lootboxes.models import Product
 
 class Order(models.Model):
-    # lets us see orders
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      null=True, blank=True, related_name='orders')
 
-    order_number = models.CharField(max_length=32, null=False, editable=False)
+    order_id_string = models.CharField(max_length=20, unique=True, editable=False, blank=True, null=True)
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
@@ -25,31 +24,27 @@ class Order(models.Model):
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
-
-    def _generate_order_number(self):
-        """Generate random order number using UUID"""
-        return uuid.uuid4().hex.upper()
     
     def update_total(self):
         """Update grand total each time a line item is added"""
-
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
-        # delivery is free, so grand total mirrors order total
         self.grand_total = self.order_total
         self.save()
 
     def save(self, *args, **kwargs):
-        """Override original save method to set the order number if it doesn't exist"""
-        if not self.order_number:
-            self.order_number = self._generate_order_number()
+        """Override save method to append CRAWL to order ID"""
         super().save(*args, **kwargs)
+        
+
+        if not self.order_id_string:
+            self.order_id_string = f"CRAWL#000{self.id}"
+            super().save(update_fields=['order_id_string'])
 
     def __str__(self):
-        return self.order_number
+        return self.order_id_string if self.order_id_string else f"CRAWL{self.id}"
 
 
 class OrderLineItem(models.Model):
-
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
     product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
@@ -61,4 +56,4 @@ class OrderLineItem(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'SKU {self.product.sku} on order {self.order.order_number}'
+        return f'SKU {self.product.sku} on order {self.order.order_id_string}'

@@ -38,8 +38,8 @@
                         {% for order in orders %}
                             <tr>
                                 <td>
-                                    <a href="#" class="text-warning text-decoration-none fw-bold" title="{{ order.order_number }}">
-                                        {{ order.order_number|truncatechars:14|upper }}
+                                    <a href="#" class="text-warning text-decoration-none fw-bold" title="{{ order.order_id_string }}">
+                                        {{ order.order_id_string|upper }}
                                     </a>
                                 </td>
                                 <td class="text-nowrap">{{ order.date|date:"Y-m-d H:i" }}</td>

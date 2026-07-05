@@ -23,7 +23,7 @@ class SupportTicktAdmin(admin.ModelAdmin):
 
     readonly_fields = ['created_at']
 
-    #Appends Tick# onto the front of the Ticket ID
-    @admin.display(description="TICK#", ordering="id")
-    def display_tick_id(self, obj):
+    #Appends Tick# onto the front of the Ticket ID admin panel
+    @admin.display(description="TICK#", ordering="ticket_id_string")
+    def ticket_id_string(self, obj):
         return obj.id

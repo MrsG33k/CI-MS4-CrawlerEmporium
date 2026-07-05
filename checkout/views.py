@@ -68,7 +68,7 @@ def checkout(request):
                     return redirect(reverse('view_backpack'))
                 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout_success', args=[order.order_id_string]))
         
         else:
             messages.error(request, 'ERROR: Input parsing failure.' \
@@ -122,12 +122,12 @@ def checkout(request):
         return render(request, template, context)
 
 
-def checkout_success(request, order_number):
+def checkout_success(request, order_id_string):
     """
     Handle successful checkouts and sync profile contact info if specified
     """
     save_info = request.session.get('save_info')
-    order = get_object_or_404(Order, order_number=order_number)
+    order = get_object_or_404(Order, order_id_string=order_id_string)
     
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
@@ -152,7 +152,7 @@ def checkout_success(request, order_number):
                 user_profile_form.save()
 
     messages.success(request, f"TRANSACTION COMPLETED. \
-        Order {order_number} is processed \
+        Order {order_id_string} is processed \
         I've sent the confirmation to {order.email}. ")
     
     if 'backpack' in request.session:

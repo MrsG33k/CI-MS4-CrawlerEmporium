@@ -1,1 +1,1 @@
-web: gunicorn crawleremporium.wsgi
+web: python -m gunicorn crawleremporium.wsgi

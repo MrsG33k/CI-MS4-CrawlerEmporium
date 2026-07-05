@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
 from pathlib import Path
+import dj_database_url
 
 # Import env.py if it exists
 if os.path.isfile('env.py'):
@@ -23,13 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7m&7ue5@-t+bistoryryu(c3=sd2g25lnws%_g=8fb+r_k$$-u'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-fallback-development-key-never-use-in-production')
 
-ALLOWED_HOSTS = []
+DEBUG = os.environ.get('DEBUG_VALUE', 'True') == 'True'
+
+# Prevents crashing if a file is missing
+WHITENOISE_MANIFEST_STRICT = False
+
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -123,12 +126,24 @@ WSGI_APPLICATION = 'crawleremporium.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Check to see if the app is running on Railway,
+# and if so, use the Railway database settings
+
+if 'DATABASE_URL' in os.environ:
+    # PRODUCTION - Pulls from Railway DB
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    # DEVELOPMENT - Falls back local DB
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
+
 
 
 # Password validation

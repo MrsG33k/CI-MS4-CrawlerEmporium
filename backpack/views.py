@@ -10,10 +10,20 @@ def view_backpack(request):
 
 def add_to_backpack(request, item_id):
     """Add an item to the backpack (cart)"""
+    # Override to default Quantity to 1 if it is ommited from the GET request.
+    quantity_raw = request.POST.get('quantity')
+    if not quantity_raw:
+        quantity = 1;
+    
+    else:
+        try:
+            quantity = int(quantity_raw)
+        except TypeError:
+            quantity = 1
+
 
     product = get_object_or_404(Product, pk=item_id)
-    quantity = int(request.POST.get('quantity'))
-    redirect_url = request.POST.get('redirect_url')
+    redirect_url = request.POST.get('redirect_url', reverse('products'))
     backpack = request.session.get('backpack',{})
 
     if item_id in list(backpack.keys()):

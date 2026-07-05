@@ -337,6 +337,8 @@ Please refer to [TESTING.md](TESTING.md) file for all testing carried out.
 | :--- | :--- | :--- | :--- |
 | 1 |Lootbox product detail | When displaying the sample contents on the front end, despite the json including `/n` - this was not being interpreted by Django and there were no linebreaks.  <img src="documentation/bug1linebreak.webp" align="left" alt="String of items with no linebreak" width="400"> | After looking at the [Django Framework documentation](https://docs.djangoproject.com/en/6.0/ref/templates/builtins/#linebreaksbr) I discovered I could use `linebreaksbr` on the template filter for the product details to render the linebreaks. <img src="documentation/bug1linebreakfix.webp" align="left" alt="String of items with a linebreak after using linebreaksbr" width="400">  |
 | 2 | Checkout Form | I have tried for a while to change the styling of checkout form, but seemed to have no end of issues with overriding the crispy forms defaults. If I had more time in this project I would have investigated more, but I have not had time and so it continues to show as white boxes on the checkout, which is slightly jarring against the rest of the sites more muted colours. | **Not resolved**|
+|3 | Flickity carousel - add to cart | Upon trying to add an item directly to backpack from the carousel it would throw a type error. `int() argument must be a string, a bytes-like object or a real number, not 'NoneType'` | After digging into the details, the issue arose due to the quantity not being passed when a user clicks add to cart. The loot details page requires this, and so because it is passing a null value it errors. This was fixed by modifying backpack/views.py to default the quantity to 1 if it is missing in the GET request. |
+
 
 
 

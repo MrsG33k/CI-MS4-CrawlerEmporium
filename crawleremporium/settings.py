@@ -116,7 +116,7 @@ SITE_ID = 1
 # Updated the Email environment settings 
 if 'DEVELOPMENT' not in os.environ:
     # Live Production on Railway with Brevo 
-    EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+    EMAIL_BACKEND = "anymail.backends.brevo.EmailBackend"
     ANYMAIL = {
     "BREVO_API_KEY": os.environ.get('BREVO_API_KEY'),
     }

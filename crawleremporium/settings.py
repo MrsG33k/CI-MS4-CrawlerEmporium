@@ -115,8 +115,8 @@ SITE_ID = 1
 if 'DEVELOPMENT' not in os.environ:
     # Live Production SMTP Switchboard
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_USE_SSL = True
-    EMAIL_PORT = 465
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
     EMAIL_HOST = 'smtp-relay.brevo.com'
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')

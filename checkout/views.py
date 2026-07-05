@@ -6,6 +6,9 @@ from .models import Order, OrderLineItem
 from backpack.contexts import backpack_contents
 from lootboxes.models import Product
 
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 
@@ -129,6 +132,9 @@ def checkout_success(request, order_id_string):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_id_string=order_id_string)
     
+    # Send order confirmation email
+    _send_confirmation_email(order)
+    
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         #link this order to the logged-in user profile permanently
@@ -163,3 +169,27 @@ def checkout_success(request, order_id_string):
         'order': order,
     }
     return render(request, template, context)
+
+def _send_confirmation_email(order):
+    """Send the user an order confirmation email"""
+    customer_email = order.email
+
+    # subject line text template
+    subject = render_to_string(
+        'checkout/confirmation_emails/confirmation_email_subject.txt',
+        {'order': order}
+    )
+
+    #  body text template
+    body = render_to_string(
+        'checkout/confirmation_emails/confirmation_email_body.txt',
+        {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL}
+    )
+
+    #Send email
+    send_mail(
+        subject,
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [customer_email]
+    )

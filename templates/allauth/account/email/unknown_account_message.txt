@@ -1,12 +1,12 @@
 {% extends "account/email/base_message.txt" %}
 {% load i18n %}
 
-{% block content %}{% autoescape off %}{% blocktrans %}You are receiving this e-mail because you or someone else has requested a
-password for your user account. However, we do not have any record of a user
-with email {{ email }} in our database.
+{% block content %}{% autoescape off %}{% blocktrans %}CREDENTIAL MISMATCH DETECTED: An external request was initialised to retrieve an access key for the identity associated with {{ email }}. 
 
-This mail can be safely ignored if you did not request a password reset.
+However, our central databases contain absolutely zero records matching this entry string. 
 
-If it was you, you can sign up for an account using the link below.{% endblocktrans %}
+If you did not execute this look-up sequence, you may disregard this message. 
 
-{{ signup_url }}{% endautoescape %}{% endblock %}
+If you are a crawler seeking authorisation to access the Crawler Emporium, you must manually register a new profile at the terminal link below:{% endblocktrans %}
+
+👉 {{ signup_url }}{% endautoescape %}{% endblock %}

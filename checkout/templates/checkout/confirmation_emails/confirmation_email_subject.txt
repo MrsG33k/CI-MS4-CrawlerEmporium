@@ -1,0 +1,1 @@
+Crawler Emporium: Order Confirmation - Ref No: {{ order.order_number|truncatechars:10 }}

@@ -1,0 +1,22 @@
+Greetings {{ order.full_name }},
+
+Thank you for placing your faith in Crawler Emporium. We will not let you down... mostly.
+The logistics droids have been dispatched to throw your package into the transit queue!
+
+==================================================
+📋 ORDER BREAKDOWN
+==================================================
+Order Number: {{ order.order_number }}
+Total Charged: £{{ order.grand_total }}
+
+==================================================
+📍 DELIVERY COORDINATES
+==================================================
+Address line 1: {{ order.street_address1 }}
+Town/City: {{ order.town_or_city }}
+Postcode: {{ order.postcode }}
+
+==================================================
+
+Happy Dungeon Crawling! 
+CRAWLER EMPORIUM

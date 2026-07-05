@@ -2,6 +2,11 @@
 {% load account %}
 {% load i18n %}
 
-{% block content %}{% autoescape off %}{% user_display user as user_display %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}You're receiving this e-mail because user {{ user_display }} has given your e-mail address to register an account on {{ site_domain }}.
+{% block content %}{% autoescape off %}{% user_display user as user_display %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}A registration protocol has been initiated. User identity "{{ user_display }}" has submitted this email address to establish an active crawler profile on the {{ site_name }} platform ({{ site_domain }}).
 
-To confirm this is correct, go to {{ activate_url }}{% endblocktrans %}{% endautoescape %}{% endblock %}
+CRITICAL VERIFICATION REQUIRED:
+To authorise this credential request and gain entry to the vault, you must manually execute the activation terminal link below:
+
+👉 {{ activate_url }}
+
+If you did not initiate this sequence, ignore it. The system will purge the unverified profile data shortly.{% endblocktrans %}{% endautoescape %}{% endblock %}

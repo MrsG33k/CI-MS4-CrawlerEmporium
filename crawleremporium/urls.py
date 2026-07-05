@@ -30,6 +30,7 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('profile/', include('profiles.urls')),
     path('support/', include('support.urls')),
+    path('showrunners/', include('showrunners.urls')),
     # Temporary testing path - delete or comment out before committing!
     path('test404/', TemplateView.as_view(template_name='404.html')),
 

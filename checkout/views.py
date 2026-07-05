@@ -191,5 +191,6 @@ def _send_confirmation_email(order):
         subject,
         body,
         settings.DEFAULT_FROM_EMAIL,
-        [customer_email]
+        [customer_email],
+        fail_silently=True
     )

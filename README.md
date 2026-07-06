@@ -122,6 +122,156 @@ Fonts were imported via [Google Fonts](https://fonts.google.com) for this projec
   <br>
 
 ### Wireframes
-Wireframes were mocked up during the early software analysis phase using Canva to plan grid configurations across responsive breakpoints (Desktop vs Mobile layouts). These documents allowed for clean tracking of text-wrapping parameters before building out custom HTML columns.
+Wireframes were created using [Canva.com](https://www.canva.com) to plan layouts on Desktop vs Mobile. I have created wireframes for 7 different style areas of the project.
+
+#### The Home / Index
+This wireframe covers the main navigation, and the homepage (index.html) that users will land on upon visiting the site. The idea being that the nav bar and footer are consistent throughout the site. The homepage will have a hero image spanning the width of the page with a clear call to action inviting users to explore products. I would also like to put a fake system log, to show the status of other users. 
+<table border="0">
+  <tr>
+    <td><img src="documentation/indexweb.webp" alt="Index desktop view" width="400"></td>
+    <td><img src="documentation/indexmob.webp" alt="Index Mobile view" height="300"></td>
+  </tr>
+</table>
+
+
+#### The Grid
+This wireframe covers the view of all products or all blog posts in a grid view. On desktop these will span the width of the screen and as the screen size reduces will eventually be one item per row. 
+<table border="0">
+  <tr>
+    <td><img src="documentation/gridweb.webp" alt="Grid desktop view" width="400"></td>
+    <td><img src="documentation/gridmob.webp" alt="Grid Mobile view" height="300"></td>
+  </tr>
+</table>
+
+#### The Details
+This wireframe covers the view of an individual product or an individual blog post. The image will be on the left hand side, with the details on the right hand side. The blog would have an addition of comments section, but this would sit underneath. 
+<table border="0">
+  <tr>
+    <td><img src="documentation/detailweb.webp" alt="Detail desktop view" width="400"></td>
+    <td><img src="documentation/detailmob.webp" alt="Detail Mobile view" height="300"></td>
+  </tr>
+</table>
+
+#### The Checkout
+This wireframe covers the view of the checkout. The idea is to make it as clear and easy for the user to view the items they are going to buy, fill in their details, and enter their card details. 
+<table border="0">
+  <tr>
+    <td><img src="documentation/checkoutweb.webp" alt="Checkout desktop view" width="400"></td>
+    <td><img src="documentation/checkout.webp" alt="Checkout Mobile view" height="300"></td>
+  </tr>
+</table>
+
+#### The Support / Tickets
+This wireframe covers the view of the support pages. The idea is that the user can see everything in one place. There will be a form on the left hand side for users to submit queries, followed by a series of FAQ on the right. This will stack vertically on mobile view. 
+<table border="0">
+  <tr>
+    <td><img src="documentation/supportweb.webp" alt="Support desktop view" width="400"></td>
+    <td><img src="documentation/supportmob.webp" alt="Support Mobile view" height="300"></td>
+  </tr>
+</table>
+
+#### Credential Pages
+This wireframe covers the view of the credentials pages. Whenever a user is asked to enter credentials, or confirm something. They are presented with a centralised view of the login fields with the rest of the screen completely empty. 
+<table border="0">
+  <tr>
+    <td><img src="documentation/accountweb.webp" alt="Account desktop view" width="400"></td>
+    <td><img src="documentation/accountmob.webp" alt="Account Mobile view" height="300"></td>
+  </tr>
+</table>
+
+#### Account / Profile Pages
+This wireframe covers the view of the user account. The idea is that the user can view/update their information and see their order history all from the same place. 
+<table border="0">
+  <tr>
+    <td><img src="documentation/profileweb.webp" alt="Profile desktop view" width="400"></td>
+    <td><img src="documentation/profilemob.webp" alt="Profile Mobile view" height="300"></td>
+  </tr>
+</table>
+---
+
+## Features
+
+### Core Application Features
+* **System Log :** A live Javascript system log ticker running timing patterns to simulate machine achievement notifications on page load. The idea of this was to simulate the view you get in a game whereby other players actions appear on your screen. It is also similar to other e-commerce websites whereby a toast will appear to display what other users have purchased. The ticker works by choosing from 3 different lists. 1. A list of user_ids, 2. A list of achievements, 3. A list of activities. After each timing gap it will randomly display a new combination of the three.
+    <br>
+    <img src="documentation/ticker.webp" alt="System log displaying random achievements" width="250">
+    <br>
+
+
+* **Flickity Inventory Carousel:** I decided to include a carousel using Flickity - A Javascript enabled carousel. It is touch enabled for mobiles and will allow users to add products to their cart seamlessly directly from the carousel, or click on the product image to load the product detail.
+    <br>
+    <img src="documentation/flickity.webp" alt="A carousel displaying 4 different products available" width="500">
+    <br>
+
+
+* **Support Desk Tickets:** A ticket dashboard where both guests and registered accounts can log tickets. Upon submission, a Django view automatically generates a new ticket in the table and assigns a string token to the ID (e.g., `TICK#0045`), it will then automatically send a plaintext summary back to the user's email.
+  <table border="0">
+    <tr>
+      <td><img src="documentation/ticket.webp" alt="Ticket form"  width="300"></td>
+      <td><img src="documentation/ticketemail.webp" alt="Ticket confirm email" height="400"></td>
+    </tr>
+  </table>
+
+* **'AI' Toasts:** Custom success notifications that pop up dynamically to alert users when items are added to their backpack, support tickets are raised and on profile account triggers. 
+  <table border="0">
+    <tr>
+      <td><img src="documentation/tickettoast.webp" alt="An announcement confirming ticket submission" width="300"></td>
+      <td><img src="documentation/toast2.webp" alt="An announcement confirming adding product to cart" width="300"></td>
+    </tr>
+  </table>
+
+
+### Future Implementations
+While the platform successfully satisfies all primary requirements for Milestone 4, the following ideas are scheduled for future deployments of the project. 
+
+* **Admin Frontend CRUD:** At the moment all of the administrative CRUD tasks happen inside of Djangos native admin dashboard. I would like to move database management parameters (product tracking, support tickets, and blog posts) into a custom frontend console wrapper protected by server-side `@user_passes_test`.
+<br>
+
+* **Live System Log:** At the moment the System log on the index page relies on a random selection of users / achievements. I would like to use realtime order data, and account data to provide the data for the system log ticker. 
+<br>
+
+* **Order Tracking:** At the moment, users can only see orders placed. There is no facility to edit the order or receive any order status / tracking updates. I would like to integrate a full order tracking interface to provide this level of detail. 
+<br>
+
+
+### Defensive Design
+
+To guarantee application stability, database integrity, and a continuous user experience, defensive programming principles were enforced across both the frontend layout and backend architecture.
+
+#### 1. Custom System Intercepts (404 & 500 Error Modules)
+* **The Safeguard:** If a user navigates to a URL that doesn't exist, or a server exception is triggered, the system intercepts the break using custom-routed templates (`404.html` and `500.html`) instead of crashing to standard browser diagnostic screens.
+* **In-Universe Continuity:** To match the site aesthetic, these pages feature a clear, stylised error message alongside a highly visible **[Return to Safezone]** and **[Browse Available Loot]** navigation buttons, ensuring the user is never stranded and can seamlessly re-enter the main storefront loop.
+    <br>
+    <img src="documentation/404.webp" alt="404 Error page displayed" width="500">
+    <br>
+
+
+#### 2. Role-Based View Protection (Native Django Admin Guardrails)
+* **The Safeguard:** Access to the platform's inventory backend, support log databases, and blog dashboard is centralised and guarded via Django's built-in administration path (`/admin`).
+* **Defensive Action:** Server-side checks actively prevent unauthorised or standard user profiles from viewing, accessing, or manipulating database tables. If an unauthenticated user or non-staff account attempts to access or force-type administrative URL paths, Django’s native authentication blocks execution instantly and forces a redirect back to admin login gateway.
+    <br>
+    <img src="documentation/adminlogin.webp" alt="Django admin panel login" width="500">
+    <br>
+
+#### 3. Secure Form & Data Input Validation
+* **The Safeguard:** All interactive client-side entry fields are validated using a defensive approach:
+  * **Frontend Verification:** Built-in HTML5 attributes (`required`, `min`, `max`, `type="number"`) restrict user inputs right at the interface stage preventing characters in numeric boxes or quantities out of bounds inside the active shopping Backpack.
+  * **Backend Verification:** To protect against attacks such as SQL injection, Django’s native form validation processing pipeline (`form.is_valid()`) checks all incoming tokens before saving them to the live PostgreSQL database. If data is corrupted/incorrect, the form securely reloads with error tooltips at the affected fields explaining to the user what they need to do.
+    <br>
+    <img src="documentation/formvalidation.webp" alt="Form validation on invalid email address" width="500">
+    <br>
+
+#### 4. Transaction Verification & Stripe
+* **The Safeguard:** The application uses backend Stripe element webhooks to process payments. If a user loses internet connectivity or closes their browser tab mid-transaction, the server-side webhook catches the confirmation direct from Stripe and builds the order entry in the database anyway. This prevents "ghost charges" where a customer is billed but their purchase log fails to save.
+
+### Accessibility
+* **Semantic HTML structures:** HTML built using semantic structural tags (`<main>`, `<header>`, `<footer>`, `<section>`).
+* **Interactive Focus Tracking:** Focus boundaries (`:focus`) are used to create high-contrast glow markers around input loops and dropdown selectors for keyboard users.
+* **Descriptive Metadata:** Images use `alt` tags to provde comprehension to screen reader technologies.
+* **ARIA Assistive Technology:** Interactive elements have been given `aria-label` attributes to ensure screen readers can clearly announce their purpose to those using assistive technologies, keyboard navigation and screen readers. 
 
 ---
+
+## Database Schema & Architecture
+
+The application implements a relational layout structure powered by a live PostgreSQL instance.

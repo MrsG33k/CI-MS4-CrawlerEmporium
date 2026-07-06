@@ -14,3 +14,6 @@ env.py
 
 # Databases (in case you use local sqlite temporarily)
 *.sqlite3
+
+#Local Static Files
+staticfiles/

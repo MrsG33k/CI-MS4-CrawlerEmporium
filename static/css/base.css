@@ -66,20 +66,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/* ----- Custom Styles by Jennie Whittaker----- */
+/* ----- Custom Styles by Jennie Whittaker ----- */
 
-/* Custom Palette Variables matching the Book Cover */
+/* Root colour variables */
 :root {
     --hazard-yellow: #FFD200;
     --neon-pink: #FF007F;
     --dungeon-dark: #0F1012;
     --vault-black: #050607;
     --panel-border: #2D3139;
+    --bg-prime-card: #0D0F12;
+    --neon-yellow: #ffc107;
 }
 
-.bg-fuchsia {
-    background-color: var(--neon-pink) !important;
-    color: #fff !important; /
+/* Styling for fonts and site layout */
+body, 
+.p, 
+.logo-font, 
+.header-font, 
+.font-nav, 
+.font-sub,
+.breadcrumb-item + .breadcrumb-item::before {
+    font-family: 'Encode Sans Condensed', sans-serif;
 }
 
 html {
@@ -89,47 +97,102 @@ html {
 body {
     color: #555;
     background-color: var(--dungeon-dark) !important;
-    font-family: 'Encode Sans Condensed', sans-serif;
     letter-spacing: 0.03em;
 }
 
 .p {
-    font-family: 'Encode Sans Condensed', sans-serif;
     font-size: 0.95rem;
     line-height: 1.5;
 }
 
-/* Typography Overrides */
 .logo-font {
-    font-family: 'Encode Sans Condensed', sans-serif;
     font-weight: 900;
     text-shadow: 0 0 10px rgba(255, 210, 0, 0.2);
 }
 
 .header-font {
-    font-family: 'Encode Sans Condensed', sans-serif;
     font-weight: 700;
     letter-spacing: 0.1em;
 }
 
 .font-nav {
-    font-family: 'Encode Sans Condensed', sans-serif;
     font-size: 0.85rem;
     letter-spacing: 0.12em;
 }
 
 .font-sub {
-    font-family: 'Encode Sans Condensed', sans-serif;
     text-transform: uppercase;
 }
 
-.tracking-wider {
+.tracking-wider,
+.backpack-title {
     letter-spacing: 0.12em !important;
 }
 
-/* Text Highlight Alterations */
+.letter-spacing-1 {
+    letter-spacing: 1px;
+}
+
+.extra-small,
+.subtext,
+.qty-label,
+.btn-product-action,
+.achievement-text-node,
+.auth-forgot-password-link {
+    font-size: 0.75rem;
+}
+
+.comment-body-text, 
+.lead-body-text {
+    letter-spacing: 0.03rem;
+    word-spacing: 0.05rem;
+}
+
+/* Styling for Colour changes */
+
+.bg-fuchsia {
+    background-color: var(--neon-pink) !important;
+    color: #fff !important;
+}
+
 .text-warning { 
     color: var(--hazard-yellow) !important; 
+}
+
+.text-pink,
+.text-pink-system {
+    color: var(--neon-pink);
+    text-shadow: 0 0 12px rgba(255, 0, 127, 0.4);
+}
+
+.text-glow {
+    text-shadow: 0 0 4px rgba(221, 240, 13, 0.6);
+}
+
+.text-muted-hover:hover {
+    color: var(--hazard-yellow) !important;
+    transition: color 0.15s ease-in-out;
+}
+
+.text-warning-hover:hover {
+    color: var(--neon-pink) !important;
+    transition: color 0.15s ease-in-out;
+}
+
+/* 4. BUTTONS & BUTTON HOVERS */
+.glow-btn {
+    background-color: var(--hazard-yellow);
+    color: var(--vault-black);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease-in-out;
+}
+
+.glow-btn:hover {
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0 0 20px var(--hazard-yellow);
+    transform: translateY(-1px);
 }
 
 .btn-outline-warning {
@@ -143,222 +206,11 @@ body {
     box-shadow: 0 0 15px rgba(255, 210, 0, 0.4);
 }
 
-
-/* Hero Image styl */
-.hero-jumbotron {
-    background: linear-gradient(90deg, rgba(5, 6, 7, 0.95) 30%, rgba(5, 6, 7, 0.7) 60%, rgba(15, 16, 18, 0.2) 100%), 
-                url('/static/images/dungeonbg.webp') center/cover no-repeat;
-    border: 1px solid var(--panel-border);
-    border-radius: 6px;
-    box-shadow: inset 0 0 40px rgba(0,0,0,0.8), 0 0 25px rgba(230, 219, 224, 0.15); 
-}
-
-
-.hero-description-text {
-    max-width: 540px;
-    color: rgba(255, 255, 255, 0.85) !important; 
-    font-weight: 500;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-}
-
-.text-pink {
-    color: var(--neon-pink);
-    text-shadow: 0 0 12px rgba(255, 0, 127, 0.4);
-}
-
-.glow-btn {
-    background-color: var(--hazard-yellow);
-    color: var(--vault-black);
-    font-family: 'Encode Sans Condensed', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    transition: all 0.2s ease-in-out;
-}
-.glow-btn:hover {
-    background-color: #fff;
-    color: #000;
-    box-shadow: 0 0 20px var(--hazard-yellow);
-    transform: translateY(-1px);
-}
-
-.text-muted-hover:hover {
-    color: var(--hazard-yellow) !important;
-    transition: color 0.15s ease-in-out;
-}
-
-.text-warning-hover:hover {
-    color: var(--neon-pink) !important;
-    transition: color 0.15s ease-in-out;
-}
-
-/* Custom Interactive UI Variables */
-.custom-search-input:focus {
-    background-color: #212529 !important;
-    border-color: #ffc107 !important;
-    color: #fff !important;
-    box-shadow: 0 0 8px rgba(255, 193, 7, 0.25) !important;
-}
-
-.custom-cart-btn {
-    transition: all 0.2s ease-in-out;
-}
-
-.custom-cart-btn:hover {
-    background-color: #212529 !important;
-    border-color: #ffc107 !important;
-    box-shadow: 0 0 10px rgba(255, 193, 7, 0.15);
-}
-
-.dropdown-item:hover {
-    background-color: #ffc107 !important;
-    color: #000 !important;
-}
-
-
-
-/* from Bulma (another framework that centers fontawesome icons  */
-.icon {
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    height: 1.5rem;
-    width: 1.5rem;
-}
-
-/* Overlay for the Items in lootboxes */
-
-.custom-dungeon-card {
-    transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-/* Hover lift effect for the items in lootboxes */
-.custom-dungeon-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--bs-warning) !important;
-    box-shadow: 0 10px 20px rgba(255, 210, 0, 0.05) !important;
-}
-
-/*Product Item hover */
-.custom-dungeon-card:hover .text-secondary-hover {
-    color: #ffffff !important;
-    transition: color 0.2s ease-in-out;
-}
-
-
-/* Display for product details */
-.custom-system-log-card {
-    background-color: #0d0f12 !important; 
-    border: 1px solid rgba(108, 117, 125, 0.25) !important; 
-    border-radius: 0.5rem !important; 
-}
-
-/* Lootbox sorting select styling */
-.custom-dungeon-select {
-    background-color: #0d0f12 !important;
-    color: #f8f9fa !important;
-    font-family: 'Courier New', Courier, monospace; 
-    font-size: 0.85rem !important;
-    border: 1px solid rgba(108, 117, 125, 0.4) !important;
-    background-image: url('/static/images/arrow.svg') !important; /* Custom arrow image */
-    background-repeat: no-repeat;
-    background-size: 10px 12px;
-}
-
-/* Changes the select dropdown background and text colours */
-.custom-dungeon-select option {
-    background-color: #0d0f12 !important;
-    color: #f8f9fa !important;
-}
-
-.custom-dungeon-select:focus {
-    border-color: #ffc107 !important;
-    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.15) !important;
-}
-    
-
-/* Ensure form field focuses keep consistent hazard glows */
-.qty_input:focus {
-    background-color: rgba(0, 0, 0, 0.8) !important;
-    color: #ffc107 !important;
-    border-color: #ffc107 !important;
-    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.15) !important;
-}
-
-/* Smooth micro-interaction transitions for action links */
 .btn-warning:hover {
     background-color: #e0a800 !important;
     box-shadow: 0 0 12px rgba(255, 193, 7, 0.3);
 }
 
-/* Bootstrap overrides */
-
-/* Product Detail Form Custom Styles */
-
-/* Label for No of Units */
-.qty-label {
-    font-size: 0.75rem;
-}
-
-/* Wrapper for the quantity input group */
-.qty-input-group {
-    width: 160px;
-    max-width: 100%;
-}
-
-/* The actual number input field */
-.qty-input-field {
-    font-size: 1rem;
-    letter-spacing: 0.5px;
-}
-
-/* Actions: Keep Shopping & Add to Backpack buttons */
-.btn-product-action {
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-}
-
-/* Force main layout structure to push footer to the bottom */
-.backpack-page-wrapper {
-    min-height: 75vh;
-    background-color: #0d0f12;
-    color: #f8f9fa;
-}
-
-/* Table Theme Custom Overrides (Desktop Only) */
-.table-crawler {
-    color: #f8f9fa !important;
-    background-color: transparent !important;
-}
-
-.table-crawler td, 
-.table-crawler th {
-    color: #f8f9fa !important;
-    background-color: transparent !important;
-    border-bottom: 1px solid rgba(108, 117, 125, 0.15) !important;
-}
-
-.backpack-title {
-    color: #f8f9fa;
-    letter-spacing: 0.12em;
-}
-
-/* Drone Compliance Text block styling matching AI text */
-.compliance-container {
-    background-color: rgba(5, 6, 7, 0.4);
-    border: 1px solid rgba(108, 117, 125, 0.2);
-}
-
-.text-pink-system {
-    color: #FF007F;
-    text-shadow: 0 0 12px rgba(255, 0, 127, 0.4);
-}
-
-/* Custom tracking adjustments */
-.letter-spacing-1 {
-    letter-spacing: 1px;
-}
-
-/* Sassy Trash/Remove Button Styling */
 .remove-item-btn {
     background: none;
     border: none;
@@ -369,37 +221,238 @@ body {
 }
 
 .remove-item-btn:hover {
-    color: #FF007F;
+    color: var(--neon-pink);
     text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
 }
 
-/* Mobile Inventory Card Styling */
+/* Styling for forms / buttons */
+
+.custom-search-input:focus,
+.custom-cart-btn:hover {
+    background-color: #212529 !important;
+    border-color: var(--neon-yellow) !important;
+}
+
+.custom-search-input:focus {
+    color: #fff !important;
+    box-shadow: 0 0 8px rgba(255, 193, 7, 0.25) !important;
+}
+
+.custom-cart-btn {
+    transition: all 0.2s ease-in-out;
+}
+
+.custom-cart-btn:hover {
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.15);
+}
+
+.dropdown-item:hover {
+    background-color: var(--neon-yellow) !important;
+    color: #000 !important;
+}
+
+.custom-dungeon-select {
+    background-color: var(--bg-prime-card) !important;
+    color: #f8f9fa !important;
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: 0.85rem !important;
+    border: 1px solid rgba(108, 117, 125, 0.4) !important;
+    background: url('/static/images/arrow.svg') no-repeat !important;
+    background-size: 10px 12px !important;
+}
+
+.custom-dungeon-select option {
+    background-color: var(--bg-prime-card) !important;
+    color: #f8f9fa !important;
+}
+
+.custom-dungeon-select:focus,
+.qty_input:focus {
+    border-color: var(--neon-yellow) !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.15) !important;
+}
+
+.qty_input:focus {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    color: var(--neon-yellow) !important;
+}
+
+.qty-input-group {
+    width: 160px;
+    max-width: 100%;
+}
+
+.qty-input-field {
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+/* Styling for the cards and jumbotron */
+.backpack-page-wrapper {
+    min-height: 75vh;
+    background-color: var(--bg-prime-card);
+    color: #f8f9fa;
+}
+
+.hero-jumbotron {
+    background: linear-gradient(90deg, rgba(5, 6, 7, 0.95) 30%, rgba(5, 6, 7, 0.7) 60%, rgba(15, 16, 18, 0.2) 100%), 
+                url('/static/images/dungeonbg.webp') center/cover no-repeat;
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.8), 0 0 25px rgba(230, 219, 224, 0.15); 
+}
+
+.hero-description-text {
+    max-width: 540px;
+    color: rgba(255, 255, 255, 0.85) !important; 
+    font-weight: 500;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.custom-dungeon-card {
+    transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.custom-dungeon-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--bs-warning) !important;
+    box-shadow: 0 10px 20px rgba(255, 210, 0, 0.05) !important;
+}
+
+.custom-dungeon-card:hover .text-secondary-hover {
+    color: #ffffff !important;
+    transition: color 0.2s ease-in-out;
+}
+
+.custom-system-log-card,
+.ai-toast-header {
+    background-color: var(--bg-prime-card) !important; 
+}
+
+.custom-system-log-card {
+    border: 1px solid rgba(108, 117, 125, 0.25) !important; 
+    border-radius: 0.5rem !important; 
+}
+
+.compliance-container,
 .mobile-loot-card {
-    background-color: rgba(11, 12, 16, 0.6);
     border: 1px solid rgba(108, 117, 125, 0.25);
 }
 
+.compliance-container {
+    background-color: rgba(5, 6, 7, 0.4);
+}
 
-/* Toast Styling */
+.mobile-loot-card {
+    background-color: rgba(11, 12, 16, 0.6);
+}
+
+.card-image-container,
+.main-feature-img-box {
+    object-fit: cover;
+}
+
+.card-image-container {
+    height: 200px;
+}
+
+.card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main-feature-img-box {
+    max-height: 450px;
+}
+
+/* Flickity & Bulma Styling  */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.carousel-cell { 
+    height: 100%; 
+}
+
+.loot-carousel .carousel-cell {
+    width: 100%;
+    min-height: 420px;
+}
+
+.loot-carousel-img-container {
+    height: 160px;
+}
+
+.loot-carousel-desc {
+    font-size: 0.8rem;
+}
+
+
+/* Styling for the carousel on mobile */
+
+@media (min-width: 576px) { .loot-carousel .carousel-cell { width: 50%; } }
+@media (min-width: 768px) { .loot-carousel .carousel-cell { width: 33.33%; } }
+@media (min-width: 1200px) { .loot-carousel .carousel-cell { width: 25%; } }
+
+
+
+/* Styles for modules i.e. Tickers / Toasts */
+.system-log-wrapper {
+    background-color: #000000;
+    border: 1px solid var(--panel-border);
+}
+
+.system-log-container {
+    font-size: 0.85rem;
+    max-height: 230px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.achievement-banner-card {
+    background-color: var(--dungeon-dark);
+    border: 1px solid rgba(25, 135, 84, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in-tick {
+    animation: fadeInTickEffect 0.4s ease-in-out forwards;
+}
+
+@keyframes fadeInTickEffect {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .ai-toast-container {
-    background-color: #050607 !important; /* var(--vault-black) */
-    border: 2px solid #FF007F !important;  /* var(--neon-pink) */
+    background-color: var(--vault-black) !important;
+    border: 2px solid var(--neon-pink) !important;
     box-shadow: 0 0 15px rgba(255, 0, 127, 0.4) !important;
     min-width: 320px;
 }
+
 .ai-toast-header {
-    background-color: #0d0f12 !important; /* var(--bg-dark-prime) */
     border-bottom: 1px solid rgba(108, 117, 125, 0.25) !important;
 }
+
 .toast-achievement-title {
     font-family: 'Encode Sans Condensed', sans-serif;
     font-weight: 900;
     letter-spacing: 1px;
-    color: #FFD200 !important; /* var(--hazard-yellow) */
+    color: var(--hazard-yellow) !important;
     text-shadow: 0 0 8px rgba(255, 210, 0, 0.3);
 }
+
 .toast-close-btn {
-    filter: invert(1) grayscale(1) brightness(2); /* white close button */
+    filter: invert(1) grayscale(1) brightness(2);
 }
 
 .ai-toast-message {
@@ -412,90 +465,16 @@ body {
     letter-spacing: 0.5px !important;
 }
 
-/* Flickity CSS Styling */
-.carousel-cell { height: 100%; }
-
-/* Force the cells and slider canvas to have a visible, standard uniform layout structure */
-.loot-carousel .carousel-cell {
-    width: 100%;
-    min-height: 420px;
+.table-crawler,
+.table-crawler td, 
+.table-crawler th {
+    color: #f8f9fa !important;
+    background-color: transparent !important;
 }
 
-/* Ensure cards are visible on tablet up */
-@media (min-width: 576px) {
-    .loot-carousel .carousel-cell { width: 50%; }
-}
-@media (min-width: 768px) {
-    .loot-carousel .carousel-cell { width: 33.33%; }
-}
-@media (min-width: 1200px) {
-    .loot-carousel .carousel-cell { width: 25%; }
-}
-
-
-/* Live System Logs Ticker Classes */
-.system-log-wrapper {
-    background-color: #000000;
-    border: 1px solid var(--panel-border);
-}
-
-.system-log-container {
-    font-size: 0.85rem;
-}
-
-.achievement-banner-card {
-    background-color: var(--dungeon-dark);
-    border: 1px solid rgba(25, 135, 84, 0.5); /* Boostrap success with opacity */
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.achievement-text-node {
-    font-size: 0.75rem;
-}
-
-/* Carousel Sizing Fixes */
-.loot-carousel-img-container {
-    height: 160px;
-}
-
-.loot-carousel-desc {
-    font-size: 0.8rem;
-}
-
-/* Smooth fade-in animation for incoming log ticks */
-.fade-in-tick {
-    animation: fadeInTickEffect 0.4s ease-in-out forwards;
-}
-
-@keyframes fadeInTickEffect {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Restrict system log height to prevent container expansion */
-.system-log-container {
-    max-height: 230px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-/* Footer Styling */
-.footer-brand-title {
-    font-size: 1.1rem;
-}
-
-.footer-description {
-    color: rgba(255, 255, 255, 0.5) !important;
-    line-height: 1.6;
-    max-width: 320px;
-    text-transform: none !important;
-}
-
-.subtext {
-    font-size: 0.75rem;
+.table-crawler td, 
+.table-crawler th {
+    border-bottom: 1px solid rgba(108, 117, 125, 0.15) !important;
 }
 
 .badge-crawler-auth {
@@ -503,15 +482,10 @@ body {
     box-shadow: 0 0 10px rgba(255, 210, 0, 0.1);
 }
 
-/* Change the form validation to Pink */
 .backpack-page-wrapper .text-danger,
 .backpack-page-wrapper .alert-danger {
     color: var(--neon-pink) !important; 
     border-color: rgba(255, 0, 127, 0.25) !important;
-}
-
-.auth-forgot-password-link {
-    font-size: 0.75rem;
 }
 
 .vault-ledger-scroll-container {
@@ -519,11 +493,9 @@ body {
     overflow-y: auto;
 }
 
-/* Custom System Breadcrumbs */
 .breadcrumb-item + .breadcrumb-item::before {
     content: ">" !important;
     color: var(--bs-secondary) !important;
-    font-family: 'Encode Sans Condensed', sans-serif;
     opacity: 0.5;
 }
 
@@ -532,18 +504,27 @@ body {
     transition: all 0.2s ease-in-out;
 }
 
-/* Styles for the Support FAQ Accordion */
 .accordion-button::after {
     filter: invert(1) sepia(1) saturate(5) hue-rotate(10deg);
 }
+
 .accordion-button:not(.collapsed) {
-    background-color: #212529 !important;
-    color: #ffc107 !important;
+    background-color: #2d3238 !important; 
+    color: var(--neon-yellow) !important; 
+    border-bottom: 2px solid var(--neon-yellow); 
     box-shadow: none;
 }
-.disabled {
-    cursor: not-allowed !important;
-    pointer-events: all !important;
+
+.accordion-button.collapsed {
+    background-color: #1a1d20 !important; 
+    color: #eff0e5 !important; 
+    font-family: var(--bs-font-monospace), monospace;
+    transition: all 0.2s ease;
+}
+
+.accordion-button.collapsed:hover {
+    background-color: #25292e !important;
+    color: var(--neon-yellow) !important;
 }
 
 .accordion-body {
@@ -554,71 +535,36 @@ body {
     color: #f8f9fa !important;
 }
 
-/* The closed header state */
-.accordion-button.collapsed {
-    background-color: #1a1d20 !important; 
-    color: #eff0e5 !important; 
-    font-family: var(--bs-font-monospace), monospace;
-    transition: all 0.2s ease;
-}
-
-.accordion-button.collapsed:hover {
-    background-color: #25292e !important;
-    color: #ffc107 !important; /* Turns gold on hover */
-}
-
-/* FAQ Selected state */
-.accordion-button:not(.collapsed) {
-    background-color: #2d3238 !important; 
-    color: #ffc107 !important; 
-    border-bottom: 2px solid #ffc107; 
-    box-shadow: none;
-}
-
-/* Styles r the Support Desk Page */
-
-.text-glow {
-    text-shadow: 0 0 4px rgba(221, 240, 13, 0.6);
+.disabled {
+    cursor: not-allowed !important;
+    pointer-events: all !important;
 }
 
 .hr-theme-line {
     width: 120px;
     height: 3px;
-    background-color: #ffc107;
+    background-color: var(--neon-yellow);
     margin: 0 auto;
     box-shadow: 0 0 8px rgba(255, 193, 7, 0.5);
-}
-.card-image-container {
-    height: 200px;
-}
-.card-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.extra-small {
-    font-size: 0.75rem;
 }
 
 .hover-card-transition {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .hover-card-transition:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 20px rgba(255, 193, 7, 0.1) !important;
-    border-color: #ffc107 !important;
+    border-color: var(--neon-yellow) !important;
 }
 
-.main-feature-img-box {
-    max-height: 450px;
+.footer-brand-title {
+    font-size: 1.1rem;
 }
-.main-feature-img-box img {
-    object-fit: cover;
-}
-.extra-small {
-    font-size: 0.75rem;
-}
-.comment-body-text, .lead-body-text {
-    letter-spacing: 0.03rem;
-    word-spacing: 0.05rem;
+
+.footer-description {
+    color: rgba(255, 255, 255, 0.5) !important;
+    line-height: 1.6;
+    max-width: 320px;
+    text-transform: none !important;
 }

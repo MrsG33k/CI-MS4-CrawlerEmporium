@@ -20,7 +20,7 @@
             <div class="p-4 bg-black bg-opacity-40 border border-secondary border-opacity-30 rounded-0 text-light">
                 
                 {% if user.emailaddress_set.all %}
-                    <p class="mb-3 font-sub text-muted">{% trans 'The following e-mail addresses are associated with your account:' %}</p>
+                    <p class="mb-3 font-sub text-white">{% trans 'The following e-mail addresses are associated with your account:' %}</p>
 
                     <form action="{% url 'account_email' %}" class="email_list" method="post">
                         {% csrf_token %}

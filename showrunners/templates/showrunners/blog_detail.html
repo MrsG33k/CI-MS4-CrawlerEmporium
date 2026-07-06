@@ -55,7 +55,7 @@
                 <div class="comment-feed-stream mb-4">
                     {% for comment in comments %}
                         <div class="p-3 bg-dark bg-opacity-50 border border-secondary rounded mb-3 font-monospace">
-                            <div class="d-flex justify-content-between align-items-center extra-small text-muted border-bottom border-secondary border-opacity-25 pb-2 mb-2">
+                            <div class="d-flex justify-content-between align-items-center extra-small text-white border-bottom border-secondary border-opacity-25 pb-2 mb-2">
                                 <span>
                                     <i class="fas fa-user text-warning me-1"></i> 
                                     <span class="text-warning fw-bold">
@@ -100,7 +100,7 @@
                         </form>
                     {% else %}
                         <div class="text-center py-2 font-monospace">
-                            <p class="text-muted small mb-3">Transmission closed. Anonymous entities are blocklisted from writing commentary data.</p>
+                            <p class="text-white small mb-3">Transmission closed. Anonymous entities are blocklisted from writing commentary data.</p>
                             <a href="{% url 'account_login' %}" class="btn btn-sm btn-outline-danger">
                                 [  SIGN-IN TO COMMENT ]
                             </a>

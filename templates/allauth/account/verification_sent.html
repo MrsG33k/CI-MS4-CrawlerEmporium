@@ -1,12 +1,37 @@
-{% extends "account/base.html" %}
-
+{% extends "base.html" %}
 {% load i18n %}
 
 {% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Verify Your E-mail Address" %}</h1>
-
-    <p>{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. If you do not see the verification e-mail in your main inbox, check your spam folder. Please contact us if you do not receive the verification e-mail within a few minutes.{% endblocktrans %}</p>
-
+<div class="container my-5 py-4 backpack-page-wrapper">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 text-center">
+            
+            <div class="bg-black border border-secondary rounded-2 p-4 font-sub shadow-lg text-light">
+                
+                <h2 class="logo-font text-white text-uppercase tracking-wider mb-3 fs-4">
+                    Verify Your <span class="text-warning">E-mail Address</span>
+                </h2>
+                <hr class="border-secondary border-opacity-25 mb-4">
+                
+                <div class="text-start font-inter text-transform-none text-muted lh-base mb-4">
+                    <p class="mb-3">
+                        {% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalise the signup process.{% endblocktrans %}
+                    </p>
+                    <p class="mb-0 small text-pink">
+                        <i class="fas fa-info-circle me-1"></i> 
+                        {% blocktrans %}If you do not see the verification e-mail in your main inbox, check your spam folder. Please contact us if you do not receive the verification e-mail within a few minutes.{% endblocktrans %}
+                    </p>
+                </div>
+                
+                <a href="{% url 'home' %}" class="btn btn-warning font-nav text-uppercase text-dark fw-bold tracking-wider rounded-0 btn-sm px-4 py-2 w-100">
+                    Acknowledge &amp; Return Home
+                </a>
+                
+            </div>
+            
+        </div>
+    </div>
+</div>
 {% endblock %}

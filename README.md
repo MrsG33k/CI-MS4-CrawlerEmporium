@@ -87,3 +87,41 @@ The colour scheme for this project is based on the first Dungeon Crawler Carl bo
 
 Once again, these colours are declared as global CSS variables inside the `:root` selector. This guarantees colour changes are managed in one location rather than hardcoded throughout the file.
 
+### Typography
+Fonts were imported via [Google Fonts](https://fonts.google.com) for this project alongside system fonts.
+
+* **Headings, Badges, & Navigation Headers:** `Encode Sans Condensed` (Weights: 700, 900) provides a blocky, compact look similar to the book title font.
+  <br>
+  <img src="documentation/encodesansfont.webp" alt="Encode Sans font" width="400">
+* **Toasts & System Readouts:** `Courier New` / Monospace was used in areas of the project to simulate a machine-terminal narrative. 
+  <br>
+  <img src="documentation/couriernewfont.webp" alt="Courier New font" width="400">
+* **General Informational Reading:** `Helvetica Neue` / Arial variants used in areas with heavy text content,such as the Support FAQ text, to improve readability and avoid eye strain. 
+  <br>
+  <img src="documentation/helveticafont.webp" alt="Helvetica Neue font" width="400">
+  <br>
+
+### Imagery
+* **System Logo (`celogo.svg`):** A custom asset was created in Photopea based on the colours, typography and assets found on the Dungeon Crawler Carl books. 
+    <br>
+    <img src="static/images/celogo.svg" alt="Crawler Emporium Font" width="300">
+    <br>
+* **Favicon (`favicon.ico`):** A custom favicon was created based on the lettering and loot box found in the logo for the project.
+    <br>
+    <img src="static/images/favicon.ico" alt="Crawler Emporium Font" width="50">
+    <br>
+* **Loot Box / Blog Graphics:** A collection of 20 themed loot box items, three supporting blog post images and the background on the carousel were generated through [Magnific.com](https://magnific.com) 
+    <br>
+* **Fallback Asset (`no-image.webp`):** A custom image created using [Canva.com](https://www.canva.com) used across the site if an inventory item is created without an image - to ensure it blends in seamlessly with the project theming.
+    <br>
+    <img src="static/images/noimage.webp" alt="Fallback Image" width="300">
+  <br>
+* **404 (`404.png`):** A custom image was created using [Magnific.com](https://magnific.com) for the 404 landing page. It was designed to look like an exploded lootbox. 
+    <br>
+    <img src="static/images/404.png" alt="Fallback Image" width="300">
+  <br>
+
+### Wireframes
+Wireframes were mocked up during the early software analysis phase using Canva to plan grid configurations across responsive breakpoints (Desktop vs Mobile layouts). These documents allowed for clean tracking of text-wrapping parameters before building out custom HTML columns.
+
+---

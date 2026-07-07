@@ -272,6 +272,165 @@ To guarantee application stability, database integrity, and a continuous user ex
 
 ---
 
-## Database Schema & Architecture
+## Database Architecture
 
-The application implements a relational layout structure powered by a live PostgreSQL instance.
+The application implements a relational layout structure powered by a live PostgreSQL database.
+<< Insert ERD here>>
+
+## Technologies Used
+
+* **Languages:** HTML5, CSS3, Python
+* **Frameworks:** Django, Bootstrap 5
+* **Database:** PostgreSQL
+* **Hosting:** [Railway](https://www.railway.com)
+
+
+### Tools & Libraries Used
+
+**Development Environments & Version Control**
+* [VS Code](https://code.visualstudio.com/) - IDE used to create the site.
+* [Git](https://git-scm.com/) - For version control.
+* [Github](https://github.com/) - To save and store the files for the website.
+* [Pip](https://pypi.org/project/pip/) - Tool for installing Python packages.
+
+**External APIs & E-Commerce Integrations**
+* [Stripe Engine API](https://stripe.com/) - Used to handle secure credit card verification, processing payment authentication.
+* [Brevo Cloud Mail Server](https://www.brevo.com/) - External cloud email service platform used to manage and distribute automated text emails to users via an API key handshake.
+
+**Python Packages & Libraries**
+* [Django Allauth](https://docs.allauth.org/en/latest/installation/quickstart.html) - Open source Django package that provides a complete, ready to use authentication and registration system.
+* [WhiteNoise](https://whitenoise.readthedocs.io/en/stable/django.html) - Allows the Django web application to serve its own static files (CSS/JavaScript/Images) directly in production.
+* [Psycopg2-binary](https://pypi.org/project/psycopg2-binary/) - Allows the Django application to connect and communicate with PostgreSQL databases.
+* [Django Anymail](https://anymail.dev/en/stable/) - Integrates the Django mailing layer with Brevo via a secure HTTP API connection.
+* [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) - Used to control and render clean, responsive Bootstrap 5 input structures directly within Django template loops.
+* [Pillow](https://pillow.readthedocs.io/en/stable/) - A Python imaging library used to handle processing verification checks on database model image file fields.
+
+**Frontend Packages & Libraries**
+* [Flickity](https://flickity.metafizzy.co/) - A responsive, touch-enabled JavaScript library used to build the responsive lootbox carousel slider on the homepage.
+
+**Design, Assets & Wireframing**
+* [Canva](https://www.canva.com/online-whiteboard/wireframes/) - Used to create wireframes.
+* [Photopea](https://www.photopea.com/) - Used to edit and create graphics for the project.
+* [To WebP](https://towebp.io/) - Used to convert images to WebP format.
+* [Real Favicon Generator](https://realfavicongenerator.net/) - Used to create the favicon based on the logo.
+* [Google Fonts](https://fonts.google.com/) - Google fonts were used for typography across the project.
+* [PostImages](https://postimg.cc/) - Used to host the product images on production server.
+
+**Database Planning**
+* [dbdiagram.io](https://dbdiagram.io/) - Used to create the Entity Relationship Diagrams.
+
+
+## Deployment & Local Development
+
+### Production Deployment to Railway
+The live application is deployed inside on **Railway**, attached to a live **PostgreSQL** relational database. 
+
+#### Phase 1: Environment Configuration Files
+Before initiating deployment, two configuration files must exist at the root level of your repository to instruct Railway's build container how to execute your Django application:
+
+1. **`requirements.txt`**: Tells the server which Python modules to install. Generate this by running:
+   ```bash
+   pip3 freeze > requirements.txt
+   ```
+
+2. **`runtime.txt`**: Declares the exact Python version to prevent mismatches would there to be future updates (Python 3.14.5).
+
+#### Phase 2: Railway Infrastructure Setup
+
+1. Log into your Railway Dashboard and click New Project ➡️ Deploy from GitHub repository.
+
+2. Select your repository, in this example CI-MS4-CrawlerEmporium.
+
+3. On your project canvas view, click **+ Add** and select Database ➡️ Add PostgreSQL. This automatically provisions a live SQL database.
+
+4. Navigate to your application service container's Variables tab and inject the following production environment variables:
+
+      **SECRET_KEY:** Your unique Django secret key from your application.
+
+      **DATABASE_URL:** This is generated when you create the PostgreSQL database within Railway. By declaring this variable you map the the association between the Railway app and the PostgreSQL database.
+
+      **STRIPE_PUBLIC_KEY:** Once you create your Stripe account, navigate to your sandbox account and The publishable developer key retrieved from your Stripe dashboard.
+
+      **STRIPE_SECRET_KEY:** This is the private API key that is used to process transaction handshakes on the backend.
+
+      **STRIPE_WH_SECRET:** This is a digital authentication key that verifies real-time payment confirmation messages sent directly from Stripe to the Django database.
+
+      <br>
+      <img src="documentation/stripeapi.webp" alt="Stripe API key information" width="400">
+      <br>
+
+
+      **BREVO_API_KEY:** The key required to authenticate the Anymail HTTP transmission in order to send emails. 
+
+5. Go to your application service Settings panel ➡️ Deploy and then find the Custom Start Command input box, and insert the deployment script to ensure all assets are correctly migrated when the project deploys from.
+
+    <br>
+    <img src="documentation/deploycommand.webp" alt="Custom Start Command in Railway" width="400">
+    <br>
+    <br>
+
+   ```bash
+   python manage.py collectstatic --noinput && gunicorn <<your_project_name>>.wsgi
+   ```
+
+
+#### Phase 3: Database Initialisation
+Once Railway has successfully deployed the project, the linked PostgreSQL database tables need to be built and populated.
+
+1. From the application container ➡️ Click on Console. 
+  <br>
+  <img src="documentation/railwayconsole.webp" alt="Custom Start Command in Railway" width="400">
+  <br>
+
+2. Execute the following command to migrate the model architecture onto the PostgreSQL database. 
+
+    ```bash
+    python manage.py migrate
+    ```
+
+3. Execute the following command to create an administrative user in order to perform admin tasks. Follow the prompts to create the username and password. 
+
+    ```bash
+    python manage.py createsuperuser
+    ```
+
+4. The categories and product data is held in 2 JSON files. The following commands will take those JSON files and populate the relevant tables. 
+
+    ```bash
+    python manage.py loaddata categories.json
+    python manage.py loaddata products.json
+    ```
+
+
+### Forking the GitHub Repository
+
+By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps...
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/)
+2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
+3. You should now have a copy of the original repository in your GitHub account.
+
+### Cloning the GitHub Repository
+
+By cloning the Github Repository we make a copy of the original repository on a local computer allowing you to interact with files directly in an editor, such as VS Code. 
+
+1. On GitHub, navigate to your fork of the repository.
+2. Click the green **Code** button located above the file directory.
+3. Copy the URL string provided (HTTPS or SSH alternative).
+4. Open your local machine's terminal window, navigate to where you want the project to live, and enter the following git command:
+   ```bash
+   git clone [https://github.com/MrsG33k/CI-MS4-CrawlerEmporium.git](https://github.com/MrsG33k/CI-MS4-CrawlerEmporium.git)
+   ```
+
+5. Navigate into the newly created folder
+   ```bash
+   cd CI-MS4-CrawlerEmporium
+   ```
+6. Intitialise your Python Virtual Environment layer (.venv) and run the setup parameters locally:
+   ```bash
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip3 install -r requirements.txt
+    python3 manage.py migrate
+    python3 manage.py runserver
+    ```

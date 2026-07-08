@@ -434,3 +434,24 @@ By cloning the Github Repository we make a copy of the original repository on a 
     python3 manage.py migrate
     python3 manage.py runserver
     ```
+
+## Testing
+Please refer to [TESTING.md](TESTING.md) file for all testing carried out.
+
+## Credits
+
+- [Django Framework documentation](https://docs.djangoproject.com/en/6.0/ref/templates/builtins/#linebreaksbr): Used when trying to implement a line break in the sample contents of the lootboxes.
+- **Remove  from Backpack / Update backpack functionality** - The logic in `backpack/views.py` and the JS in `backpack.html` were built in collaboration with an Michael Whittaker within VS Code. This been noted in the code comments itself too.
+- [Code With Bubb](https://www.youtube.com/watch?v=A8yfwdET-2E): Used to help with the Javascript timings updating ticker on the index.html page
+- [W3 Schools JS](https://www.w3schools.com/js/js_timing.asp): Used in conjunction with the above to help when creating the Javascript ticker to simulate a system log. 
+- **The Tagsoc Bookclub** - They group, including Chris, Hekla, Kim and Tim helped with producing the loot box names and descriptions, the AI toasts, the System Log achievements, and the content for the blog and FAQs. 
+
+
+
+### Acknowledgments
+
+* **Michael Whittaker:** For providing technical troubleshooting assistance during the initial deployment phase to Railway, and for thorough cross-device compatibility testing to ensure a seamless responsive user experience.
+* **Rachel Furlong:** EKC tutor - She offered some really helpful advice on how to tackle this and helped with breaking down the project especially once the timeframes for submitting the project were restricted.
+
+### Complications
+**EKC College - Ashford:** In April, the college decided to end their partnership with Code Institute. I was working to a timeline to finish this milestone Project in October. These timeframes were suddenly severely restricted with the college insisting all work be submitted by 30th June. This has limited my creativity and time to really work on developing my coding skills in order to hit the higher criteria in the assessment grid.  

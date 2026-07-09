@@ -6,6 +6,7 @@
     {% block meta %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Buy your lootboxes to help you on your Dungeon Crawling journey here! Crawler Emporium is your one stop shop for all your loot needs.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
     {% endblock %}
@@ -95,7 +96,7 @@
                 <form method="GET" action="{% url 'products'%}" role="search" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"> 
                     <div class="input-group input-group-sm">
                         <input type="search" class="form-control bg-dark border-secondary text-light custom-search-input" name="q" placeholder="Search for loot boxes..." aria-label="Search"> 
-                        <button class="btn btn-outline-warning border-secondary px-3" type="submit">
+                        <button class="btn btn-outline-warning border-secondary px-3" type="submit" aria-label="Search">
                         <i class="fas fa-search"></i>
                         </button>
                     </div>

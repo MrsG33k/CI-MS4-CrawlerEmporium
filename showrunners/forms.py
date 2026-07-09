@@ -1,6 +1,7 @@
 from django import forms
 from .models import BlogComment
 
+
 class BlogCommentForm(forms.ModelForm):
     class Meta:
         model = BlogComment
@@ -8,7 +9,7 @@ class BlogCommentForm(forms.ModelForm):
         labels = {
             'message': 'Comment Input'
         }
-        
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 

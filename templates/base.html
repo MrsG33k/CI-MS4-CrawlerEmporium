@@ -46,7 +46,6 @@
     <title>The Crawler Emporium {% block extra_title %}{% endblock %}</title>
 </head>
 <body class="bg-dark text-light">
-    <body class="bg-dark text-light">
 
         <!-- Django Messages -->
         {% if messages %}
@@ -103,7 +102,7 @@
                 </form> 
                 <div class="text-end d-flex align-items-center gap-2 justify-content-center justify-content-lg-end">
                     <div class="dropdown">
-                        <a class="nav-link text-light dropdown-toggle d-flex align-items-center gap-2 py-1 px-2 border border-secondary border-opacity-50 rounded-2 bg-dark bg-opacity-20 font-sub" href ="#" role="button" id=""accountMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link text-light dropdown-toggle d-flex align-items-center gap-2 py-1 px-2 border border-secondary border-opacity-50 rounded-2 bg-dark bg-opacity-20 font-sub" href ="#" role="button" id="accountMenu" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user-shield text-warning"></i>
                         <span>My Vault</span>
                         </a>
@@ -161,9 +160,9 @@
                 
                 <!-- Left Section: AI Welcome -->
                 <div class="col-12 col-md-4 text-center text-md-start d-flex flex-column align-items-center align-items-md-start">
-                    <h5 class="text-white logo-font tracking-wider mb-3 footer-brand-title">
+                    <p class="text-white logo-font tracking-wider mb-3 footer-brand-title">
                         <span class="text-warning">CRAWLER</span> EMPORIUM
-                    </h5>
+                    </p>
                     <p class="small footer-description font-inter text-center text-md-start">
                         The Galaxy's premier unsanctioned black-market lootbox distributor. Managed entirely by the system AI, funded by corporate showrunners, and optimised to drain your gold before the floor boss turns you into a paste.<strong> No refunds. No guarantees of survival.</strong>
                     </p>
@@ -218,7 +217,7 @@
 
     {% block postloadjs %}
 
-    <script type="text/javascript">
+    <script>
     $(document).ready(function() {
         // Automatically targets and initialises all incoming system alerts
         $('.toast').toast('show');

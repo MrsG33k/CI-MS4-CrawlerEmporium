@@ -170,7 +170,7 @@
                 
                 <!-- Middle Section: Site Map -->
                 <div class="col-6 col-md-4 text-center">
-                    <h6 class="text-white text-uppercase tracking-wider small fw-bold mb-3">System Directory</h6>
+                    <p class="text-white text-uppercase tracking-wider small fw-bold mb-3">System Directory</p>
                     <ul class="list-unstyled d-flex flex-column gap-2 small">
                         <li><a href="{% url 'products' %}" class="text-decoration-none text-muted-hover text-secondary">Active Loot Vaults</a></li>
                         <li><a href="{% url 'blog' %}" class="text-decoration-none text-muted-hover text-secondary">The Showrunners</a></li>
@@ -180,7 +180,7 @@
                 
                 <!-- Right Side: User login status -->
                 <div class="col-6 col-md-4 text-center text-md-end">
-                    <h6 class="text-white text-uppercase tracking-wider small fw-bold mb-3">Clearance Status</h6>
+                    <p class="text-white text-uppercase tracking-wider small fw-bold mb-3">Clearance Status</p>
                     
                     {% if request.user.is_authenticated %}
                         <!-- User is logged in -->

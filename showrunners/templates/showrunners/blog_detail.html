@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="card bg-dark border-secondary p-4 shadow-sm mt-4">
-                    <h5 class="text-white font-monospace mb-3"><span class="text-warning"> Crawler </span>Response:</h5>
+                    <p class="text-white font-monospace mb-3"><span class="text-warning"> Crawler </span>Response:</p>
                     
                     {% if user.is_authenticated %}
                         <form method="POST" action="{% url 'blog_detail' slug=post.slug %}">

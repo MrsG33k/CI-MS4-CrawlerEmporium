@@ -18,7 +18,7 @@
         
         <div class="row">
             <div class="col-12 text-center mb-2">
-                <h2 class="logo-font text-uppercase text-light tracking-wider m-0">VAULT INVENTORY</h2>
+                <p class="logo-font text-uppercase text-light tracking-wider m-0">VAULT INVENTORY</p>
                 <hr class="border-warning border-2 opacity-75 mx-auto mb-3" style="width: 100px;">
                 
                 {% for c in current_categories %}
@@ -109,7 +109,8 @@
 
 {% block postloadjs %}
     {{ block.super}}
-    <script type="text/javascript">
+    <!--Script to enable the sorting of the lootboxes-->
+    <script>
         $('#sort-selector').change(function() {
             var selector = $(this);
             var currentUrl = new URL(window.location);

@@ -14,6 +14,7 @@ from profiles.forms import UserProfileForm
 
 import stripe
 
+
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -35,14 +36,14 @@ def checkout(request):
         order_form = Orderform(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            
+
             # Check if the user is authenticated and attach their profile
             if request.user.is_authenticated:
                 profile = UserProfile.objects.get(user=request.user)
                 order.user_profile = profile
-                
+
             order.save()
-            
+
             for item_id, item_data in backpack.items():
                 try:
                     product = Product.objects.get(id=item_id)
@@ -54,7 +55,7 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data['items_by_size'].items():
+                        for size, quantity in item_data['items_by_size'].items():   # noqa: E501
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
@@ -69,30 +70,35 @@ def checkout(request):
                     )
                     order.delete()
                     return redirect(reverse('view_backpack'))
-                
+
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_id_string]))
-        
+            return redirect(reverse('checkout_success', args=[order.order_id_string]))   # noqa: E501
+
         else:
-            messages.error(request, 'ERROR: Input parsing failure.' \
-                           'Did your fingers slip on the console layout, Crawler? Double-check your coordinate parameters before trying to execute again.')
+            messages.error(
+                request,
+                'ERROR: Input parsing failure.'
+                'Did your fingers slip on the console layout, Crawler?'
+                'Double-check your coordinate parameters before'
+                'trying to execute again.')
 
     else:
         backpack = request.session.get('backpack', {})
         if not backpack:
-            messages.error(request, "There's nothing in your backpack at the moment!")
+            messages.error(request, "There's nothing in your backpack at the moment!")   # noqa: E501
             return redirect(reverse('lootboxes'))
-        
+
         current_backpack = backpack_contents(request)
         total = current_backpack['total']
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
-            amount = stripe_total,
+            amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
 
-        # Pre-populate checkout form fields if the user has profile details saved
+        # Pre-populate checkout form fields
+        # if the user has profile details saved
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -100,7 +106,7 @@ def checkout(request):
                     'full_name': profile.user.get_full_name(),
                     'email': profile.user.email,
                     'phone_number': profile.default_phone_number,
-                    'country': profile.default_country if hasattr(profile, 'default_country') else '',
+                    'country': profile.default_country if hasattr(profile, 'default_country') else '',   # noqa: E501
                     'postcode': profile.default_postcode,
                     'town_or_city': profile.default_town_or_city,
                     'street_address1': profile.default_street_address1,
@@ -113,7 +119,7 @@ def checkout(request):
             order_form = Orderform()
 
         if not stripe_public_key:
-            messages.warning(request,'Stripe public key is missing!')
+            messages.warning(request, 'Stripe public key is missing!')
 
         template = 'checkout/checkout.html'
         context = {
@@ -131,21 +137,22 @@ def checkout_success(request, order_id_string):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_id_string=order_id_string)
-    
+
     # Send order confirmation email
     _send_confirmation_email(order)
-    
+
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
-        #link this order to the logged-in user profile permanently
+        # link this order to the logged-in user profile permanently
         order.user_profile = profile
         order.save()
 
-        # If "Save Info" checkbox was flagged, update their default values in profile data
+        # If "Save Info" checkbox was flagged
+        # update their default values in profile data
         if save_info:
             profile_data = {
                 'default_phone_number': order.phone_number,
-                'default_country': order.country if hasattr(order, 'country') else '',
+                'default_country': order.country if hasattr(order, 'country') else '',   # noqa: E501
                 'default_postcode': order.postcode,
                 'default_town_or_city': order.town_or_city,
                 'street_address1': order.street_address1,
@@ -160,7 +167,7 @@ def checkout_success(request, order_id_string):
     messages.success(request, f"TRANSACTION COMPLETED. \
         Order {order_id_string} is processed \
         I've sent the confirmation to {order.email}. ")
-    
+
     if 'backpack' in request.session:
         del request.session['backpack']
 
@@ -169,6 +176,7 @@ def checkout_success(request, order_id_string):
         'order': order,
     }
     return render(request, template, context)
+
 
 def _send_confirmation_email(order):
     """Send the user an order confirmation email"""
@@ -186,7 +194,7 @@ def _send_confirmation_email(order):
         {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL}
     )
 
-    #Send email
+    # Send email
     send_mail(
         subject,
         body,

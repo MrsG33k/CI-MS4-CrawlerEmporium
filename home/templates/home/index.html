@@ -12,12 +12,12 @@
         <div class="col-12 col-xl-8">
             <div class="hero-jumbotron p-5 h-100 d-flex flex-column justify-content-center text-start position-relative overflow-hidden">
                 
-                <h1 class="logo-font text-white display-4 text-uppercase mb-1 fw-black">
+                <p class="logo-font text-white display-4 text-uppercase mb-1 fw-black">
                     Don't <span class="text-warning">Die Naked.</span>
-                </h1>
-                <h3 class="logo-font text-pink h4 text-uppercase mb-4 tracking-wide">
+                </p>
+                <p class="logo-font text-pink h4 text-uppercase mb-4 tracking-wide">
                     Upgrade Your Pathetic Inventory
-                </h3>
+                </p>
                 
                 <p class="lead text-secondary hero-description-text fs-5 mb-4 font-inter">
                     Let's be honest, you look completely ridiculous out there. The floor bosses are actively laughing at your current armour. Acquire a high-yield lootbox, replace that trash-tier gear, and maybe..just maybe..you won't end up as a smear on a spiked wall.
@@ -36,9 +36,9 @@
             <div class="system-log-wrapper rounded-2 p-4 h-100 d-flex flex-column justify-content-between font-sub">
                 <div>
                     <div class="d-flex justify-content-between align-items-center border-bottom border-secondary pb-2 mb-3">
-                        <h5 class="text-white logo-font m-0 fs-6 text-uppercase tracking-wider text-secondary">
+                        <p class="text-white logo-font m-0 fs-6 text-uppercase tracking-wider text-secondary">
                             <i class="fas fa-satellite-dish text-warning me-2"></i>System Logs
-                        </h5>
+                        </p>
                     </div>
                     <!-- JavaScript inserts random ticker items here -->
                     <div id="live-system-logs" class="system-log-container d-flex flex-column gap-3 tracking-wide">
@@ -61,9 +61,9 @@
     <!-- Carousel Header Control Section -->
     <div class="row mb-3 mt-5">
         <div class="col border-bottom border-secondary pb-2 d-flex justify-content-between align-items-end">
-            <h4 class="logo-font text-white m-0 text-uppercase tracking-wider fs-5">
+            <p class="logo-font text-white m-0 text-uppercase tracking-wider fs-5">
                 Available <span class="text-warning">Loot Caches</span>
-            </h4>
+            </p>
             <a href="{% url 'products' %}" class="text-decoration-none text-warning font-sub small text-muted-hover">Browse All Packages &rarr;</a>
         </div>
     </div>
@@ -93,7 +93,7 @@
                             {% endif %}
 
                         </div>
-                        <h5 class="logo-font text-pink fs-6 text-uppercase m-0">{{ product.name }}</h5>
+                        <p class="logo-font text-pink fs-6 text-uppercase m-0">{{ product.name }}</p>
                         <p class="text-white font-inter my-2 loot-carousel-desc">
                             {{ product.ai_flavour_text|truncatewords:30 }}
                         </p>

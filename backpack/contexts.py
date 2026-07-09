@@ -1,6 +1,6 @@
-from django.conf import settings
 from django.shortcuts import get_object_or_404
 from lootboxes.models import Product
+
 
 def backpack_contents(request):
 
@@ -17,11 +17,10 @@ def backpack_contents(request):
         product_count += quantity
         backpack_items.append({
             'item_id': item_id,
-            'quantity':quantity,
-            'product':product,
-            'row_subtotal':row_subtotal,
+            'quantity': quantity,
+            'product': product,
+            'row_subtotal': row_subtotal,
         })
-
 
     context = {
         'backpack_items': backpack_items,

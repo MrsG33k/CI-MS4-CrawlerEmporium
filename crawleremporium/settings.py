@@ -12,11 +12,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
-from django.conf.urls.static import static
 
 # Import env.py if it exists
 if os.path.isfile('env.py'):
-    import env
+    import env   # noqa: F401
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-fallback-development-key-never-use-in-production')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-fallback-development-key-never-use-in-production')   # noqa: E501
 
 DEBUG = 'DEVELOPMENT' in os.environ
 
@@ -61,7 +60,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
 
-    #Other
+    # Other
     'crispy_forms',
     'crispy_bootstrap5',
     'anymail'
@@ -87,17 +86,21 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),  # include the templates directory
-            os.path.join(BASE_DIR, 'templates', 'allauth'),  # auth templates directory
+                # include the templates directory
+                os.path.join(BASE_DIR, 'templates'),
+                # auth templates directory
+                os.path.join(BASE_DIR, 'templates', 'allauth'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.request',  # required by allauth
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media',
-                'backpack.contexts.backpack_contents',  # custom context processor for backpack
+                                # required by allauth
+                                'django.template.context_processors.request',
+                                'django.contrib.auth.context_processors.auth',
+                                'django.contrib.messages.context_processors.messages',   # noqa: E501
+                                'django.template.context_processors.media',
+                                # custom context processor for backpack
+                                'backpack.contexts.backpack_contents',
             ],
 
         },
@@ -114,13 +117,12 @@ AUTHENTICATION_BACKENDS = [
 # Allauth settings needed for logging in using social media account
 SITE_ID = 1
 
-# Updated the Email environment settings 
+# Updated the Email environment settings
 if 'DEVELOPMENT' not in os.environ:
-    # Live Production on Railway with Brevo 
+    # Live Production on Railway with Brevo
     EMAIL_BACKEND = "anymail.backends.brevo.EmailBackend"
-    ANYMAIL = {
-    "BREVO_API_KEY": os.environ.get('BREVO_API_KEY'),
-    }
+    ANYMAIL = {"BREVO_API_KEY": os.environ.get('BREVO_API_KEY'),
+               }
     DEFAULT_FROM_EMAIL = 'crawleremporium@gmail.com'
     SERVER_EMAIL = 'crawleremporium@gmail.com'
 else:
@@ -128,13 +130,19 @@ else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'vaultmaster@crawleremporium.com'
 
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email' # log in via email or usernmae
-ACCOUNT_EMAIL_REQUIRED = True  # must have an email
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # must verify email before logging in
+# log in via email or username
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+# must have an email
+ACCOUNT_EMAIL_REQUIRED = True
+# must verify email before logging in
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
-ACCOUNT_USERNAME_MIN_LENGTH = 4  # username must be at least 4 characters long
-LOGIN_URL = '/accounts/login/'  # login page URL
-LOGIN_REDIRECT_URL = '/'  # Redirect to home page after login
+# username must be at least 4 characters long
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+# login page URL
+LOGIN_URL = '/accounts/login/'
+# Redirect to home page after login
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'crawleremporium.wsgi.application'
 
@@ -163,24 +171,21 @@ else:
         }
     }
 
-
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',   # noqa: E501
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',   # noqa: E501
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',   # noqa: E501
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',   # noqa: E501
     },
 ]
 
@@ -206,15 +211,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')                 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#Stripe settings
+# Stripe settings
 STRIPE_CURRENCY = 'gbp'
-STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY','')
-STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY','')
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')

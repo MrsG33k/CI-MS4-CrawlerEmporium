@@ -5,7 +5,7 @@
 <div class="container my-5 font-mono">
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 bg-black border border-secondary p-4 text-white rounded-2 shadow">
-            <h2 class="text-uppercase text-warning mb-4">> AI ADMIN:EDIT LOOTBOX: {{ product.name }}</h2>
+            <p class="text-white logo-font tracking-wider mb-4"><span class="text-warning">> AI ADMIN EDIT LOOTBOX:</span> {{ product.name }}</p>
             <hr class="border-secondary mb-4">
             
             <form method="POST" action="{% url 'edit_product' product.id %}" enctype="multipart/form-data">
@@ -15,7 +15,7 @@
                         <label class="form-label text-warning small d-block mb-1">> Update_{{ field.label }}:</label>
                         {{ field }}
                         {% if field.help_text %}
-                            <div class="form-text text-muted small mt-1">{{ field.help_text }}</div>
+                            <div class="form-text text-white small mt-1">{{ field.help_text }}</div>
                         {% endif %}
                     </div>
                 {% endfor %}

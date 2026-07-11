@@ -109,10 +109,16 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end border-secondary shadow-lg" aria-labelledby="accountMenu">
                             {% if request.user.is_authenticated %}
+                                <!-- Available to ALL logged-in users -->
+                                <li><a class="dropdown-item py-2" href="{% url 'profile_vault' %}"><i class="fas fa-tools text-warning me-2"></i>Vault Management</a></li>
+                                
+                                <!-- Only visible to Admins/Superusers -->
                                 {% if request.user.is_superuser %}
-                                    <li><a class="dropdown-item py-2" href="{% url 'profile_vault' %}"><i class="fas fa-tools text-warning me-2"></i>Vault Management</a></li>
+                                    <li><a class="dropdown-item py-2 text-warning font-mono" href="{% url 'add_product' %}"><i class="fas fa-plus-circle me-2"></i>>Add New Lootbox</a></li>
                                     <li><hr class="dropdown-divider border-secondary"></li>
                                 {% endif %}
+                                
+                                <!-- Available to ALL logged-in users -->
                                 <li><a class="dropdown-item py-2" href="{% url 'account_settings' %}"><i class="fas fa-id-card me-2"></i>Crawler Profile</a></li>
                                 <li><a class="dropdown-item py-2 text-danger" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
                             {% else %}

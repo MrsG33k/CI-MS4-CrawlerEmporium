@@ -220,11 +220,19 @@ This wireframe covers the view of the user account. The idea is that the user ca
     </tr>
   </table>
 
+* **Admin Frontend  CRUD Core:** A full, secure frontend administrative interface integrated into the store catalog layout. Authorised superusers can execute create (`add_product`), update (`edit_product`), and delete (`delete_product`) database transactions  directly from the browser layout interface. 
+  <table border="0">
+  <tr>
+    <td><img src="documentation/addproduct.webp" alt="The Add lootbox option in the menu" width="300"></td>
+    <td><img src="documentation/editdeleteloot.webp" alt="Buttons showing edit and delete for logged in admin" width="600"></td>
+  </tr>
+</table>
+
 
 ### Future Implementations
 While the platform successfully satisfies all primary requirements for Milestone 4, the following ideas are scheduled for future deployments of the project. 
 
-* **Admin Frontend CRUD:** At the moment all of the administrative CRUD tasks happen inside of Djangos native admin dashboard. I would like to move database management parameters (product tracking, support tickets, and blog posts) into a custom frontend console wrapper protected by server-side `@user_passes_test`.
+* **Admin Frontend CRUD:** At the moment most of the administrative CRUD tasks happen inside of Djangos native admin dashboard. I would like to move database management parameters (product tracking, support tickets, and blog posts) into a custom frontend console wrapper. At the moment, only superusers can add,edit or delete products. I would like to expand the frontend functionality for admin to perform a wider range of tasks.
 <br>
 
 * **Live System Log:** At the moment the System log on the index page relies on a random selection of users / achievements. I would like to use realtime order data, and account data to provide the data for the system log ticker. 
@@ -263,6 +271,14 @@ To guarantee application stability, database integrity, and a continuous user ex
 
 #### 4. Transaction Verification & Stripe
 * **The Safeguard:** The application uses backend Stripe element webhooks to process payments. If a user loses internet connectivity or closes their browser tab mid-transaction, the server-side webhook catches the confirmation direct from Stripe and builds the order entry in the database anyway. This prevents "ghost charges" where a customer is billed but their purchase log fails to save.
+
+#### 5. Dual-Layer View Security & Authentication Verification
+* **The Safeguard:** Administrative entry points are locked down using a strict dual-layer authorization strategy.
+* **Defensive Action:** Every frontend management view is encapsulated with Django's native `@login_required` decorators, immediately intercepting unauthenticated public traffic and routing it back to the system login terminal. Concurrently, an explicit programmatic check (`{if not request.user.is_superuser}`) evaluates group clearance levels, completely restricting authenticated regular users from accessing or manipulating these data tables.
+    <br>
+    <img src="documentation/authlogin.webp" alt="The different menu view between superuser and regular user" width="500">
+    <br>
+
 
 ### Accessibility
 * **Semantic HTML structures:** HTML built using semantic structural tags (`<main>`, `<header>`, `<footer>`, `<section>`).

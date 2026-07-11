@@ -22,10 +22,10 @@
                 <div class="my-3 font-mono border border-secondary p-3 bg-dark rounded-2 text-start">
                     <span class="text-white logo-font tracking-wider d-block mb-2"><span class="text-warning">>SYSTEM</span> ADMIN ACTIONS:</span>
                     <a href="{% url 'edit_product' product.id %}" class="btn btn-sm btn-outline-info text-uppercase">
-                        <i class="fas fa-edit me-1"></i> Edit Asset
+                        <i class="fas fa-edit me-1"></i> Edit Lootbox
                     </a>
                     <a href="{% url 'delete_product' product.id %}" class="btn btn-sm btn-outline-danger text-uppercase ms-2" onclick="return confirm('CRITICAL WARPING: Are you completely sure you want to scrub this asset from the system database?');">
-                        <i class="fas fa-trash-alt me-1"></i> Delete Asset
+                        <i class="fas fa-trash-alt me-1"></i> Delete Lootbox
                     </a>
                 </div>
             {% endif %}

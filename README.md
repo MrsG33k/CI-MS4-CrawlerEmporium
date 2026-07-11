@@ -274,8 +274,40 @@ To guarantee application stability, database integrity, and a continuous user ex
 
 ## Database Architecture
 
-The application implements a relational layout structure powered by a live PostgreSQL database.
-<< Insert ERD here>>
+The application implements a relational layout structure powered by a live PostgreSQL database. The ERD was created using [DBDiagram.io](https://dbdiagram.io/).
+
+<strong>A copy of the ERD can be viewed [here](https://dbdiagram.io/d/MS4-6a52a4374ac62e474c841bb5) </strong><br>
+The image below shows the relationships between the different apps. The Django auth_user is the table that drives the linking relationships between the other tables. I have grouped and labelled the tables in relation to their relevant app
+
+  <table border="0">
+    <tr>
+      <td><img src="documentation/erdoverview.webp" alt="A view of all of the tables across the project and their relationships" width="800"></td>
+    </tr>
+    <tr>
+      <td><img src="documentation/erduser.webp" alt="A view of the Django auth_user table" width="300"></td>
+      <td>The image shows the Django auth_user table</td>
+    </tr>
+    <tr>
+      <td><img src="documentation/erdprofiles.webp" alt="A view of the Profiles app table" width="300"></td>
+      <td>The image above the Profiles App table</td>
+    </tr>
+    <tr>
+      <td><img src="documentation/erdcheckout.webp" alt="A view of the Checkout app table" width="500"></td>
+      <td>The image shows the Checkout App table</td>
+    </tr>
+    <tr>
+      <td><img src="documentation/erdlootboxes.webp" alt="A view of the Lootboxes app table" width="500"></td>
+      <td>The image shows the Lootboxes App table</td>
+    </tr>
+    <tr>
+      <td><img src="documentation/erdshowrunners.webp" alt="A view of the Showrunners app table" width="300"></td>
+      <td>The image shows the Showrunners App table</td>
+    <tr>
+      <td><img src="documentation/erdsupport.webp" alt="A view of the Support app table" width="300"></td>
+      <td>The image shows the Support App table</strong></td>
+    </tr>
+  </table>
+
 
 ## Technologies Used
 
